@@ -1,3 +1,5 @@
+@import url('./cores.css');
+
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +8,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #e0e0e0;
+    background-color: var(--fundo-body);
 }
 
 .container {
@@ -16,7 +18,7 @@ body {
 
 .barra-lateral {
     width: 20%;
-    background-color: #f2f2f2;
+    background-color: var(--barra-lateral);
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -41,11 +43,10 @@ body {
 }
 
 .barra-lateral nav ul li.ativo {
-    background-color: #bfbfbf;
+    background-color: var(--barra-lateral-ativo);
     padding: 10px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
-
 
 .conteudo-principal {
     width: 80%; 
@@ -56,72 +57,43 @@ body {
 }
 
 .grade-conteudo {
-    display: grid;
-    grid-template-columns: 1fr 2fr; 
-    width: 80%;
-    gap: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 90%;
+}
+
+.info-rows {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-rows div{
+    background-color: var(--div-conteudos);
+    padding: 80px; 
+    margin-bottom: 10px; 
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .branco {
-    background-color: #fff;
-    padding: 30px; 
-    margin-bottom: 1cm; 
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-column: span 2; 
-    width: 100%; 
+    padding: 10px;
+    width: 100%;
 }
 
-.cartao-grafico-gastos {
-    background-color: #fff;
-    padding: 70px; 
-    margin-bottom: 10px; 
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-column: 1; 
-    width: calc(100% - 40px); 
-}
-
+.cartao-grafico-gastos, 
 .cartao-meta {
-    background-color: #fff;
-    padding: 40px; 
-    margin-bottom: 10px; 
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-column: 2; 
-    width: calc(100% - 60px); 
+    width: 45%;
 }
 
 .cartao-historico-gastos {
-    background-color: #fff;
-    padding: 80px; 
-    margin-bottom: 20px; 
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-column: span 1; 
-    width: 100%; 
+    height: 350px;
+    width: 70%; 
 }
+
 .cartao-contas {
-    background-color: #fff;
-    padding: 20px; 
-    margin-bottom: 20px; 
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-column: 2; 
-    width: calc(100% - 40px); 
+    width: 20%; 
 }
