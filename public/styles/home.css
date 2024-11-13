@@ -1,0 +1,172 @@
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.logo-design {
+    display: flex;
+    align-items: center;
+}
+
+.logo-design img{
+    width: 80px;
+    border-radius: 70px;
+    background-color: white;
+}
+
+.logo-design p{
+    font-size: 32;
+    color: var(--azul-escuro);
+    text-shadow: 4px 4px rgba(114,114,114, 0.25);
+}
+
+.login-esquerda {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 50%;
+    background-color: var(--azul-escuro);
+}
+
+.login-esquerda .image{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: var(--azul-escuro);
+}
+
+.login-esquerda img{
+    width: 50%;
+    background-color: var(--azul-escuro);
+}
+
+.login-direita {
+    padding: 50px;
+    width: 50%;
+}
+
+.login-dados {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+    width: 80%;
+}
+
+.login-dados div h1{
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40;
+    color: var(--azul-escuro);
+}
+
+.title-dados {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.title-dados p{
+    font-size: 15;
+    color: var(--sombra-azul);
+}
+    
+.input-dados{
+    display: flex;
+    padding-top: 15px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.input-dados .lembrar-senha{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.lembrar-senha p{
+    font-size: 15;
+    color: var(--preto);
+}
+
+.input-dados-label{
+    height: 45px;
+    border-radius: 15px;
+    border-style:hidden;
+    box-shadow: 0px 0px 10px 1px var(--sombra-azul) inset, 5px 5px 5px var(--sombra-azul);
+    padding-left: 8px;
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15;
+    text-align: justify;
+}
+
+.button-submit {
+    height: 45px;
+    border: none;
+    border-radius: 15px;
+    background-color: var(--laranja-principal);
+    color: var(--claro);
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    box-shadow: 2px 2px 4px var(--sombra-azul);
+}
+
+.lembrar-senha{
+    display: flex;
+    align-items: center;
+    
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+
+    padding-left: 2px;
+    gap: 5px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    background-color: var(--claro);
+    color: var(--laranja-principal);
+    
+    font: inherit;
+    width: 20px;
+    height: 20px;
+    border: 2px solid;
+
+    border-radius: 2px;
+
+    display: grid;
+    place-content: center;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    
+    width: 14px;
+    height: 14px;
+    
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+
+    box-shadow: 20px 20px var(--laranja-principal) inset;
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+.input-down {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-down a{
+    color: var(--preto);
+}

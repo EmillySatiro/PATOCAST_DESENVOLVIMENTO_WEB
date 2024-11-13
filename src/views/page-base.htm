@@ -1,0 +1,24 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+        <title>Document</title>
+    {% endblock %}
+    
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/style.css">
+    {% block styles %}
+    {% endblock styles %}
+</head>
+<body>
+    <div class='container'>
+        {% block content %}
+            
+        {% endblock %}
+    </div>
+</body>
+    {% block script %}
+        
+    {% endblock %}
+</html>

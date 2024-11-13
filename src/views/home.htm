@@ -1,0 +1,58 @@
+{% extends "page-base.htm" %}
+  {% block title %}
+      <title> Pagina Principal </title>
+  {% endblock title %}
+  {% block styles %}
+    <link rel="stylesheet" href="./styles/home.css">
+  {% endblock %}
+
+  {% block content %}
+    <div class="login-esquerda">
+      <div class="image">
+        <img src="./images/tela_login_esquerda.png" alt="">
+      </div>
+    </div>
+    <div class="login-direita">
+      <div class="logo-design">
+        <img src="./assets/logo_escura.png" alt="Logo Escura">
+        <p>PATOCASH</p>
+      </div>
+      <div class="login-dados">
+        <div class="title-dados">
+          <h1>
+            Bem Vindo!
+          </h1>
+          <p>
+            Aqui, você encontrará as ferramentas e dicas necessárias para organizar suas finanças, acompanhar seus gastos e alcançar seus objetivos de forma prática e eficiente.
+          </p>
+        </div>
+        
+        <form class="input-dados" action="" method="post">
+
+          <input type="email" name="" class="input-dados-label" id="" placeholder="E-mail">
+          <input type="password" name="" class="input-dados-label" id="" placeholder="Senha">
+
+          <label class="lembrar-senha">
+            <input type="checkbox" name="checkbox" />
+            Lembrar Senha
+          </label>
+          
+          <input class="button-submit" type="submit" value="Entrar">
+        </form>
+        <div class="input-down">
+          <a href="#">
+            <p>
+              Esqueci minha senha
+            </p>
+          </a>
+          <a href="#">
+            <p>
+              Cadastrar
+            </p>
+          </a>
+        </div>
+
+      </div>
+    </div>
+    
+  {% endblock %}
