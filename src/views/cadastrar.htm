@@ -1,0 +1,56 @@
+{% extends "page-base.htm" %}
+  {% block title %}
+      <title> Cadastro </title>
+  {% endblock title %}
+
+  {% block styles %}
+    <link rel="stylesheet" href="./styles/cadastrar.css">
+  {% endblock %}
+
+    {% block content %}
+        <div class="login-esquerda">
+            <div class="slideshow-image">
+                <div class="image">
+                    <img src="" id="imagem-login-esquerda" alt="">
+                    <div class="slideshow" name="slideshow"></div>
+                </div>
+            </div>
+        </div>
+        <div class="login-direita">
+            {% include "partials/logo_clara.htm" %} 
+
+            <div class="login-dados">
+                <div class="title-dados">
+                <h1>
+                    Cadastrar
+                </h1>
+            </div>
+            
+            <form class="input-dados" action="" method="post">
+
+                <input type="nome" name="" class="input-dados-label" id="" placeholder="Nome">
+                <input type="sobrenome" name="" class="input-dados-label" id="" placeholder="Sobrenome">
+                <input type="email" name="" class="input-dados-label" id="" placeholder="E-mail">
+                <input type="senha" name="" class="input-dados-label" id="" placeholder="Senha">
+                <input type="senha-repetida" name="" class="input-dados-label" id="" placeholder="Conferir Senha">
+
+                <label class="aceitar-termo">
+                    <input type="checkbox" name="checkbox" />
+                    Aceitar Termos
+                </label>
+            
+                <input class="button-submit" type="submit" value="Cadastrar">
+            </form>
+            <div class="input-down">
+                <a href="/login">
+                    <p>
+                    Login
+                    </p>
+                </a>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block script %}
+        <script src="./scripts/script.js"></script>
+    {% endblock %}

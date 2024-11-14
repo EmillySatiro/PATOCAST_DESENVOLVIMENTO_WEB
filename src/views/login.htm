@@ -1,9 +1,9 @@
 {% extends "page-base.htm" %}
   {% block title %}
-      <title> Pagina Principal </title>
+      <title> Entrar </title>
   {% endblock title %}
   {% block styles %}
-    <link rel="stylesheet" href="./styles/home.css">
+    <link rel="stylesheet" href="./styles/login.css">
   {% endblock %}
 
   {% block content %}
@@ -16,10 +16,8 @@
       </div>
     </div>
     <div class="login-direita">
-      <div class="logo-design">
-        <img src="./assets/logo_escura.png" alt="Logo Escura">
-        <p>PATOCASH</p>
-      </div>
+      {% include "partials/logo_escura.htm" %} 
+
       <div class="login-dados">
         <div class="title-dados">
           <h1>
@@ -37,18 +35,18 @@
 
           <label class="lembrar-senha">
             <input type="checkbox" name="checkbox" />
-            Lembrar Senha
+            Mostrar Senha
           </label>
           
           <input class="button-submit" type="submit" value="Entrar">
         </form>
         <div class="input-down">
-          <a href="#">
+          <a href="/recuperar_conta">
             <p>
               Esqueci minha senha
             </p>
           </a>
-          <a href="#">
+          <a href="/cadastrar">
             <p>
               Cadastrar
             </p>

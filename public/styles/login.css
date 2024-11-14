@@ -1,8 +1,3 @@
-.container {
-    display: flex;
-    height: 100vh;
-}
-
 .logo-design {
     display: flex;
     align-items: center;
@@ -11,7 +6,6 @@
 .logo-design img{
     width: 80px;
     border-radius: 70px;
-    background-color: white;
 }
 
 .logo-design p{
@@ -26,14 +20,17 @@
     justify-content: center;
     align-content: center;
     width: 50%;
+    
     background-color: var(--azul-escuro);
+    background-image: url('../images/fundo_money.png');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .login-esquerda .slideshow-image{
     display: flex;
     justify-content: center;
     align-content: center;
-    background-color: var(--azul-escuro);
 }
 
 .image {
@@ -44,7 +41,7 @@
 }
 
 .login-esquerda img{
-    width: 70%;
+    width: 90%;
     background-color: var(--azul-escuro);
 }
 
@@ -76,7 +73,7 @@
 }
 
 .title-dados p{
-    font-size: 15;
+    font-size: 20;
     color: var(--sombra-azul);
 }
     
@@ -88,18 +85,8 @@
     gap: 15px;
 }
 
-.input-dados .lembrar-senha{
-    display: flex;
-    justify-content: flex-start;
-}
-
-.lembrar-senha p{
-    font-size: 15;
-    color: var(--preto);
-}
-
 .input-dados-label{
-    height: 45px;
+    height: 50px;
     border-radius: 15px;
     border-style:hidden;
     box-shadow: 0px 0px 10px 1px var(--sombra-azul) inset, 5px 5px 5px var(--sombra-azul);
@@ -107,11 +94,12 @@
     font-family: var(--fonte);
     font-weight: 400;
     font-style: normal;
-    font-size: 15;
+    font-size: 20;
     text-align: justify;
 }
 
 .button-submit {
+    cursor: pointer;
     height: 45px;
     border: none;
     border-radius: 15px;
@@ -125,6 +113,8 @@
 }
 
 .lembrar-senha{
+    cursor: pointer;
+    
     display: flex;
     align-items: center;
     
@@ -132,12 +122,14 @@
     font-weight: 400;
     font-style: normal;
     font-size: 18px;
+    color: var(--preto);
 
     padding-left: 2px;
     gap: 5px;
 }
 
 input[type="checkbox"] {
+    cursor: pointer;
     appearance: none;
     background-color: var(--claro);
     color: var(--laranja-principal);
@@ -177,6 +169,7 @@ input[type="checkbox"]:checked::before {
 
 .input-down a{
     color: var(--preto);
+    font-size: 20;
 }
 
 .slideshow {

@@ -2,8 +2,6 @@ const express = require('express')
 const server = express()
 const port = 3000
 
-const images = require('./scripts/images')
-
 server.use(express.static("public"))
 server.use(express.urlencoded({extended: true}))
 
@@ -20,11 +18,16 @@ nunjucks.configure(
 //   res.json({ valor: image_list }); // Retorna o valor como JSON
 // });
 
-server.get('/', async (req,res) => {
-    image_list = await images('./public/images/slideshow')
-    return res.render('home.htm', {
-      images: image_list
-    })
+server.get('/login', async (req,res) => {
+    return res.render('login.htm')
+})
+
+server.get('/cadastrar', async (req,res) => {
+  return res.render('cadastrar.htm')
+})
+
+server.get('/recuperar_conta', async (req,res) => {
+  return res.render('esqueci-senha.htm')
 })
 
 server.listen(port)
