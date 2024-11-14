@@ -1,0 +1,123 @@
+.logo-design {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 100%;
+    padding: 20px 0px 0px 20px;
+}
+
+.logo-design img{
+    width: 80px;
+    border-radius: 70px;
+}
+
+.logo-design p{
+    font-size: 32;
+    color: var(--azul-escuro);
+    text-shadow: 4px 4px rgba(114,114,114, 0.25);
+}
+
+body {
+    background-color: var(--claro-escuro);
+    background-image: url('../images/fundo_money.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box-info {
+    background-color: rgba(37, 44, 79, 0.2);
+    border-radius: 20px;
+
+    height: 80%;
+    width: 70%;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.box-info .form-email{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 250px;
+
+    gap: 50px;
+    width: 100%;
+}
+
+.label-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-bottom: 20px;
+}
+
+.box-info .form-email h3{
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30;
+    text-align: justify;
+    color: var(--azul-escuro);
+}
+
+.box-info .form-email p{
+    color: var(--azul-escuro);
+    font-size: 20;
+}
+
+.box-info .form-email input{
+    height: 50px;
+    width: 100%;
+
+    border-radius: 15px;
+    border-style:hidden;
+    box-shadow: 0px 0px 10px 1px var(--sombra-azul) inset, 5px 5px 5px var(--sombra-azul);
+    padding-left: 8px;
+
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20;
+    text-align: justify;
+}
+
+.box-info .form-email button{
+    cursor: pointer;
+    height: 50px;
+    width: 50%;
+
+    border: none;
+    border-radius: 15px;
+    background-color: var(--laranja-principal);
+    box-shadow: 3px 3px 10px var(--sombra-azul);
+
+    color: var(--claro);
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+}
+
+.box-info .form-email a{
+    color: var(--claro);
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+
+    text-decoration: underline;
+    text-decoration-color: var(--azul-escuro);
+}

@@ -1,0 +1,39 @@
+{% extends "page-base.htm" %}
+
+    {% block styles %}
+        <link rel="stylesheet" href="./styles/esqueci-senha.css">
+    {% endblock %}
+
+
+    {% block content %}
+        {% include "./partials/logo_clara.htm" %}
+
+        <div class="box-info">
+            <form action="" method="post" class="form-email">
+                <div class="label-form">
+                    <h3>
+                        Esqueci Minha Senha
+                    </h3>
+                    <p>
+                        Por favor, informe seu e-mail e você receberá um ticket de recuperação em até 1 minuto.
+                    </p>
+                </div>
+                
+
+                <input type="email" name="email" id="" placeholder="E-Mail">
+
+                <button type="submit">Enviar Ticket</button>
+
+                <a href="/login">
+                    <p>
+                        Cancelar
+                    </p>
+                </a>
+            </form>
+
+        </div>
+    {% endblock %}
+
+    {% block script %}
+        
+    {% endblock %}
