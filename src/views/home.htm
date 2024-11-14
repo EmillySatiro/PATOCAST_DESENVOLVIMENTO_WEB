@@ -8,8 +8,11 @@
 
   {% block content %}
     <div class="login-esquerda">
-      <div class="image">
-        <img src="./images/tela_login_esquerda.png" alt="">
+      <div class="slideshow-image">
+        <div class="image">
+          <img src="" id="imagem-login-esquerda" alt="">
+          <div class="slideshow" name="slideshow"></div>
+        </div>
       </div>
     </div>
     <div class="login-direita">
@@ -56,3 +59,7 @@
     </div>
     
   {% endblock %}
+
+   {% block script %}
+      <script src="./scripts/script.js"></script>
+   {% endblock %}
