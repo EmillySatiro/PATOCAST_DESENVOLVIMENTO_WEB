@@ -14,30 +14,32 @@
     text-shadow: 4px 4px rgba(114,114,114, 0.25);
 }
 
+.image {
+    display: flex; 
+    flex-direction:column; 
+    justify-content:center;
+    align-items:center
+}
+
 .login-esquerda {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    width: 50%;
     
+    width: 50%;
+
     background-color: var(--azul-escuro);
     background-image: url('../images/fundo_money.png');
     background-size: cover;
     background-repeat: no-repeat;
+
 }
 
 .login-esquerda .slideshow-image{
     display: flex;
     justify-content: center;
     align-content: center;
-}
-
-.image {
-    display: flex; 
-    flex-direction:column; 
-    justify-content:center;
-    align-items:center
 }
 
 .login-esquerda img{
@@ -54,7 +56,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 50px;
+
+    padding-left: 50px;
     width: 80%;
 }
 
@@ -90,7 +93,9 @@
     border-radius: 15px;
     border-style:hidden;
     box-shadow: 0px 0px 10px 1px var(--sombra-azul) inset, 5px 5px 5px var(--sombra-azul);
-    padding-left: 8px;
+    
+    padding-left: 10px;
+
     font-family: var(--fonte);
     font-weight: 400;
     font-style: normal;

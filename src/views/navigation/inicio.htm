@@ -1,0 +1,167 @@
+{% extends "../page-base.htm" %}
+
+    {% block styles %}
+        <link rel="stylesheet" href="./styles/inicio.css">
+        <link rel="stylesheet" href="./styles/child-cartao.css">
+        {# {% if condition %}
+            
+        {% endif %} #}
+    {% endblock %}
+
+    {% block content %}
+        {% include "../partials/navigation.htm" %}
+
+        <div class="box-content">
+            <div class="content-top">
+                <div class="box-relatorio">
+                    <p>
+                        Relatorio
+                    </p>
+                    <div class="grafico-vertical">
+                        <div class="y-grafico">
+                            <p>100%</p>
+                            <p>80%</p>
+                            <p>60%</p>
+                            <p>40%</p>
+                            <p>20%</p>
+                            <p>0%</p>
+                        </div>
+                        {% include "../partials/grafico.htm" %}
+                    </div>
+                </div>
+                <div class="box-limite-cartoes">
+                    <div class="box-limite">
+                        <p>
+                            Seus limite chegou a 99%
+                        </p>
+                        <img src="./assets/notifications.png" alt="Notification">
+                    </div>
+                    <div class="box-cartoes">
+                        <div>
+                            <P>
+                                Seus Cartoes
+                            </P>
+                            <sub>
+                                voce tem 1 cartao cadastrado
+                            </sub>
+                        </div>
+                        <div class="cartoes"> 
+                            <div class="cartao"> 
+                            </div>
+                            <div class="cartao"> 
+                            </div>
+                            {% if condition %}
+                                
+                            {% endif %}
+                            <div class="cartao">  {# Pai #}
+                                <div class="info-cartao">
+                                    <p>
+                                        Credito
+                                    </p>
+
+                                    <div class="info-principal">
+                                        <div>
+                                            <p>
+                                                **** **** **** ****
+                                            </p>
+                                            <img src="./assets/see_eyes.png" alt="olho">
+                                        </div>
+                                        <p>
+                                            Fulano de tal
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="logo-cartao">
+                                    <img src="./assets/master_card.svg" alt="marter card">
+                                </div>
+                            </div>
+                            <span class="adicionar-cartao">
+                                <a href="">
+                                    <img src="./assets/mais.png" alt="Mais">
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-down">
+                <div class="box-gasto-recente">
+                    <p>
+                        Gastos Recentes
+                    </p>
+                    <table class="table-gastos">
+                        <tbody class="table-info">
+                            <tr>
+                                <td>Supermercado ABC</td>
+                                <td>Mercado</td>
+                                <td>01/10/2024</td>
+                                <td>R$200,00</td>
+                            </tr>
+                            <tr>
+                                <td>Supermercado ABC</td>
+                                <td>Mercado</td>
+                                <td>01/10/2024</td>
+                                <td>R$200,00</td>
+                            </tr>
+                            <tr>
+                                <td>Supermercado ABC</td>
+                                <td>Mercado</td>
+                                <td>01/10/2024</td>
+                                <td>R$200,00</td>
+                            </tr>
+                            <tr>
+                                <td>Supermercado ABC</td>
+                                <td>Mercado</td>
+                                <td>01/10/2024</td>
+                                <td>R$200,00</td>
+                            </tr>
+                            <tr>
+                                <td>Supermercado ABC</td>
+                                <td>Mercado</td>
+                                <td>01/10/2024</td>
+                                <td>R$200,00</td>
+                            </tr>
+                            <tr>
+                                <td>Supermercado ABC</td>
+                                <td>Mercado</td>
+                                <td>01/10/2024</td>
+                                <td>R$200,00</td>
+                            </tr>
+                            <tr>
+                                <td>Supermercado ABC</td>
+                                <td>Mercado</td>
+                                <td>01/10/2024</td>
+                                <td>R$200,00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="box-gasto-total">
+                    <img src="./assets/wallet-linear.png" alt="">
+                    <div>
+                        <p>
+                            Gasto Total
+                        </p>
+                        <p>
+                            R$6543,98
+                        </p>
+                    </div>
+
+                    <div class="show-info">
+                        <span>
+                            99,98%
+                        </span>
+                        <div>
+                            <p>
+                                Limite R$ 6.544,00
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block script %}
+        <script src="./scripts/script-home.js"></script>
+    {% endblock %}

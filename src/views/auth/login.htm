@@ -1,4 +1,5 @@
-{% extends "page-base.htm" %}
+{% extends "../page-base.htm" %}
+
   {% block title %}
       <title> Entrar </title>
   {% endblock title %}
@@ -16,7 +17,7 @@
       </div>
     </div>
     <div class="login-direita">
-      {% include "partials/logo_escura.htm" %} 
+      {% include "../partials/logo_escura.htm" %} 
 
       <div class="login-dados">
         <div class="title-dados">
@@ -30,11 +31,11 @@
         
         <form class="input-dados" action="" method="post">
 
-          <input type="email" name="" class="input-dados-label" id="" placeholder="E-mail">
-          <input type="password" name="" class="input-dados-label" id="" placeholder="Senha">
+          <input type="email" name="email" class="input-dados-label" id="" placeholder="E-mail">
+          <input type="password" name="senha" class="input-dados-label" id="senha" placeholder="Senha">
 
           <label class="lembrar-senha">
-            <input type="checkbox" name="checkbox" />
+            <input type="checkbox" name="checkbox" onclick="mostrarSenha()"/>
             Mostrar Senha
           </label>
           
