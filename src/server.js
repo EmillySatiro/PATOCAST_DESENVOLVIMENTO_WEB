@@ -19,15 +19,45 @@ nunjucks.configure(
 // });
 
 server.get('/login', async (req,res) => {
-    return res.render('login.htm')
+    return res.render('./auth/login.htm')
 })
 
 server.get('/cadastrar', async (req,res) => {
-  return res.render('cadastrar.htm')
+  return res.render('./auth/cadastrar.htm')
 })
 
 server.get('/recuperar_conta', async (req,res) => {
-  return res.render('esqueci-senha.htm')
+  return res.render('./auth/esqueci-senha.htm')
+})
+
+server.get('/inicio', async (req,res) => {
+  return res.render('./navigation/inicio.htm', {
+     cartao: cartoes,
+  })
+})
+
+server.get('/contas', async (req,res) => {
+  return res.render('./navigation/contas.htm')
+})
+
+server.get('/metas', async (req,res) => {
+  return res.render('./navigation/metas.htm')
+})
+
+server.get('/financas', async (req,res) => {
+  return res.render('./navigation/financas.htm')
+})
+
+server.get('/historico', async (req,res) => {
+  return res.render('./navigation/historico.htm')
+})
+
+server.get('/ajuda', async (req,res) => {
+  return res.render('./navigation/ajuda.htm')
+})
+
+server.get('/perfil', async (req,res) => {
+  return res.render('./navigation/perfil.htm')
 })
 
 server.listen(port)

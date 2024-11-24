@@ -42,5 +42,14 @@ function showSlides() {
     setTimeout(showSlides, 15000); // Change image every 2 seconds
 }
 
+function mostrarSenha(){
+    const input_senha = document.getElementById("senha")
+    
+    if(input_senha.type == "password")
+        input_senha.type = "text";
+    else
+        input_senha.type = "password";
+}
+
 slideShowOptions();
 showSlides();

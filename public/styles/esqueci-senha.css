@@ -1,10 +1,8 @@
 .logo-design {
     display: flex;
-    align-items: center;
     justify-content: flex-start;
 
     width: 100%;
-    padding: 20px 0px 0px 20px;
 }
 
 .logo-design img{
@@ -25,10 +23,12 @@ body {
     background-size: cover;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.content-box {
+    display:flex; 
+    flex-direction: column; 
+    align-items:center;
+    
+    width: 100%;
 }
 
 .box-info {
@@ -42,7 +42,6 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
 }
 
 .box-info .form-email{
@@ -50,10 +49,7 @@ body {
     flex-direction: column;
     align-items: center;
 
-    padding: 250px;
-
     gap: 50px;
-    width: 100%;
 }
 
 .label-form {
@@ -80,7 +76,7 @@ body {
 
 .box-info .form-email input{
     height: 50px;
-    width: 100%;
+    width: 70%;
 
     border-radius: 15px;
     border-style:hidden;
