@@ -1,14 +1,32 @@
 {% extends "../page-base.htm" %}
 
-    {% block styles %}
-        
-    {% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href=".styles\editar-perfil.css">
+{% endblock %}
 
-    {% block content %}
-        {% include "../partials/navigation.htm" %}
-        <h1>Ola Mundo</h1>
-    {% endblock %}
+{% block content %}
+    {% include "../partials/navigation.htm" %}
+        <!-- Content -->
+        <div class="content">
+            <div class="header">
+                <div class="profile-picture">
+                    <img src=".\images\image.png" alt="fulano de tal">
+                </div>
+                <p class="profile-info">urano</p>
+            </div>
+    
+            <!-- Formulário -->
+            <form class="form">
+                <input type="text" placeholder="Fulano de Tal">
+                <input type="email" placeholder="fulano@gmail.com.br">
+                <input type="text" placeholder="Relatório">
+                <input type="password" placeholder="Senha">
+                <button type="submit" class="save-btn">Salvar</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
 
-    {% block script %}
-        <script src="./scripts/script-home.js"></script>
-    {% endblock %}
+{% block script %}
+    <script src="./scripts/script-home.js"></script>
+{% endblock %}
