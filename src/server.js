@@ -31,9 +31,7 @@ server.get('/recuperar_conta', async (req,res) => {
 })
 
 server.get('/inicio', async (req,res) => {
-  return res.render('./navigation/inicio.htm', {
-     cartao: cartoes,
-  })
+  return res.render('./navigation/inicio.htm')
 })
 
 server.get('/contas', async (req,res) => {
