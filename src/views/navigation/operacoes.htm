@@ -1,0 +1,28 @@
+{% extends "../page-base.htm" %}
+
+
+{% block styles %}
+    <link rel="stylesheet" href="./styles/operacoes-finaceiras.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+    {% include "../partials/navigation.htm" %}
+
+    <!-- Barra horizontal -->
+    <div class="barra-horizontal">
+        <h1 style="margin-right: 200px;">Estabelecimento</h1>
+        <h1 style="margin-right: 190px;">Categoria</h1>
+        <h1 style="margin-right: 200px;">Data</h1>
+        <h1>Valor</h1>
+    </div>
+
+    <div id="container"></div>
+
+
+{% endblock %}
+
+{% block script %}
+    <script src="./scripts/script-home.js"></script>
+{% endblock %}

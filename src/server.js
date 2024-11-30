@@ -1,6 +1,6 @@
 const express = require('express')
 const server = express()
-const port = 3000
+const port = 3001
 
 server.use(express.static("public"))
 server.use(express.urlencoded({extended: true}))
@@ -46,16 +46,16 @@ server.get('/financas', async (req,res) => {
   return res.render('./navigation/financas.htm')
 })
 
-server.get('/historico', async (req,res) => {
-  return res.render('./navigation/historico.htm')
-})
-
 server.get('/ajuda', async (req,res) => {
   return res.render('./navigation/ajuda.htm')
 })
 
 server.get('/perfil', async (req,res) => {
   return res.render('./navigation/perfil.htm')
+})
+
+server.get('/historico', async (req,res) => {
+  return res.render('./navigation/operacoes.htm')
 })
 
 server.listen(port)
