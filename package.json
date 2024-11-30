@@ -1,0 +1,15 @@
+{
+  "name": "patocash",
+  "scripts": {
+    "start": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.1",
+    "fs": "^0.0.1-security",
+    "nunjucks": "^3.2.4",
+    "sass": "^1.81.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

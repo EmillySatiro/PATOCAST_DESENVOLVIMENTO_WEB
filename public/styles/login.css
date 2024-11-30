@@ -1,0 +1,198 @@
+.logo-design {
+    display: flex;
+    align-items: center;
+}
+
+.logo-design img{
+    width: 80px;
+    border-radius: 70px;
+}
+
+.logo-design p{
+    font-size: 32;
+    color: var(--azul-escuro);
+    text-shadow: 4px 4px rgba(114,114,114, 0.25);
+}
+
+.image {
+    display: flex; 
+    flex-direction:column; 
+    justify-content:center;
+    align-items:center
+}
+
+.login-esquerda {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    
+    width: 50%;
+
+    background-color: var(--azul-escuro);
+    background-image: url('../images/fundo_money.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.login-esquerda .slideshow-image{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.login-esquerda img{
+    width: 90%;
+    background-color: var(--azul-escuro);
+}
+
+.login-direita {
+    padding: 50px;
+    width: 50%;
+}
+
+.login-dados {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding-left: 50px;
+    width: 80%;
+}
+
+.login-dados div h1{
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40;
+    color: var(--azul-escuro);
+}
+
+.title-dados {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.title-dados p{
+    font-size: 20;
+    color: var(--sombra-azul);
+}
+    
+.input-dados{
+    display: flex;
+    padding-top: 15px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.input-dados-label{
+    height: 50px;
+    border-radius: 15px;
+    border-style:hidden;
+    box-shadow: 0px 0px 10px 1px var(--sombra-azul) inset, 5px 5px 5px var(--sombra-azul);
+    
+    padding-left: 10px;
+
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20;
+    text-align: justify;
+}
+
+.button-submit {
+    cursor: pointer;
+    height: 45px;
+    border: none;
+    border-radius: 15px;
+    background-color: var(--laranja-principal);
+    color: var(--claro);
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    box-shadow: 2px 2px 4px var(--sombra-azul);
+}
+
+.lembrar-senha{
+    cursor: pointer;
+    
+    display: flex;
+    align-items: center;
+    
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    color: var(--preto);
+
+    padding-left: 2px;
+    gap: 5px;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+    appearance: none;
+    background-color: var(--claro);
+    color: var(--laranja-principal);
+    
+    font: inherit;
+    width: 20px;
+    height: 20px;
+    border: 2px solid;
+
+    border-radius: 2px;
+
+    display: grid;
+    place-content: center;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    
+    width: 14px;
+    height: 14px;
+    
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+
+    box-shadow: 20px 20px var(--laranja-principal) inset;
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+.input-down {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+}
+
+.input-down a{
+    color: var(--preto);
+    font-size: 20;
+}
+
+.slideshow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 60%;
+}
+
+.select-image {
+    cursor: pointer;
+    width: 15;
+    height: 15;
+    background-color: var(--claro);
+    border-radius: 50%;
+    transition: background-color 0.6s ease;
+}
+
+.active, .select-image:hover {
+    background-color: var(--laranja-principal);
+}

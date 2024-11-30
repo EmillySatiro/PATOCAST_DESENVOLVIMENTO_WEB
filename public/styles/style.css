@@ -1,0 +1,130 @@
+:root {
+    --claro: #f4f6ff;
+    --claro-escuro: rgb(217, 217, 217);
+    --sombra: rgba(99,78,78,0.23);
+    --laranja-principal: #ff8225;
+    --azul-escuro: #27325a;
+    --fonte: "Koulen", sans-serif;
+    --fonte-kreon: "Kreon", serif;
+    --sombra-azul: rgba(39, 50, 90, 0.3);
+    --preto: #000000;
+    --branco: #ffffff;
+    --vermelho: rgba(210, 13, 13, 1);
+    --azul: rgba(30, 111, 169, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+    text-decoration:solid;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--claro);
+}
+
+p {
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-style: normal;
+    text-align: justify;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.logo-design {
+    display: flex;
+    align-items: center;
+}
+
+.logo-design img{
+    width: 80px;
+    border-radius: 70px;
+}
+
+.logo-design p{
+    font-size: 32;
+    color: var(--claro);
+    text-shadow: 4px 4px rgba(114,114,114, 0.25);
+}
+
+.option-list {
+    display: block;
+    position: absolute;
+}
+
+.option-list a{
+    cursor: pointer;
+    position: absolute;
+}
+
+.option-list a img{
+    padding: 20px;
+    height: 25px;
+    fill: aqua;
+}
+
+.navigation-bar{
+    display: block;
+    background-color: #27325a;
+    padding: 25px;
+    width: 20%;
+
+    color: var(--claro);
+}
+
+.navigation-bar.occult {
+    display: none;
+}
+
+.nav-options {
+    display: flex;
+    flex-direction: column;
+}
+
+.navigation-bar a{
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20;
+
+    color: var(--claro);
+}
+
+.navigation-bar .active{
+    background-color: var(--laranja-principal);
+
+    border-radius: 15px;
+
+    padding: 10px;
+}
+
+.navigation-bar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.profile-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 15px;
+
+    color: var(--claro);
+    font-size: 20px;
+}
+
+.profile-bar img{
+    border-radius: 50%;
+
+    width: 125px;
+}
