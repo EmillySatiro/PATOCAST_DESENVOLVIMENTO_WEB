@@ -1,26 +1,27 @@
 {% extends "../page-base.htm" %}
 
-
 {% block styles %}
     <link rel="stylesheet" href="./styles/operacoes-finaceiras.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-
     {% include "../partials/navigation.htm" %}
 
-    <!-- Barra horizontal -->
+    <!-- Barra horizontal de cabeçalhos -->
     <div class="barra-horizontal">
-        <h1 style="margin-right: 200px;">Estabelecimento</h1>
-        <h1 style="margin-right: 190px;">Categoria</h1>
-        <h1 style="margin-right: 200px;">Data</h1>
-        <h1>Valor</h1>
+        <h1 class="barra-item">Estabelecimento</h1>
+        <h1 class="barra-item">Categoria</h1>
+        <h1 class="barra-item">Data</h1>
+        <h1 class="barra-item">Valor</h1>
     </div>
 
-    <div id="container"></div>
-
-
+    <!-- Barra de informações -->
+    <div class="info">
+        <h1 class="info-item">Informações</h1>
+        <h1 class="info-item">Categoria 2</h1>
+        <h1 class="info-item">Data 2</h1>
+        <h1 class="info-item">Valor 2</h1>
+    </div>
 {% endblock %}
 
 {% block script %}

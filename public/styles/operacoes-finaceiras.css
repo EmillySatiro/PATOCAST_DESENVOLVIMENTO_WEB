@@ -5,100 +5,9 @@ body {
     background-repeat: no-repeat; /* Impede que a imagem se repita */
     height: 100vh; /* Faz com que o fundo cubra toda a altura da página */
     margin: 0; /* Remove as margens padrão do body */
-    font-family: 'koulen', sans-serif; /* Fonte da página */
 }
 
 
-
-.perfil {
-    width: 110px; /* Ajuste o tamanho desejado */
-    height: 110px; /* Deve ser igual à largura para manter o círculo */
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 50%;
-    object-fit: cover; /* Garante que a imagem preencha o círculo corretamente */
-    margin-top: 50px;
-}
-
-.ola {
-    color: white; /* Cor do texto */
-    font-size: 18px; /* Tamanho da fonte */
-    text-align: center; /* Alinha o texto ao centro */
-    margin: 5px;
-    font-family: 'koulen', sans-serif;
-    border: none; /* Remove borda padrão de botões */
-    background: none; /* Remove a cor de fundo padrão */
-    cursor: pointer; /* Mostra que o botão é clicável */
-}
-
-.opcoes {
-    color: white; /* Cor do texto */
-    font-size: 20px; /* Tamanho da fonte */
-    text-align: left; /* Alinha o texto à esquerda */
-    font-family: 'koulen', sans-serif;
-    border: none; /* Remove borda padrão de botões */
-    background: none; /* Remove a cor de fundo padrão */
-    cursor: pointer; /* Mostra que o botão é clicável */
-    display: inline; /* Garante que o tamanho seja ajustado ao texto */
-    position: relative; /* Necessário para a linha */
-    padding-left: 20px;
-}
-
-.com-borda {
-    color: white; /* Cor do texto */
-    font-size: 18px; /* Tamanho da fonte */
-    text-align: left; /* Alinha o texto à esquerda */
-    margin: 10px;
-    padding: 10px 20px; /* Espaço interno */
-    font-family: 'koulen', sans-serif;
-    border: none; /* Remove borda padrão de botões */
-    background-color: #EB8317; /* Cor de fundo */
-    cursor: pointer; /* Mostra que o botão é clicável */
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7); /* Sombra */
-    transition: background-color 0.3s ease; /* Suaviza a mudança de cor */
-    display: inline; /* Garante que o tamanho seja ajustado ao texto */
-    position: relative; /* Necessário para a linha */
-    border-radius: 10px; /* Borda arredondada */
-}
-
-.opcoes:hover, 
-.ola:hover {
-    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
-}
-
-.menu-btn {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background-color: transparent;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: white;
-    z-index: 1000; /* Garante que fique acima de outros elementos */
-}
-.menu-btn.active {
-    color: black;
-}
-
-.faixa {
-    background-color: #252C4F;
-    width: 250px; /* Largura fixa da faixa */
-    height: 100vh; /* Altura total da tela */
-    position: fixed; /* Fixa a faixa à esquerda da tela */
-    top: 0;
-    left: 0; /* Alinha à esquerda */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Opcional: sombra para destaque */
-    transition: transform 0.3s ease; /* Animação suave para esconder/aparecer */
-}
-
-.faixa.active {
-    transform: translateX(-100%);
-}
 
 
 .barra-horizontal {
@@ -108,24 +17,16 @@ body {
     height: 50px;
     border-radius: 10px; /* Bordas arredondadas */
     background-color: #252c4f49;
-    width: 1245px; /* Largura fixa da barra */
-    margin-left: 255px;
+    width: 1610px; /* Largura fixa da barra */
+    margin-top: 5px; /* Ajuste o espaçamento entre a barra e o topo */
+    margin-left: 5px;
     margin-top: 30px;
     padding: 0 20px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-
-    
-}
-.barra-horizontal.active{
-
-    margin-left:0.1cm;
-    width: 1496px; /* Largura fixa da barra */
-    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);     
 }
 
 .barra-horizontal h1 {
-    font-family: 'Koulen', sans-serif;
     color: #252C4F;
     font-size: 24px;
     margin: 0;
@@ -136,53 +37,33 @@ body {
     text-overflow: ellipsis; /* Adiciona "..." quando o texto é cortado */
 }
 
-.barra-horizontal-info {
+
+
+
+
+.info {
     display: flex;
-    justify-content: space-between; /* Garante o espaçamento entre os itens */
-    align-items: center;
+    justify-content: space-between; /* Distribui os itens igualmente */
+    align-items: center; /* Centraliza os itens verticalmente */
     height: 50px;
-    width: 1245px;
-    margin-left: 255px;
-    margin-top: 10px;
+    border-radius: 10px; /* Bordas arredondadas */
+    background-color: #252c4f49;
+    width: 1510px; /* Largura fixa da barra */
+    margin-top: 130px;
     padding: 0 20px;
-    background-color: white; /* Adiciona fundo branco */
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para a caixa */
-    border: 1px solid #ddd; /* Linha de borda suave */
-}
-.barra-horizontal-info.active{
-    margin-left:0.1cm;
-    width: 1496px; /* Largura fixa da barra */
-    transition: all 0.3s ease;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);     
 }
 
-.barra-horizontal-info h1 {
+.info h2 {
+    color: #252C4F;
+    font-size: 24px;
     margin: 0;
     text-align: center;
-    font-size: 24px;
-    flex: 1; /* Distribui espaço igual entre os itens */
+    flex: 1 1 0; /* Flexível para ocupar o espaço disponível */
     white-space: nowrap; /* Evita quebra de linha */
     overflow: hidden; /* Esconde qualquer texto que ultrapassar o limite */
     text-overflow: ellipsis; /* Adiciona "..." quando o texto é cortado */
 }
 
-/* Configurações específicas para cada título */
-.barra-horizontal-info h1:nth-child(1){
-    text-align: left; /* Primeiro título alinhado à esquerda */
-    flex-basis: 40%; /* Ajuste flexível */
-}
-.barra-horizontal-info h1:nth-child(2){
-    text-align: left; /* Segundo título alinhado ao centro */
-    flex-basis: 20%; /* Ajuste flexível */
-}
-.barra-horizontal-info h1:nth-child(3){
-    text-align: left; /* Terceiro título alinhado ao centro */
-    flex-basis: 20%; /* Ajuste flexível */
-}
-.barra-horizontal-info h1:nth-child(4) {
-    text-align: left;
-    flex-basis: 20%; /* Ajuste flexível */
-}
 
-.barra-horizontal-info h1:nth-child(4) {
-    text-align: center; /* Último título alinhado ao centro */
-}
