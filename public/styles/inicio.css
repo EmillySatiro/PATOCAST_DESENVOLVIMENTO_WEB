@@ -6,6 +6,7 @@
     background-color: var(--claro-escuro);
 
     padding: 25px;
+    padding-left: 25%;
 
     width: 100%;
 }

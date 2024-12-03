@@ -27,7 +27,8 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: var(--claro);
+    /* background-color: var(--claro); */
+    background-color: var(--claro-escuro);
 }
 
 .container {
@@ -75,6 +76,8 @@ body {
     transition: all 0.2s ease; /* Suaviza a transição */
     
     color: var(--claro);
+    position: fixed;
+    height:100vh;
 }
 
 .navigation-bar.occult {
