@@ -16,15 +16,46 @@ body {
     align-items: center; /* Centraliza os itens verticalmente */
     height: 50px;
     border-radius: 10px; /* Bordas arredondadas */
-    background-color: #252c4f49;
-    width: 1610px; /* Largura fixa da barra */
-    margin-top: 5px; /* Ajuste o espaçamento entre a barra e o topo */
+    background-color: #252c4f46;
+    width: auto; /* Largura fixa da barra */
     margin-left: 5px;
+    margin-right: 5px;
     margin-top: 30px;
+    margin-bottom: 20px;
     padding: 0 20px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);     
 }
+
+.info-cinza {
+    display: flex;
+    justify-content: space-between; /* Distribui os itens igualmente */
+    align-items: center; /* Centraliza os itens verticalmente */
+    height: 50px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #4d4d4d49;
+    width: auto; /* Largura fixa da barra */
+
+    padding: 0 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);     
+}
+
+.info-branca {
+    display: flex;
+    justify-content: flex-start; /* Alinha os itens à esquerda */
+    align-items: center; /* Centraliza os itens verticalmente */
+    height: 50px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #ffffff49;
+    width: auto; /* Largura fixa da barra */
+    padding: 0 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);     
+}
+
 
 .barra-horizontal h1 {
     color: #252C4F;
@@ -36,28 +67,19 @@ body {
     overflow: hidden; /* Esconde qualquer texto que ultrapassar o limite */
     text-overflow: ellipsis; /* Adiciona "..." quando o texto é cortado */
 }
-
-
-
-
-
-.info {
-    display: flex;
-    justify-content: space-between; /* Distribui os itens igualmente */
-    align-items: center; /* Centraliza os itens verticalmente */
-    height: 50px;
-    border-radius: 10px; /* Bordas arredondadas */
-    background-color: #252c4f49;
-    width: 1510px; /* Largura fixa da barra */
-    margin-top: 130px;
-    padding: 0 20px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);     
+.info-branca h1 {
+    color: #000000;
+    font-size: 20px;
+    margin: 0;
+    text-align: center;
+    flex: 1 1 0; /* Flexível para ocupar o espaço disponível */
+    white-space: nowrap; /* Evita quebra de linha */
+    overflow: hidden; /* Esconde qualquer texto que ultrapassar o limite */
+    text-overflow: ellipsis; /* Adiciona "..." quando o texto é cortado */
 }
-
-.info h2 {
-    color: #252C4F;
-    font-size: 24px;
+.info-cinza h1 {
+    color: #000000;
+    font-size: 20px;
     margin: 0;
     text-align: center;
     flex: 1 1 0; /* Flexível para ocupar o espaço disponível */
@@ -67,3 +89,34 @@ body {
 }
 
 
+
+
+.blocos {
+  
+    flex-direction: column; /* Organiza os blocos verticalmente */
+    width: 100%; /* Faz o contêiner ocupar toda a largura */
+}
+html, body {
+    margin: 0; /* Remove margens padrão */
+    padding: 0; /* Remove espaçamento padrão */
+    width: 100%; /* Garante largura total */
+    height: 100%; /* Garante altura total */
+}
+
+.bloco {
+    border: 1px solid #ccc; /* Para visualização */
+    padding: 10px;
+    background-color: #f9f9f9;
+    width: auto;
+}
+
+.barra-horizontal {
+    display: flex;
+    justify-content: space-between; /* Distribui os itens horizontalmente */
+    gap: 10px; /* Espaço entre os itens */
+}
+
+.barra-item {
+    font-size: 16px;
+    color: #333;
+}
