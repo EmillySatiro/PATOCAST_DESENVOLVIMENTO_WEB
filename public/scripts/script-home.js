@@ -2,11 +2,14 @@ const lista = document.getElementById("nav-options")
 
 lista.addEventListener("click",
     (e) => {
-        if(e.target.className != "active"){
-            for (let i = 0; i < lista.children.length; i++) {
-                lista.children[i].className = lista.children[i].className.replace("active");
+        // if(e.detail)
+        if(!(e.detail)){
+            if(e.target.className != "active"){
+                for (let i = 0; i < lista.children.length; i++) {
+                    lista.children[i].className = lista.children[i].className.replace("active");
+                }
+                e.target.className = "active";
             }
-            e.target.className = "active";
         }
     }
 )

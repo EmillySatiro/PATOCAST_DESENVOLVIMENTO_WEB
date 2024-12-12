@@ -32,7 +32,6 @@ body {
 
 .container {
     display: flex;
-    height: 100vh;
 }
 
 .logo-design {
@@ -129,4 +128,19 @@ body {
     border-radius: 50%;
 
     width: 125px;
+}
+
+@media screen and (max-width: 720px){
+    .container{
+        padding: 10px;
+    }
+
+    .option-list a{
+        display: none;
+    }
+
+    .navigation-bar{
+        display: none;
+    }
+
 }
