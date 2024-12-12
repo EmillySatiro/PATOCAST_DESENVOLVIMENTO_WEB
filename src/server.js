@@ -1,6 +1,6 @@
 const express = require('express')
 const server = express()
-const port = 3001
+const port = 3002
 
 server.use(express.static("public"))
 server.use(express.urlencoded({extended: true}))
