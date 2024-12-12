@@ -85,9 +85,6 @@ body {
     text-overflow: ellipsis; /* Adiciona "..." quando o texto é cortado */
 }
 
-
-
-
 .blocos {
     flex-direction: column; /* Organiza os blocos verticalmente */
     width: 100%; /* Faz o contêiner ocupar toda a largura */
