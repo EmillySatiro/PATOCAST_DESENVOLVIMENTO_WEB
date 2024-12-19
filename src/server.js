@@ -46,16 +46,16 @@ server.get('/financas', async (req,res) => {
   return res.render('./navigation/financas.htm')
 })
 
-server.get('/historico', async (req,res) => {
-  return res.render('./navigation/historico.htm')
-})
-
 server.get('/ajuda', async (req,res) => {
   return res.render('./navigation/ajuda.htm')
 })
 
 server.get('/perfil', async (req,res) => {
   return res.render('./navigation/perfil.htm')
+})
+
+server.get('/historico', async (req,res) => {
+  return res.render('./navigation/operacoes.htm')
 })
 
 server.listen(port)
