@@ -34,7 +34,7 @@ p {
 
 .container {
     display: flex;
-    height: 100vh;
+    height: 100%;
 }
 
 .logo-design {
@@ -73,8 +73,11 @@ p {
     display: block;
     background-color: #27325a;
     padding: 25px;
+    
     width: 20%;
+    height: 100vh;
 
+    position: fixed;
     color: var(--claro);
 }
 

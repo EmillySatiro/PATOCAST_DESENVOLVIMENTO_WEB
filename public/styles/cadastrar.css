@@ -114,6 +114,11 @@
     background-color: var(--laranja-principal);
     box-shadow: 2px 2px 4px var(--sombra-azul);
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+
     color: var(--claro);
     font-family: var(--fonte);
     font-weight: 400;

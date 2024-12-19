@@ -18,7 +18,7 @@ nunjucks.configure(
 //   res.json({ valor: image_list }); // Retorna o valor como JSON
 // });
 
-server.get('/login', async (req,res) => {
+server.get('/', async (req,res) => {
     return res.render('./auth/login.htm')
 })
 
@@ -31,9 +31,7 @@ server.get('/recuperar_conta', async (req,res) => {
 })
 
 server.get('/inicio', async (req,res) => {
-  return res.render('./navigation/inicio.htm', {
-     cartao: cartoes,
-  })
+  return res.render('./navigation/inicio.htm')
 })
 
 server.get('/contas', async (req,res) => {

@@ -107,6 +107,11 @@
     cursor: pointer;
     height: 45px;
     border: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     border-radius: 15px;
     background-color: var(--laranja-principal);
     color: var(--claro);
