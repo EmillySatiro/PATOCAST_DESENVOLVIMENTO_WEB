@@ -1,99 +1,24 @@
-/* Logo Design */
-.logo-design {
-    display: flex;
-    align-items: center;
-}
-
-.logo-design img {
-    width: 80px;
-    border-radius: 70px;
-}
-
-.logo-design p {
-    font-size: 32px;
-    color: var(--claro);
-    text-shadow: 4px 4px rgba(114, 114, 114, 0.25);
-}
-
-/* Sidebar */
-.sidebar {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 20px;
-    width: 20%;
-    padding: 20px;
-
-    background-color: var(--azul-escuro);
-    box-shadow: 4px 0px 8px rgba(0, 0, 0, 0.3);
-}
-
-.sidebar a {
-    text-decoration: none;
-    font-size: 18px;
-    color: var(--claro);
-    padding: 10px 20px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.sidebar a:hover {
-    background-color: var(--laranja-principal);
-    color: var(--preto);
-}
-
-.sidebar a.active {
-    background-color: var(--laranja-principal);
-    color: var(--preto);
-    font-weight: bold;
-}
-
-.sidebar .profile-picture img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 2px solid var(--claro);
-}
-
-/* Content Section */
-.content{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex; 
-    align-items: flex-start; /* Centraliza horizontalmente */
-    height: 100vh; /* Ocupa toda a altura da tela */
-    padding: 10px;
-    width: 100%;
-    gap: 10px;
-    padding-left: 25%;
-    
-}
-
 .header {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 15px; /* o espaço entre a imagem e o texto */
-    margin-top: 4vw;
+    justify-content: flex-start;
     
+    align-items: center;
+
+    gap: 15px; /* o espaço entre a imagem e o texto */
 }
 /* Container da imagem */
 .profile-picture {
     position: relative; /* Necessário para posicionar o ícone dentro dela */
-  
 }
 
 /* Ícone sobre a imagem */
 .profile-detalhe img {
- 
     position: absolute; /* sobre a imagem */
     top: 105px; /* Ajuste a distância do topo da imagem */
     left: 111px; /* Ajuste a distância da lateral esquerda */
     width: 50px; /* Tamanho pequeno para o ícone */
     height: 50px; /* Tamanho pequeno para o ícone */
-
 }
 
 .profile-picture img {
@@ -102,12 +27,9 @@
     border-radius: 50%;
     border: 2px solid #ccc;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin-left: 6vw; /* Distância da lateral esquerda da tela */
-    
 }
 
 .profile-detalhe img {
-    
     width: 30px;  /* Aumentado para 200px */
     height: 30px; /* Aumentado para 200px */
     border: none; /* Remove a borda */
@@ -169,40 +91,50 @@
 
 
 .transparent-box {
-    margin-left: 4vw;
-    margin-top: 4vw;
     width: 90%; /* Aumentado a largura para 60% da largura da tela */
-    height: 440px; /* Mantém a altura em 400px */
     background-color: rgba(0, 0, 0, 0.115); /* Fundo transparente com sombra leve */
-    
-    /* Controlando a distância da parte superior e das laterais */
-    
-    margin-right:none; /* Distância da lateral direita da tela */
     
     border-radius: 8px; /* Adiciona bordas arredondadas */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve para dar profundidade */
 
     display: flex;
-    flex-direction: column
-}
-
-.itens{
-    width: 300px;
-    margin-top: 6vw;
-    margin-left: 3vw;
-    margin-right: 2vw;
-    margin-bottom: 4vw;
-    padding-top: 15px;
-    justify-content: center;
-    gap: 25px;
-
-    display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    
+    align-items: center;
+
+    padding-bottom: 20px;
 }
 
 .formulario {
     display: flex;
+    flex-direction: column;
+}
+
+.itens{
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.itens div{
+    display: flex;
+    align-items: center;
+    
+    padding-top: 25px;
+    padding-right: 20px;
+    gap: 10px;
+
+    position: relative; /* Necessário para posicionar o ícone dentro dela */
+}
+
+.itens div img{
+    position: absolute; /* sobre a imagem */
+
+    width: 25px;
+    height: 25px;
+
+    right: 25px;
 }
 
 .itens-label{
@@ -223,23 +155,26 @@
 }
 
 .button-submit {
-    margin-left: 20vw;
-    margin-right:20vw;
     cursor: pointer;
+
     width: 300px;
     height: 45px;
+
     border: none;
+
     border-radius: 15px;
     background-color: var(--laranja-principal);
     box-shadow: 2px 2px 4px var(--sombra-azul);
+    
     text-align: center;
     color: var(--claro);
     font-family: var(--fonte);
     font-weight: 400;
     font-style: normal;
     font-size: 20px;
-}
 
+    margin-top: 25px;
+}
 
 .input-container img:hover {
     transform: scale(1.1); /* Amplia a imagem no hover */
@@ -252,9 +187,17 @@
         justify-content: space-around;
     }
 
-    .content {
-        width: 100%;
-        padding: 20px;
+    .itens{
+        flex-direction: column;
+    }
+
+    .itens div{
+        padding-top: 25px;
+        padding-right: 0;
+    }
+
+    .itens div img{
+        right: 10px;
     }
 
     .form {

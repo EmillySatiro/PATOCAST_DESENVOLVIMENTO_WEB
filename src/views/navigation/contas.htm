@@ -1,14 +1,51 @@
 {% extends "../page-base.htm" %}
 
-    {% block styles %}
-        
-    {% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="./styles/contas.css">
+{% endblock %}
 
-    {% block content %}
-        {% include "../partials/navigation.htm" %}
-        <h1>Ola Mundo</h1>
-    {% endblock %}
+{% block container %}
+    {% include "../partials/navigation.htm" %}
+{% endblock %}
 
-    {% block script %}
-        <script src="./scripts/script-home.js"></script>
-    {% endblock %}
+{% block content %}
+    <div class="cartoes">
+        <div class="cartao">  {# Pai #}
+            <div class="info-cartao">
+                <p>
+                    Crédito
+                </p>
+
+                <div class="info-principal">
+                    <div>
+                        <p>
+                            **** **** **** ****
+                        </p>
+                        <img src="./assets/see_eyes.png" alt="olho">
+                    </div>
+                    <p>
+                        Fulano de tal
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="add-cartao">
+        <p>
+            Adiciona Cartão
+        </p>
+        <form action="" method="post" class="form-add-cartao">
+            <input class="input-dados-label" type="text" name="numero" id="numero" placeholder="Número do cartão">
+            <input class="input-dados-label" type="text" name="nome" id="nome" placeholder="Nome do titular">
+            <input class="input-dados-label" type="text" name="validade" id="validade" placeholder="Validade">
+            <input class="input-dados-label" type="text" name="cvv" id="cvv" placeholder="CVV">
+            <input class="input-dados-label" type="text" name="limite" id="limite" placeholder="Meta de gastos mensal">
+            
+            <button class="button-submit" type="submit" class="rodape">Cadastrar</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="./scripts/script-home.js"></script>
+{% endblock %}

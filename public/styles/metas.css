@@ -1,0 +1,115 @@
+.box-gasto {
+    display: flex;
+    justify-content: space-evenly;
+
+    background-color: var(--branco);
+    border-radius: 10px;
+
+    padding: 10px;
+}
+
+.gasto-total{
+    background-color: aqua;
+}
+
+.table-gasto{
+    background-color: aqua;
+    width: 100px;
+}
+
+.box-objetivo{
+    display: flex;
+
+    justify-content: space-between;
+}
+
+.box-objetivo .limite{
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--branco);
+    border-radius: 10px;
+
+    padding: 10px;
+    gap: 10px;
+
+    width: 45%;
+
+    align-items: center;
+}
+
+.box-objetivo .limite div{
+    display: flex;
+    justify-content: center;
+
+    background-color: var(--claro-escuro);
+    border-radius: 10px;
+
+    padding: 10px;
+    width: 75%;
+
+}
+
+.box-objetivo .gasto{
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--branco);
+    border-radius: 10px;
+
+    padding: 10px;
+    gap: 10px;
+
+    width: 45%;
+
+    align-items: center;
+}
+
+.box-objetivo .gasto div{
+    display: flex;
+    justify-content: center;
+
+    background-color: var(--claro-escuro);
+    border-radius: 10px;
+
+    padding: 10px;
+
+    width: 75%;
+}
+
+.box-gasto-recente {
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--branco);
+    border-radius: 10px;
+
+    padding: 10px;
+}
+
+.table-gasto-recente {
+    border-collapse: collapse;
+
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20;
+}
+
+.table-gasto-recente tr{
+    background-color: var(--claro-escuro);
+}
+
+.table-gasto-recente tr:nth-child(even){
+    background-color: var(--branco);
+}
+
+.table-gasto-recente tr:hover{
+    background-color: var(--azul-escuro);
+    color: white;
+}
+
+.table-info tr{
+    background-color: var(--claro-escuro);
+    height: 40px;
+}

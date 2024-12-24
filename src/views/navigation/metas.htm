@@ -1,14 +1,111 @@
 {% extends "../page-base.htm" %}
 
-    {% block styles %}
+{% block styles %}
+    <link rel="stylesheet" href="./styles/metas.css">
+{% endblock %}
+
+{% block container %}
+    {% include "../partials/navigation.htm" %}
+{% endblock %}
+
+{% block content %}
+    <div class="box-gasto">
+        <div class="gasto-total">
+            <img src="./assets/wallet-linear.png" alt="">
+            <div>
+                <p>
+                    Gasto Total
+                </p>
+                <p>
+                    R$6543,98
+                </p>
+            </div>
+
+            <div>
+                <span>
+                    99,98%
+                </span>
+                <div>
+                    <p>
+                        Limite R$ 6.544,00
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="table-gasto">
+            <div class="grafico-barra">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="box-objetivo">
         
-    {% endblock %}
+        <div class="limite">
+            <p>
+                Limite de gasto:
+            </p>
+            <div>
+                <p>
+                    R$1000,00
+                </p>
+            </div>
+        </div>
 
-    {% block content %}
-        {% include "../partials/navigation.htm" %}
-        <h1>Ola Mundo</h1>
-    {% endblock %}
+        <div class="gasto">
+            
+            <p>
+                Quero gastar:
+            </p>
+            
+            <div>
+                <p>
+                    R$1000,00
+                </p>
+            </div>
 
-    {% block script %}
-        <script src="./scripts/script-home.js"></script>
-    {% endblock %}
+        </div>
+    </div>
+
+    <div class="box-gasto-recente">
+        <p>
+            Onde você mais gastou:
+        </p>
+        <table class="table-gasto-recente">
+            <tr>
+                <td>Mercado</td>
+                <td>29,30%</td>
+                <td>R$1800,00</td>
+            </tr>
+            <tr>
+                <td>Mercado</td>
+                <td>29,30%</td>
+                <td>R$1800,00</td>
+            </tr>
+            <tr>
+                <td>Mercado</td>
+                <td>29,30%</td>
+                <td>R$1800,00</td>
+            </tr>
+            <tr>
+                <td>Mercado</td>
+                <td>29,30%</td>
+                <td>R$1800,00</td>
+            </tr>
+            <tr>
+                <td>Mercado</td>
+                <td>29,30%</td>
+                <td>R$1800,00</td>
+            </tr>
+            <tr>
+                <td>Mercado</td>
+                <td>29,30%</td>
+                <td>R$1800,00</td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="./scripts/script-home.js"></script>
+{% endblock %}

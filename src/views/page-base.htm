@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/navigation.css">
 
     {% block styles %}
     {% endblock styles %}
@@ -19,9 +20,15 @@
 
 
     <div class='container'>
-        {% block content %}
+        {% block container %}
             
         {% endblock %}
+        
+        <div class="box-content">
+            {% block content %}
+            
+            {% endblock %}
+        </div>
     </div>
 
     {% block modal %}

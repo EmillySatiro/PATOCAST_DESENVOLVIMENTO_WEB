@@ -33,6 +33,7 @@ body {
 
 .container {
     display: flex;
+    height: 100%;
 }
 
 .logo-design {
@@ -67,75 +68,36 @@ body {
     fill: aqua;
 }
 
-.navigation-bar{
-    display: block;
-    background-color: #27325a;
-    padding: 25px;
-    width: 20%;
-    transition: all 0.2s ease; /* Suaviza a transição */
+.box-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    background-color: var(--claro-escuro);
     
-    color: var(--claro);
-    position: fixed;
-    height:100vh;
-}
+    padding: 25px;
+    width: 100%;
+    /* height: 100%; */
+    /* padding-left: 25%; */
 
-.navigation-bar.occult {
-    width: 0;      /* Fecha a barra aos poucos */
-    padding: 0;    /* Remove o preenchimento gradualmente */
-    overflow: hidden; /* Oculta o conteúdo enquanto fecha */
-}
-
-.nav-options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Espaçamento entre os itens */
-}
-
-.navigation-bar a{
-    font-family: var(--fonte);
-    font-weight: 400;
-    font-style: normal;
-    font-size: 20;
-    transition: all 0.5s ease; /* Suaviza a transição */
-    color: var(--claro);
-}
-
-.navigation-bar .active{
-    background-color: var(--laranja-principal);
-
-    border-radius: 15px;
-
-    padding: 10px;
-}
-
-.navigation-bar a:hover:not(.active) {
-    background-color: #555;
-    color: white;
-
-    padding: 10px;
-    border-radius: 15px;
-}
-
-.profile-bar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    gap: 15px;
-
-    color: var(--claro);
-    font-size: 20px;
-}
-
-.profile-bar img{
-    border-radius: 50%;
-
-    width: 125px;
+    overflow: auto;
 }
 
 @media screen and (max-width: 720px){
     .container{
-        padding: 10px;
+        flex-direction: column;
+
+        background-color: var(--azul-escuro);
+        background-image: url('../images/fundo_money.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    .box-content{
+        border-radius: 15px 15px 2px 2px;
+        padding: 15px 0px 0px 0px;
+
+        align-items: center;
     }
 
     .option-list a{

@@ -1,14 +1,17 @@
 {% extends "../page-base.htm" %}
 
-    {% block styles %}
-        
-    {% endblock %}
+{% block styles %}
+    
+{% endblock %}
 
-    {% block content %}
-        {% include "../partials/navigation.htm" %}
-        <h1>Ola Mundo</h1>
-    {% endblock %}
+{% block container %}
+    {% include "../partials/navigation.htm" %}
+{% endblock %}
 
-    {% block script %}
-        <script src="./scripts/script-home.js"></script>
-    {% endblock %}
+{% block content %}
+    <h1>Ola Mundo</h1>
+{% endblock %}
+
+{% block script %}
+    <script src="./scripts/script-home.js"></script>
+{% endblock %}
