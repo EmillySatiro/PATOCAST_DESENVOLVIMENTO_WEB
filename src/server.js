@@ -18,7 +18,7 @@ nunjucks.configure(
 //   res.json({ valor: image_list }); // Retorna o valor como JSON
 // });
 
-server.get('/login', async (req,res) => {
+server.get('/', async (req,res) => {
     return res.render('./auth/login.htm')
 })
 
