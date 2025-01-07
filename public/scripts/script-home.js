@@ -50,3 +50,8 @@ function verificaNav(){
     // nav.className = "occullt"
 }
 
+function verificaNavigation(){
+    const navigation = document.getElementById("navigation-bar")
+    console.log(navigation.style)
+    
+}

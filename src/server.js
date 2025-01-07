@@ -50,6 +50,10 @@ server.get('/ajuda', async (req,res) => {
   return res.render('./navigation/ajuda.htm')
 })
 
+server.get('/ajuda_selecionado', async (req,res) => {
+  return res.render('./navigation/ajuda_selecionado.htm')
+})
+
 server.get('/perfil', async (req,res) => {
   return res.render('./navigation/perfil.htm')
 })

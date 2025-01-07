@@ -8,10 +8,6 @@
     transition: all 0.2s ease; /* Suaviza a transição */
     
     color: var(--claro);
-    
-    /* position: fixed; */
-
-    /* height:100%; */
 }
 
 .navigation-bar.occult {

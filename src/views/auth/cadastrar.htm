@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="./styles/cadastrar.css">
   {% endblock %}
 
+  {% block container %}
+    {% include "../partials/mobile/logo_clara_mob.htm" %}
+  {% endblock %}
+
     {% block content %}
         <div class="login-esquerda">
             <div class="slideshow-image">
@@ -17,7 +21,6 @@
             </div>
         </div>
         <div class="login-direita">
-            {% include "../partials/logo_clara.htm" %} 
 
             <div class="login-dados">
                 <div class="title-dados">
