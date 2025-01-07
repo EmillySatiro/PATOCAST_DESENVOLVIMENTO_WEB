@@ -106,6 +106,8 @@ body {
         background-image: url('../images/fundo_money.png');
         background-size: cover;
         background-repeat: no-repeat;
+
+        height: auto;
     }
     
     .box-content{
