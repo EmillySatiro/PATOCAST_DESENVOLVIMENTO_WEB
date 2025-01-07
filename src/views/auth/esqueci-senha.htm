@@ -4,6 +4,9 @@
         <link rel="stylesheet" href="./styles/esqueci-senha.css">
     {% endblock %}
 
+    {% block container %}
+        {% include "../partials/mobile/logo_escura_mob.htm" %} 
+    {% endblock %}
 
     {% block content %}
 
@@ -25,7 +28,7 @@
 
                     <button type="submit">Enviar Ticket</button>
 
-                    <a href="/login">
+                    <a href="/">
                         <p>
                             Cancelar
                         </p>

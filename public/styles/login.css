@@ -3,6 +3,24 @@
     align-items: center;
 }
 
+.logo-design-mob{
+    display: none;
+}
+
+.box-content {
+    display: flex;
+    flex-direction: row;
+
+    padding: 0px;
+    gap: 0px;
+    
+    height: 100%;
+}
+
+.container{
+    height: 100%;
+}
+
 .logo-design img{
     width: 80px;
     border-radius: 70px;
@@ -107,6 +125,11 @@
     cursor: pointer;
     height: 45px;
     border: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     border-radius: 15px;
     background-color: var(--laranja-principal);
     color: var(--claro);
@@ -195,4 +218,68 @@ input[type="checkbox"]:checked::before {
 
 .active, .select-image:hover {
     background-color: var(--laranja-principal);
+}
+
+@media screen and (max-width: 720px){
+    .container{
+        display: flex;
+
+        align-items: center;
+        gap: 20px;
+    }
+
+    .logo-design{
+        display: none;
+    }
+
+    .box-content{
+        flex-direction: column;
+
+        width: 90%;
+        height: 70%;
+
+        border-radius: 20px;
+        margin: 25px;
+
+        overflow: hidden;
+    }
+
+    .login-esquerda{
+        display: none;
+    }
+
+    .slideshow{
+        display: none;
+    }
+
+    .login-direita{
+        width: 100%;
+    }
+
+    .logo-design-mob{
+        display: flex;
+        width: 100%;
+
+        background-color: var(--claro-escuro);
+    }
+
+    .logo-design-mob p{
+        display: flex;
+        width: 100%;
+
+        color: var(--azul-escuro);
+
+    }
+
+}
+
+@media screen and (max-height: 500px){
+    .login-esquerda{
+        height: 100%;
+    }
+
+    .login-esquerda img{
+        width: 60%;
+    }
+
 }

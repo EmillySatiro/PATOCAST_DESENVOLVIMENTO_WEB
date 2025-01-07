@@ -4,49 +4,52 @@
     <link rel="stylesheet" href="./styles/editar-perfil.css">
 {% endblock %}
 
-{% block content %}
+{% block container %}
     {% include "../partials/navigation.htm" %}
-        <!-- Content -->
-        <div class="content">
-            <div class="header">
-                <div class="profile-picture">
-                    <img src=".\images\image.png" alt="nome do usuario">
-                    <div class="profile-detalhe">
-                        <img src="./assets/symbols_edit-square (1).png" alt="editar">
-                    </div>
-                </div>
-                <p class="profile-info">urano</p>
-            </div>
-            <div class="transparent-box">
-                <div class="formulario">
-                    <form class="itens" action="" method="post">
-                        <div>
-                            <img src="./assets/Vector.png" alt="Editar Nome" onclick="document.getElementById('nome').focus();">
-                            <input type="text" name="" class="itens-label" id="nome" placeholder="Nome">
-                        </div>
-                        <div>
-                            <img src="./assets/Vector.png" alt="Editar Relatório" onclick="document.getElementById('relatorio').focus();">
-                            <input type="text" name="" class="itens-label" id="relatorio" placeholder="Relatório">
-                        </div>
-                        <div>
-                            <img src="./assets/Vector.png" alt="Editar E-mail" onclick="document.getElementById('email').focus();">
-                            <input type="email" name="" class="itens-label" id="email" placeholder="E-mail">
-                        </div>
-                    </form>
-                    <form class="itens" action="" method="post">
-                        <div>
-                            <img src="./assets/Vector.png" alt="Editar Senha" onclick="document.getElementById('senha').focus();">
-                            <input type="password" name="" class="itens-label" id="senha" placeholder="Senha">
-                        </div>
-                        <div>
-                            <img src="./assets/Vector.png" alt="Editar Meta" onclick="document.getElementById('meta').focus();">
-                            <input type="text" name="" class="itens-label" id="meta" placeholder="Editar meta">
-                        </div>
-                    </form>
-                </div>
-                <input class="button-submit" type="submit" value="Salvar">
+    {% include "../partials/mobile/navigation_mob.htm"%}
+{% endblock %}
+
+{% block content %}
+    <div class="header">
+        <div class="profile-picture">
+            <img src=".\images\image.png" alt="nome do usuario">
+            <div class="profile-detalhe">
+                <img src="./assets/symbols_edit-square (1).png" alt="editar">
             </div>
         </div>
+        <p class="profile-info">urano</p>
+    </div>
+    <div class="transparent-box">
+        <div class="formulario">
+            <form class="itens" action="" method="post">
+                <div>
+                    <input type="text" name="" class="itens-label" id="nome" placeholder="Nome">
+                    <img src="./assets/Vector.png" alt="Editar Nome" onclick="document.getElementById('nome').focus();">
+                </div>
+                <div>
+                    <input type="email" name="" class="itens-label" id="email" placeholder="E-mail">
+                    <img src="./assets/Vector.png" alt="Editar E-mail" onclick="document.getElementById('email').focus();">
+                </div>
+            </form>
+            <form class="itens" action="" method="post">
+                <div>
+                    <input type="text" name="" class="itens-label" id="relatorio" placeholder="Relatório">
+                    <img src="./assets/Vector.png" alt="Editar Relatório" onclick="document.getElementById('relatorio').focus();">
+                </div>
+                <div>
+                    <input type="text" name="" class="itens-label" id="meta" placeholder="Editar meta">
+                    <img src="./assets/Vector.png" alt="Editar Meta" onclick="document.getElementById('meta').focus();">
+                </div>
+            </form>
+            <form class="itens" action="" method="post">
+                <div>
+                    <input type="password" name="" class="itens-label" id="senha" placeholder="Senha">
+                    <img src="./assets/Vector.png" alt="Editar Senha" onclick="document.getElementById('senha').focus();">
+                </div>
+            </form>
+        </div>
+        <input class="button-submit" type="submit" value="Salvar">
+    </div> 
 {% endblock %}
 
 {% block script %}

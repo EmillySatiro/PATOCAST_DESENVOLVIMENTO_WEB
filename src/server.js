@@ -1,6 +1,6 @@
 const express = require('express')
 const server = express()
-const port = 3002
+const port = 3000
 
 server.use(express.static("public"))
 server.use(express.urlencoded({extended: true}))
@@ -18,7 +18,7 @@ nunjucks.configure(
 //   res.json({ valor: image_list }); // Retorna o valor como JSON
 // });
 
-server.get('/login', async (req,res) => {
+server.get('/', async (req,res) => {
     return res.render('./auth/login.htm')
 })
 
@@ -48,6 +48,10 @@ server.get('/financas', async (req,res) => {
 
 server.get('/ajuda', async (req,res) => {
   return res.render('./navigation/ajuda.htm')
+})
+
+server.get('/ajuda_selecionado', async (req,res) => {
+  return res.render('./navigation/ajuda_selecionado.htm')
 })
 
 server.get('/perfil', async (req,res) => {

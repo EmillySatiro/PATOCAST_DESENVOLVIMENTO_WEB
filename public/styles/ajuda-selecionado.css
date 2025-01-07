@@ -1,0 +1,126 @@
+.box-content{
+    background-color: var(--branco);
+    padding: 0px;
+}
+
+.traco-horizontal{
+    background-color: var(--laranja-principal);
+    height: 1px;
+}
+
+.ajuda-container{
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 100px;
+
+    background-color: var(--azul-escuro);
+    background-image: url('../images/fundo_money.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.ajuda-content{
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--branco);
+}
+
+.ajuda-header{
+    display: flex;
+    justify-content: center;
+
+    gap: 20px;
+    padding: 20px;
+}
+
+.ajuda-header-text{
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.ajuda-header-text p{
+    font-size: 16;
+}
+
+.ajuda-header img{
+    display: block;
+
+    width: 300px;
+}
+
+.ajuda-cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--laranja-principal);
+    height: 1px;
+
+    margin: 5px 10px 5px 10px;
+}
+
+.ajuda-cards p{
+    background-color: var(--branco);
+    padding: 5px;
+}
+
+.modal-cards{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    padding: 10px;
+    gap: 10px;
+}
+
+.modal-card{
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--laranja-principal);
+    border-radius: 10px;
+
+    width: 200px;
+    height: 300px;
+}
+
+.modal-card-content{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 10px;
+
+    color: var(--preto);
+    text-align:right;
+}
+
+.modal-card-content p{
+    font-weight: 500;
+}
+
+@media screen and (max-width: 720px){
+    .box-content{
+        background-color: var(--branco);
+        height: 100%;
+    }
+
+    .ajuda-container{
+        background-color: var(--branco);
+        background-image: none;
+
+        padding-top: 0px;
+    }
+
+    .ajuda-header img{
+        top: 0px;
+    
+        width: 200px;                                                                                                                                                                                                                                                                                            
+    }
+
+}

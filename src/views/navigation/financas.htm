@@ -1,14 +1,172 @@
 {% extends "../page-base.htm" %}
 
-    {% block styles %}
-        
-    {% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="./styles/financa.css">
+{% endblock %}
 
-    {% block content %}
-        {% include "../partials/navigation.htm" %}
-        <h1>Ola Mundo</h1>
-    {% endblock %}
+{% block container %}
+    {% include "../partials/navigation.htm" %}
+    {% include "../partials/mobile/navigation_mob.htm"%}
+{% endblock %}
 
-    {% block script %}
-        <script src="./scripts/script-home.js"></script>
-    {% endblock %}
+{% block content %}
+    <div class="content-top">
+        <div class="grafico-gastos">
+            <p>
+                tabela
+            </p>
+        </div>
+
+        <div class="info-gastos">
+            
+            <div class="content-info">
+                <div class="filtros">
+                    <div class="filtro">
+                        <p>
+                            Esse Mes
+                        </p>
+                        <img src="./assets/filtro.png" alt="Filtro">
+                    </div>
+
+                    <div class="filtro">
+                        <p>
+                            Categoria
+                        </p>
+                        <img src="./assets/filtro.png" alt="Filtro">
+                    </div>
+                </div>
+                
+                <div class="gasto">
+                    <p>
+                        Gasto Total
+                    </p>
+                    <div>
+                        <p>
+                            R$ 0,00
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gasto">
+                <p>
+                    Gastos Pendentes
+                </p>
+                <div>
+                    <p>
+                        R$ 0,00
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="box-gasto-recente">
+        <table class="table-gastos">
+            <thead>
+                <tr>
+                    <th>Estabelecimento</th>
+                    <th>Categoria</th>
+                    <th>Data</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody class="table-info">
+                <tr>
+                    <td>Supermercado ABC</td>
+                    <td>Mercado</td>
+                    <td>01/10/2024</td>
+                    <td>R$200,00</td>
+                </tr>
+                <tr>
+                    <td>Supermercado ABC</td>
+                    <td>Mercado</td>
+                    <td>01/10/2024</td>
+                    <td>R$200,00</td>
+                </tr>
+                <tr>
+                    <td>Supermercado ABC</td>
+                    <td>Mercado</td>
+                    <td>01/10/2024</td>
+                    <td>R$200,00</td>
+                </tr>
+                <tr>
+                    <td>Supermercado ABC</td>
+                    <td>Mercado</td>
+                    <td>01/10/2024</td>
+                    <td>R$200,00</td>
+                </tr>
+                <tr>
+                    <td>Supermercado ABC</td>
+                    <td>Mercado</td>
+                    <td>01/10/2024</td>
+                    <td>R$200,00</td>
+                </tr>
+                <tr>
+                    <td>Supermercado ABC</td>
+                    <td>Mercado</td>
+                    <td>01/10/2024</td>
+                    <td>R$200,00</td>
+                </tr>
+                <tr>
+                    <td>Supermercado ABC</td>
+                    <td>Mercado</td>
+                    <td>01/10/2024</td>
+                    <td>R$200,00</td>
+                </tr>
+                <tr>
+                    <td>Supermercado ABC</td>
+                    <td>Mercado</td>
+                    <td>01/10/2024</td>
+                    <td>R$200,00</td>
+                </tr>
+                <tr>
+                    <td>Supermercado ABC</td>
+                    <td>Mercado</td>
+                    <td>01/10/2024</td>
+                    <td>R$200,00</td>
+                </tr>
+                <tr>
+                    <td>Supermercado ABC</td>
+                    <td>Mercado</td>
+                    <td>01/10/2024</td>
+                    <td>R$200,00</td>
+                </tr>
+                <tr>
+                    <td>Supermercado ABC</td>
+                    <td>Mercado</td>
+                    <td>01/10/2024</td>
+                    <td>R$200,00</td>
+                </tr>
+                <tr>
+                    <td>Supermercado ABC</td>
+                    <td>Mercado</td>
+                    <td>01/10/2024</td>
+                    <td>R$200,00</td>
+                </tr>
+                <tr>
+                    <td>Supermercado ABC</td>
+                    <td>Mercado</td>
+                    <td>01/10/2024</td>
+                    <td>R$200,00</td>
+                </tr>
+                <tr>
+                    <td>Supermercado ABC</td>
+                    <td>Mercado</td>
+                    <td>01/10/2024</td>
+                    <td>R$200,00</td>
+                </tr>
+                <tr>
+                    <td>Supermercado ABC</td>
+                    <td>Mercado</td>
+                    <td>01/10/2024</td>
+                    <td>R$200,00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="./scripts/script-home.js"></script>
+{% endblock %}

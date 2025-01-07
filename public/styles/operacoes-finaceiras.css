@@ -1,118 +1,46 @@
-body {
-    background-image: url('../../public/images/fundo_money.png'); /* Caminho para a imagem de fundo */
-    background-size: cover; /* Faz com que a imagem cubra toda a tela */
-    background-position: center; /* Centraliza a imagem */
-    background-repeat: no-repeat; /* Impede que a imagem se repita */
-    height: 100vh; /* Faz com que o fundo cubra toda a altura da página */
-    margin: 0; /* Remove as margens padrão do body */
-}
-
-
-
-
-.barra-horizontal {
+.box-gasto-recente{
     display: flex;
-    justify-content: space-between; /* Distribui os itens igualmente */
-    align-items: center; /* Centraliza os itens verticalmente */
-    height: 50px;
-    border-radius: 10px; /* Bordas arredondadas */
-    background-color: #252c4f46;
-    width: auto; /* Largura fixa da barra */
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    padding: 0 20px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);     
+    flex-direction: column;
+
+    background-color: var(--branco);
+    border-radius: 15px;
+    
+    box-shadow: 15px 15px 2px var(--sombra), 9px 9px 10px var(--azul);
+    
+    padding: 5px;
+
+    overflow: auto;
 }
 
-.info-cinza {
-    display: flex;
-    justify-content: space-between; /* Distribui os itens igualmente */
-    align-items: center; /* Centraliza os itens verticalmente */
-    height: 50px;
-    margin-left: 5px;
-    margin-right: 5px;
-    background-color: #4d4d4d49;
-    width: auto; /* Largura fixa da barra */
+.table-gastos {
+    border-collapse: collapse;
 
-    padding: 0 20px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);     
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 17;
 }
 
-.info-branca {
-    display: flex;
-    justify-content: flex-start; /* Alinha os itens à esquerda */
-    align-items: center; /* Centraliza os itens verticalmente */
-    height: 50px;
-    margin-left: 5px;
-    margin-right: 5px;
-    background-color: #ffffff49;
-    width: auto; /* Largura fixa da barra */
-    padding: 0 20px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);     
+.table-gastos td,.table-gastos th{
+    padding: 5px;
+}
+ 
+.table-gastos tr:nth-child(even){
+    background-color: var(--branco);
 }
 
-
-.barra-horizontal h1 {
-    color: #252C4F;
-    font-size: 24px;
-    margin: 0;
-    text-align: center;
-    flex: 1 1 0; /* Flexível para ocupar o espaço disponível */
-    white-space: nowrap; /* Evita quebra de linha */
-    overflow: hidden; /* Esconde qualquer texto que ultrapassar o limite */
-    text-overflow: ellipsis; /* Adiciona "..." quando o texto é cortado */
-}
-.info-branca h1 {
-    color: #000000;
-    font-size: 20px;
-    margin: 0;
-    text-align: center;
-    flex: 1 1 0; /* Flexível para ocupar o espaço disponível */
-    white-space: nowrap; /* Evita quebra de linha */
-    overflow: hidden; /* Esconde qualquer texto que ultrapassar o limite */
-    text-overflow: ellipsis; /* Adiciona "..." quando o texto é cortado */
-}
-.info-cinza h1 {
-    color: #000000;
-    font-size: 20px;
-    margin: 0;
-    text-align: center;
-    flex: 1 1 0; /* Flexível para ocupar o espaço disponível */
-    white-space: nowrap; /* Evita quebra de linha */
-    overflow: hidden; /* Esconde qualquer texto que ultrapassar o limite */
-    text-overflow: ellipsis; /* Adiciona "..." quando o texto é cortado */
+.table-gastos tr:hover{
+    background-color: var(--azul-escuro);
+    color: white;
 }
 
-
-
-
-
-html, body {
-    margin: 0; /* Remove margens padrão */
-    padding: 0; /* Remove espaçamento padrão */
-    width: 100%; /* Garante largura total */
-    height: 100%; /* Garante altura total */
+.table-info tr{
+    background-color: var(--claro-escuro);
+    height: 40px;
 }
 
-.bloco {
-    border: 1px solid #ccc; /* Para visualização */
-    padding: 10px;
-    background-color: #f9f9f9;
-    width: auto;
-}
-
-.barra-horizontal {
-    display: flex;
-    justify-content: space-between; /* Distribui os itens horizontalmente */
-    gap: 10px; /* Espaço entre os itens */
-}
-
-.barra-item {
-    font-size: 16px;
-    color: #333;
+@media screen and (max-width: 720px){
+    .box-gasto-recente{
+        width: 100%;
+    }
 }

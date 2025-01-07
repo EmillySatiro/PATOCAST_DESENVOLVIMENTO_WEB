@@ -1,0 +1,159 @@
+.content-top{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.grafico-gastos{
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+    width: 60%;
+    height: 450px;
+
+    background-color: var(--branco);
+    border-radius: 15px;
+}
+
+.info-gastos{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+
+    width: 40%;
+    gap: 10px;
+}
+
+.content-info{
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.filtros{
+    display: flex;
+    gap: 10px;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filtro{
+    display: flex;
+    gap: 10px;
+
+    background-color: var(--laranja-principal);
+
+    height: 70px;
+    padding: 5px;
+
+    align-items: center;
+    border-radius: 15px;
+}
+
+.filtro p{
+    font-size: 30;
+}
+
+.filtro img{
+    width: 20px;
+    height: 20px;
+}
+
+.gasto{
+    display: flex;
+    gap: 10px;
+
+    background-color: var(--branco);
+    border-radius: 15px;
+
+    height: 100px;
+
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.gasto p{
+    font-size: 30;
+}
+
+.gasto div{
+    display: flex;
+    background-color: var(--laranja-principal);
+
+    border-radius: 15px;
+
+    height: 100%;
+    width: 50%;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.gasto div p{
+    color: var(--branco);
+}
+
+.box-gasto-recente{
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--branco);
+    border-radius: 15px;
+    
+    box-shadow: 15px 15px 2px var(--sombra), 9px 9px 10px var(--azul);
+    
+    padding: 5px;
+
+    overflow: auto;
+}
+
+.table-gastos {
+    border-collapse: collapse;
+
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 17;
+}
+
+.table-gastos td, .table-gastos th{
+    padding: 5px;
+}
+
+.table-gastos tr:nth-child(even){
+    background-color: var(--branco);
+}
+
+.table-gastos tr:hover{
+    background-color: var(--azul-escuro);
+    color: white;
+}
+
+.table-info tr{
+    background-color: var(--claro-escuro);
+    height: 40px;
+}
+
+@media screen and (max-width: 720px){
+    .content-top{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .grafico-gastos{
+        width: 90%;
+    }
+
+    .info-gastos{
+        width: 90%;
+    }
+
+    .box-gasto-recente{
+        width: 100%;
+    }
+}

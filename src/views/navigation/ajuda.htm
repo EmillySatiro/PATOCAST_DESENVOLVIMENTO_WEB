@@ -1,14 +1,87 @@
 {% extends "../page-base.htm" %}
 
-    {% block styles %}
+{% block styles %}
+    <link rel="stylesheet" href="./styles/ajudar.css">
+{% endblock %}
+
+{% block container %}
+    {% include "../partials/navigation.htm" %}
+    {% include "../partials/mobile/navigation_mob.htm"%}
+{% endblock %}
+
+{% block content %}
+    <div class="ajuda-container">
+        <div class="ajuda-content">
+            <div class="ajuda-header">
+                <div class="ajuda-header-text">
+                    <h3>
+                        Seu Guia para o Controle Financeiro: Simples, Rápido e Eficaz!
+                    </h3>
+                    <div>
+                        <p>
+                            Seguir orientações financeiras é um ato de autocuidado e um passo importante para construir um futuro mais tranquilo. Com disciplina e as ferramentas certas, é possível transformar sua relação com o dinheiro e aproveitar os frutos dessa mudança ao longo da vida.
+                        </p>
+                        <img src="./images/pessoa_money.png" alt="">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ajuda-cards">
+                <p>
+                    Áreas que podemos te ajudar
+                </p>
+            </div>
+            
+
+            <div class="modal-cards">
+                <div class="modal-card">
+                    <div class="modal-card-image">
         
-    {% endblock %}
+                    </div>
+                    <div class="modal-card-content">
+                        <p>
+                            Economia:
+                        </p>
+                        <p>
+                            Economize hoje, conquiste amanhã!
+                        </p>
+                    </div>
+                </div>
 
-    {% block content %}
-        {% include "../partials/navigation.htm" %}
-        <h1>Ola Mundo</h1>
-    {% endblock %}
+                <div class="modal-card">
+                    <div class="modal-card-image">
+        
+                    </div>
+                    <div class="modal-card-content">
+                        <p>
+                            Economia:
+                        </p>
+                        <p>
+                            Economize hoje, conquiste amanhã!
+                        </p>
+                    </div>
+                </div>
 
-    {% block script %}
-        <script src="./scripts/script-home.js"></script>
-    {% endblock %}
+                <div class="modal-card">
+                    <div class="modal-card-image">
+        
+                    </div>
+                    <div class="modal-card-content">
+                        <p>
+                            Economia:
+                        </p>
+                        <p>
+                            Economize hoje, conquiste amanhã!
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="./scripts/script-home.js"></script>
+{% endblock %}

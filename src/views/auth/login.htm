@@ -1,64 +1,75 @@
 {% extends "../page-base.htm" %}
 
-  {% block title %}
-      <title> Entrar </title>
-  {% endblock title %}
-  {% block styles %}
-    <link rel="stylesheet" href="./styles/login.css">
-  {% endblock %}
+{% block title %}
+  <title> Entrar </title>
+{% endblock title %}
 
-  {% block content %}
-    <div class="login-esquerda">
-      <div class="slideshow-image">
-        <div class="image">
-          <img src="" id="imagem-login-esquerda" alt="">
-          <div class="slideshow" name="slideshow"></div>
-        </div>
+{% block styles %}
+  <link rel="stylesheet" href="./styles/login.css">
+{% endblock %}
+
+{% block container %}
+  {% include "../partials/mobile/logo_escura_mob.htm" %} 
+{% endblock %}
+
+{% block content %}
+  <div class="login-esquerda">
+    <div class="slideshow-image">
+      <div class="image">
+        <img src="" id="imagem-login-esquerda" alt="">
+        <div class="slideshow" name="slideshow"></div>
       </div>
     </div>
-    <div class="login-direita">
-      {% include "../partials/logo_escura.htm" %} 
+  </div>
+  
+  <div class="login-direita">
+    {% include "../partials/logo_escura.htm" %} 
 
-      <div class="login-dados">
-        <div class="title-dados">
-          <h1>
-            Bem Vindo!
-          </h1>
-          <p>
-            Aqui, você encontrará as ferramentas e dicas necessárias para organizar suas finanças, acompanhar seus gastos e alcançar seus objetivos de forma prática e eficiente.
-          </p>
-        </div>
+    <div class="login-dados">
+      <div class="title-dados">
+        <h1>
+          Bem Vindo!
+        </h1>
+        <p>
+          Aqui, você encontrará as ferramentas e dicas necessárias para organizar suas finanças, acompanhar seus gastos e alcançar seus objetivos de forma prática e eficiente.
+        </p>
+      </div>
+      
+      <form class="input-dados" action="" method="post">
+
+        <input type="email" name="email" class="input-dados-label" id="" placeholder="E-mail">
+        <input type="password" name="senha" class="input-dados-label" id="senha" placeholder="Senha">
+
+        <label class="lembrar-senha">
+          <input type="checkbox" name="checkbox" onclick="mostrarSenha()"/>
+          Mostrar Senha
+        </label>
         
-        <form class="input-dados" action="" method="post">
-
-          <input type="email" name="email" class="input-dados-label" id="" placeholder="E-mail">
-          <input type="password" name="senha" class="input-dados-label" id="senha" placeholder="Senha">
-
-          <label class="lembrar-senha">
-            <input type="checkbox" name="checkbox" onclick="mostrarSenha()"/>
-            Mostrar Senha
-          </label>
-          
-          <input class="button-submit" type="submit" value="Entrar">
-        </form>
-        <div class="input-down">
-          <a href="/recuperar_conta">
+        {# <input class="button-submit" type="submit" value="Entrar"> #}
+        <a href="/inicio" class="button-submit">
             <p>
-              Esqueci minha senha
+                Entrar
             </p>
-          </a>
-          <a href="/cadastrar">
-            <p>
-              Cadastrar
-            </p>
-          </a>
-        </div>
-
+        </a>
+      </form>
+      <div class="input-down">
+        <a href="/recuperar_conta">
+          <p>
+            Esqueci minha senha
+          </p>
+        </a>
+        <a href="/cadastrar">
+          <p>
+            Cadastrar
+          </p>
+        </a>
       </div>
-    </div>
-    
-  {% endblock %}
 
-   {% block script %}
-      <script src="./scripts/script.js"></script>
-   {% endblock %}
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block script %}
+  <script src="./scripts/script.js"></script>
+{% endblock %}

@@ -1,5 +1,28 @@
 .logo-design {
     display: flex;
+    align-items: center;
+}
+
+.logo-design-mob{
+    display: none;
+}
+
+.box-content {
+    display: flex;
+    flex-direction: row;
+
+    padding: 0px;
+    gap: 0px;
+    
+    height: 100%;
+}
+
+.container{
+    height: 100%;
+}
+
+.logo-design {
+    display: flex;
     justify-content: flex-start;
 
     width: 100%;
@@ -32,7 +55,7 @@ body {
 }
 
 .box-info {
-    background-color: rgba(37, 44, 79, 0.2);
+    background-color: var(--claro);
     border-radius: 20px;
 
     height: 80%;
@@ -116,4 +139,68 @@ body {
 
     text-decoration: underline;
     text-decoration-color: var(--azul-escuro);
+}
+
+@media screen and (max-width: 720px){
+    .container{
+        display: flex;
+
+        align-items: center;
+        gap: 20px;
+    }
+
+    .logo-design{
+        display: none;
+    }
+
+    .box-content{
+        flex-direction: column;
+        justify-content: center;
+        
+        width: 90%;
+        height: 70%;
+
+        border-radius: 20px;
+        margin: 25px;
+
+        overflow: hidden;
+    }
+
+    .logo-design-mob{
+        display: flex;
+        width: 100%;
+
+        background-color: var(--claro-escuro);
+    }
+
+    .logo-design-mob p{
+        display: flex;
+        width: 100%;
+
+        color: var(--azul-escuro);
+    }
+
+    .box-info{
+        display: flex;
+        flex-direction: column;
+
+        height: 100%;
+        padding: 20px;
+        gap: 10px;
+
+        background-color: rgba(39, 50, 90,0.2);
+    }
+
+    .box-info .label-form{
+        gap: 10px;
+    }
+
+    .box-info .form-email button{
+        text-align: center;
+    }
+
+    .box-info .form-email{
+        height: 100%;
+    }
+
 }
