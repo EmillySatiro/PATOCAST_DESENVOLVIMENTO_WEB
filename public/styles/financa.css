@@ -4,16 +4,45 @@
     gap: 10px;
 }
 
-.grafico-gastos{
+.grafico-vertical {
+    display: flex;
+
+    padding: 10px;
+    gap: 20px;
+
+    font-size: 15;
+
+    border-radius: 20px;
+
+    height: 100%;
+    background-color: var(--branco);
+}
+
+.y-grafico {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+    gap: 30px;
+    margin-bottom: 36.8px;
+}
+
+.info-grafico {
     display: flex;
     flex-direction: column;
 
-    gap: 10px;
-    width: 60%;
-    height: 450px;
+    justify-content: flex-end;
+}
 
-    background-color: var(--branco);
-    border-radius: 15px;
+.grafico {
+    display: block;
+    width: 98%;
+
+    background-color: var(--laranja-principal);
+}
+
+.grafico:hover {
+    background-color: var(--azul-escuro);
 }
 
 .info-gastos{
@@ -155,5 +184,14 @@
 
     .box-gasto-recente{
         width: 100%;
+    }
+
+    .grafico-vertical{
+        width: 90%;
+        gap: 23px;
+    }
+    
+    .y-grafico{
+        margin-bottom: 18px;
     }
 }

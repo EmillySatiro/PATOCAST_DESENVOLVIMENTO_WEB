@@ -70,7 +70,31 @@
 
 @media screen and (max-width: 720px) {
     .navigation-bar {
-        display: none;
+        position: fixed;
+
+        width: 0;      /* Fecha a barra aos poucos */
+        padding: 0;    /* Remove o preenchimento gradualmente */
+        overflow: hidden; /* Oculta o conteúdo enquanto fecha */
+    }
+
+    .navigation-bar.activate {
+        padding: 0px;
+        position: fixed;
+        
+        width: 80%;
+        height: 100%;
+
+        border-bottom-right-radius: 15px;
+        z-index: 1;
+        gap: 10px;
+    }
+    
+    .navigation-bar .profile-bar{
+        padding-top: 10px;
+    }
+
+    .navigation-bar .nav-options{
+        padding-left: 15px;
     }
 
     .info-perfil {

@@ -1,0 +1,77 @@
+{% extends "../page-base.htm" %}
+  {% block title %}
+      <title> Cadastro </title>
+  {% endblock title %}
+
+  {% block styles %}
+    <link rel="stylesheet" href="./styles/perguntas.css">
+  {% endblock %}
+
+  {% block container %}
+    {% include "../partials/mobile/logo_escura_mob.htm" %}
+  {% endblock %}
+
+    {% block content %}
+        <div class="login-esquerda">
+            {% include "../partials/logo_escura.htm" %}
+            <div class="pergunta-form">
+                
+                <div class="respota-progresso">
+                    <div class="respostas">
+                        <h1>Pergunta??</h1>
+                        
+                        <a href="/inicio">
+                            <div class="resposta">
+                                <input type="radio" name="resposta" id="resposta1">
+                                <label for="resposta1">Resposta 1</label>
+                            </div>
+                        </a>
+                        <a href="/inicio">
+                            <div class="resposta">
+                                <input type="radio" name="resposta" id="resposta2">
+                                <label for="resposta2">Resposta 2</label>
+                            </div>
+                        </a>
+                        <a href="/inicio">
+                            <div class="resposta">
+                                <input type="radio" name="resposta" id="resposta3">
+                                <label for="resposta3">Resposta 3</label>
+                            </div>
+                        </a>
+                        <a href="/inicio">
+                            <div class="resposta">
+                                <input type="radio" name="resposta" id="resposta4">
+                                <label for="resposta4">Resposta 4</label>
+                            </div>
+                        </a>
+                        <a href="/inicio">
+
+                            <div class="resposta">
+                                <input type="radio" name="resposta" id="resposta4">
+                                <label for="resposta5">Resposta 5</label>
+                            </div>
+                        </a>
+                        <a href="/inicio">
+                            <div class="resposta">
+                                <input type="radio" name="resposta" id="resposta4">
+                                <label for="resposta6">Resposta 6</label>
+                            </div>
+                        </a>
+                        </div>
+
+                    <div class="progresso">
+                        <div class="progresso-barra">
+                            <p>65%</p>
+                        </div>
+                        <p>Seu Progresso</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="login-direita">
+        </div>
+    {% endblock %}
+
+    {% block script %}
+        <script src="./scripts/script.js"></script>
+    {% endblock %}
