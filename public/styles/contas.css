@@ -39,7 +39,7 @@
     height: 188px;
 
     border-radius: 25px;
-
+    margin: 0 auto;
     background-color: var(--azul-escuro);
     color: var(--branco);
     

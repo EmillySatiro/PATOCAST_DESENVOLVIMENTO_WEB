@@ -95,11 +95,12 @@
 
 .grafico-vertical {
     display: flex;
-    gap: 25px;
+    gap: 15px;
 
     font-size: 15;
 
-    padding: 20px;
+    padding: 30px;
+    overflow: auto;
 }
 
 .y-grafico {
