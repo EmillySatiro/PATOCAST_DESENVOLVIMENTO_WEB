@@ -8,13 +8,126 @@
     padding: 10px;
 }
 
-.gasto-total{
-    background-color: aqua;
+.box-gasto-total{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    justify-content: space-evenly;
+
+    background-color: var(--branco);
+    border-radius: 15px;
+
+    width: 20%;
 }
 
-.table-gasto{
-    background-color: aqua;
-    width: 100px;
+.box-gasto-total p{
+    font-size: 20;
+}
+
+.box-gasto-total img{
+    background-color: var(--claro-escuro);
+
+    border-radius: 20px;
+
+    width: 50px;
+}
+
+.show-info{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.show-info span{
+    background-color: var(--azul-escuro);
+
+    width: 120px;
+    height: 70px;
+    
+    border-top-left-radius: 120px;
+    border-top-right-radius: 120px;
+
+    border: 10px solid var(--azul-escuro);
+    border-bottom: 0;
+
+    background-color: var(--branco);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+    font-family: var(--fonte);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20;
+
+    padding-bottom: 10px;
+
+    transition: border 1s;
+}
+
+.show-info span:hover{
+    border: 100px;
+}
+
+.show-info div{
+    display: flex;
+    justify-content: center;
+
+    width: 150px;
+
+    border-radius: 25px;
+
+    background-color: var(--claro-escuro);
+
+}
+
+.show-info div p{
+    font-size: 15;
+
+}
+
+.grafico-vertical {
+    display: flex;
+    gap: 25px;
+
+    font-size: 15;
+
+    padding: 20px;
+}
+
+.y-grafico {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-end; */
+    
+    gap: 15px;
+    margin-bottom: 36.8px;
+}
+
+.info-grafico {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-end;
+    /* align-items: center; */
+}
+
+.grafico {
+    display: block;
+    width: 98%;
+
+    background-color: var(--laranja-principal);
+}
+
+.grafico:hover {
+    background-color: var(--azul-escuro);
 }
 
 .box-objetivo{
@@ -112,4 +225,42 @@
 .table-info tr{
     background-color: var(--claro-escuro);
     height: 40px;
+}
+
+@media screen and (max-width: 720px){
+    .box-gasto{
+        flex-direction: column;
+        width: 90%;
+
+        padding: 0px;
+
+        background-color:transparent;
+        gap: 10px;
+    }
+
+    .box-gasto-total{
+        box-shadow: 5px 5px 2px var(--vermelho);
+    }
+
+    .box-objetivo{
+        display: none;
+    }
+    
+    .grafico-vertical{
+        width: 90%;
+        gap: 20px;
+        
+        background-color: var(--branco);
+        box-shadow: 5px 5px 2px var(--azul-escuro);
+        
+        border-radius: 10px;
+    }
+    
+    .y-grafico{
+        margin-bottom: 18px;
+    }
+
+    .box-gasto-recente{
+        width: 90%;
+    }
 }

@@ -6,12 +6,12 @@
 
 {% block container %}
     {% include "../partials/navigation.htm" %}
-    {% include "../partials/mobile/navigation_mob.htm"%}
+    {% include "../partials/mobile/perfil_mob.htm"%}
 {% endblock %}
 
 {% block content %}
     <div class="box-gasto">
-        <div class="gasto-total">
+        <div class="box-gasto-total">
             <img src="./assets/wallet-linear.png" alt="">
             <div>
                 <p>
@@ -22,7 +22,7 @@
                 </p>
             </div>
 
-            <div>
+            <div class="show-info">
                 <span>
                     99,98%
                 </span>
@@ -33,10 +33,16 @@
                 </div>
             </div>
         </div>
-        <div class="table-gasto">
-            <div class="grafico-barra">
-
+        <div class="grafico-vertical">
+            <div class="y-grafico">
+                <p>100%</p>
+                <p>80%</p>
+                <p>60%</p>
+                <p>40%</p>
+                <p>20%</p>
+                <p>0%</p>
             </div>
+            {% include "../partials/grafico.htm" %}
         </div>
     </div>
 

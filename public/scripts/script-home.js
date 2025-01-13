@@ -50,8 +50,16 @@ function verificaNav(){
     // nav.className = "occullt"
 }
 
-function verificaNavigation(){
+const profile = document.getElementById("profile-bar")
+
+profile.addEventListener("click",ativaNavigation)
+
+function ativaNavigation(){
     const navigation = document.getElementById("navigation-bar")
-    console.log(navigation.style)
-    
+    console.log(navigation.className)
+    if(navigation.className.search(" activate") < 0){
+        navigation.className += " activate"
+    }else{
+        navigation.className = navigation.className.split(" activate")[0]
+    }
 }

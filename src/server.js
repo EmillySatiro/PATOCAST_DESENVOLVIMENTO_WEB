@@ -62,4 +62,8 @@ server.get('/historico', async (req,res) => {
   return res.render('./navigation/operacoes.htm')
 })
 
+server.get('/perguntas', async (req,res) => {
+  return res.render('./auth/perguntas.htm')
+})
+
 server.listen(port)
