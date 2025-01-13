@@ -22,11 +22,12 @@
 
 .grafico-vertical {
     display: flex;
-    gap: 25px;
+    gap: 15px;
 
     font-size: 15;
 
-    padding: 20px;
+    padding: 30px;
+    overflow: auto;
 }
 
 .y-grafico {
@@ -62,7 +63,7 @@
     flex-direction: column;
     gap: 20px;
 
-    height: 100%;
+    height: 90%;
     width: 50%;
 }
 
@@ -75,6 +76,7 @@
 
     background-color: var(--branco);
     border-radius: 15px;
+    padding: auto;
 
     box-shadow: 10px 10px 2px var(--sombra);
 
@@ -94,7 +96,7 @@
 
     height: 80%;
 
-    padding: 15px;
+    padding: 20px 20px; /* Diminui as laterais */
     gap: 5px;
 }
 
@@ -118,8 +120,8 @@
     display: flex;
     justify-content: space-between;
 
-    width: 345px;
-    height: 188px;
+    width: 292px;
+    height: 168px;
 
     border-radius: 25px;
 
@@ -128,7 +130,7 @@
     
     /* z-index: 1 */
     
-    padding: 20px;
+    padding: 10px 10px;
     transition: width 1s, height 1s, z-index 1s;
 }
 
@@ -205,6 +207,7 @@
 .box-gasto-recente{
     display: flex;
     flex-direction: column;
+    overflow: auto;
 
     background-color: var(--branco);
     border-radius: 15px;
@@ -249,6 +252,7 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
+    overflow: hidden;
 
     justify-content: space-evenly;
 
@@ -368,7 +372,7 @@
     }
 
     .cartao{
-        width: 50%;
+        width: 100%;
         height: 175px;
     }	
 

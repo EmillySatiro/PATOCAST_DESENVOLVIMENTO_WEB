@@ -27,7 +27,7 @@
     font-weight: 400;
     font-style: normal;
     font-size: 20;
-    transition: all 0.5s ease; /* Suaviza a transição */
+    transition: all 0.2s ease; /* Suaviza a transição */
     color: var(--claro);
 }
 
