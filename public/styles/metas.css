@@ -115,7 +115,7 @@
 .info-grafico {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+  
 
     justify-content: flex-end;
     width: 10px; /* Adjust the width to make the bars thinner */

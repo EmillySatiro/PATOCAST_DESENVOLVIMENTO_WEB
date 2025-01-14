@@ -127,6 +127,8 @@
 
     background-color: var(--azul-escuro);
     color: var(--branco);
+    margin-left: auto;
+    margin-right: auto;
     
     /* z-index: 1 */
     
@@ -191,7 +193,8 @@
     background-color: var(--claro-escuro);
     width: 125px;
     height: 125px;
-
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 25px;
 }
 
