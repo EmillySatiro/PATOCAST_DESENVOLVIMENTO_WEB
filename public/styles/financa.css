@@ -97,7 +97,7 @@
 
 .gasto{
     display: flex;
-    gap: 10px;
+ 
 
     background-color: var(--branco);
     border-radius: 15px;
@@ -120,8 +120,8 @@
 
     border-radius: 15px;
 
-    height: 100%;
-    width: 50%;
+    height: 80px;
+    width: 160;
 
     justify-content: center;
     align-items: center;
@@ -183,7 +183,7 @@
     }
 
     .info-gastos{
-        width: 90%;
+        width: 98%;
     }
 
     .box-gasto-recente{
@@ -191,8 +191,9 @@
     }
 
     .grafico-vertical{
-        width: 90%;
+        width: 95%;
         gap: 23px;
+        
     }
     
     .y-grafico{

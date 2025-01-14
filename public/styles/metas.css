@@ -238,18 +238,26 @@
 
         background-color:transparent;
         gap: 10px;
+        align-items: center;
     }
 
     .box-gasto-total{
         box-shadow: 5px 5px 2px var(--vermelho);
+        width: 95%;
+        align-items: center;
     }
 
     .box-objetivo{
-        display: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 200%;
+        align-items: center;
+
     }
     
     .grafico-vertical{
-        width: 90%;
+        width: 92%;
         gap: 20px;
         
         background-color: var(--branco);
@@ -263,6 +271,8 @@
     }
 
     .box-gasto-recente{
-        width: 90%;
+       
+        display: flex;
+        width: 92%;
     }
 }

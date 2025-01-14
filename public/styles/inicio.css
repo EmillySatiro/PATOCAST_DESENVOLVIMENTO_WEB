@@ -207,7 +207,8 @@
     height: 60%;
 }
 
-.box-gasto-recente{
+.box-gasto-recente {
+
     display: flex;
     flex-direction: column;
     overflow: auto;
@@ -221,6 +222,8 @@
     width: 80%;
 
     overflow: auto;
+
+    
 }
 
 .box-gasto-recente p{
@@ -265,6 +268,7 @@
     box-shadow: 10px 10px 2px var(--vermelho);
 
     width: 20%;
+   
 }
 
 .box-gasto-total p{
@@ -399,6 +403,24 @@
         width: 95%;
     }
 }
+@media screen and (max-width: 720px) {
+    .box-gasto-total {
+        width: 80%;
+        margin-bottom: 20px;
+        order: -1;
+    }
+    .box-gasto-recente {
+        width: 100%;
+    }
+.box-gasto-total, .box-gasto-recente {
+    width: 95%;
+}
+.content-down {
+    flex-direction: column;
+    align-items: center;
+}
+}
+
 
 @media screen and (max-width: 720px) and (max-height: 720px){
     .content-top{

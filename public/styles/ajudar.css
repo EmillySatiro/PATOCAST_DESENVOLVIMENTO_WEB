@@ -1,4 +1,15 @@
 
+.titulo{
+    margin-left: 150px; 
+    margin-right: 400px;
+    font-size: 34px; 
+
+}
+.texto-info{
+    margin-left: 150px; 
+    margin-right: 150px;
+}
+
 .ajuda-container{
     display: flex;
     flex-direction: column;
@@ -49,6 +60,8 @@
     top: -80px;
   
     width: 300px;
+    margin-top: -100px; 
+    margin-right: 20px;
 }
 
 .ajuda-cards{
@@ -123,9 +136,20 @@
     }
 
     .ajuda-header img{
-        top: 0px;
-    
+      
         width: 200px;
+        margin-top: 85px; 
+        margin-right: 20px;
+        
+    }
+    .titulo{
+        margin-left: 20px; 
+        margin-right: 20px;
+        font-size: 24px; 
+    }
+    .texto-info{
+        margin-left: 20px; 
+        margin-right: 20px;
     }
 
 }
