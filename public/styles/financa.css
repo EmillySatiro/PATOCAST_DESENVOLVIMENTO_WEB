@@ -13,6 +13,8 @@
     font-size: 15;
 
     border-radius: 20px;
+    overflow: auto;
+    margin-right: 10px;
 
     height: 100%;
     background-color: var(--branco);
@@ -50,7 +52,7 @@
     flex-direction: column;
 
     justify-content: space-evenly;
-
+    
     width: 40%;
     gap: 10px;
 }
@@ -58,6 +60,7 @@
 .content-info{
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     gap: 10px;
 }
@@ -76,8 +79,8 @@
 
     background-color: var(--laranja-principal);
 
-    height: 70px;
-    padding: 5px;
+    height: 30px;
+    padding: 10px;
 
     align-items: center;
     border-radius: 15px;
@@ -104,6 +107,7 @@
     padding: 10px;
     align-items: center;
     justify-content: space-between;
+    margin-top: 30px;
 }
 
 .gasto p{
