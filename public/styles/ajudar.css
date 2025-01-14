@@ -71,7 +71,7 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-
+    width: 100%;
     padding: 10px;
     gap: 10px;
 }
@@ -83,8 +83,8 @@
     background-color: var(--azul-escuro);
     border-radius: 10px;
 
-    width: 200px;
-    height: 300px;
+    width: 331px;
+    height: 498px;
 }
 
 .modal-card-image{
