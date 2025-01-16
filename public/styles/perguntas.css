@@ -61,7 +61,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-
+    
     width: 70%;
 }
 
@@ -73,7 +73,7 @@
     background-color: var(--azul-escuro);
     color: var(--branco);
 
-    padding: 10px;
+    padding: 15px;
     width: 80%;
 
     border-radius: 10px;
@@ -127,8 +127,8 @@ input[type="radio"]:checked {
 
     gap: 10px;
 
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
 
     background: conic-gradient(
         var(--laranja-principal) 0% 65%, 
@@ -147,7 +147,7 @@ input[type="radio"]:checked {
     justify-content: center;
 
     color: var(--azul-escuro);
-    font-size: 24px;
+    font-size: 34px;
 
     background-color: var(--claro);
     width: 80%;
