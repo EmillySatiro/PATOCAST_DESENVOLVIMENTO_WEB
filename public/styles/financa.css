@@ -172,6 +172,21 @@
     height: 40px;
 }
 
+.icon-downloads{
+    display: flex;
+    background-color: var(--laranja-principal);
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
 @media screen and (max-width: 720px){
     .content-top{
         flex-direction: column;
