@@ -30,7 +30,7 @@ server.get('/recuperar_conta', async (req,res) => {
 server.get('/inicio', async (req,res) => {
   let idUser = req.cookies.idUser
 
-  const response = await fetch(`http://127.0.0.1:5000/transacao/id=${idUser}`);
+  const response = await fetch(`http://backend:5000/transacao/id=${idUser}`);
   dados = await response.json()
 
 
@@ -51,10 +51,13 @@ server.get('/metas', async (req,res) => {
 server.get('/financas', async (req,res) => {
   let idUser = req.cookies.idUser
 
-  const response = await fetch(`http://127.0.0.1:5000/transacao/id=${idUser}`);
+  const response = await fetch(`http://backend:5000/transacao/id=${idUser}`);
   dados = await response.json()
 
-  return res.render('./navigation/financas.htm', {transacoes: dados})
+  return res.render('./navigation/financas.htm', {
+    transacoes: dados,
+    gasto_total: parseFloat(dados.reduce((acc, curr) => acc + parseFloat(curr.valor), 0)).toFixed(2)
+  })
 })
 
 server.get('/ajuda', async (req,res) => {
@@ -80,7 +83,7 @@ server.get('/perfil', async (req,res) => {
 server.get('/historico', async (req,res) => {
   let idUser = req.cookies.idUser
 
-  const response = await fetch(`http://127.0.0.1:5000/transacao/id=${idUser}`);
+  const response = await fetch(`http://backend:5000/transacao/id=${idUser}`);
   dados = await response.json()
 
   return res.render('./navigation/operacoes.htm',{transacoes: dados})

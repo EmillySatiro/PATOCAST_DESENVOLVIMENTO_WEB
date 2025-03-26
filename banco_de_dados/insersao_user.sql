@@ -11,5 +11,3 @@ VALUES
   (1, 'Posto de gasolina', 'Transporte', 200.00, '2021-01-03'),
   (1, 'Restaurante', 'Alimentação', 150.00, '2021-01-04'),
   (1, 'Cinema', 'Entretenimento', 30.00, '2021-01-05');
-
-UPDATE users 

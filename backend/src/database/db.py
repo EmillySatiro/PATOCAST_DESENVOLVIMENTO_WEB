@@ -8,7 +8,7 @@ def connection():
             dbname="patocash",
             user="root",
             password="root",
-            host="localhost",
+            host="postgres",
             port="5432"
         )
         print("Connected to the database")
