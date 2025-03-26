@@ -63,3 +63,18 @@ function ativaNavigation(){
         navigation.className = navigation.className.split(" activate")[0]
     }
 }
+
+function getCookie(name) {
+    let cookies = document.cookie.split('; ');
+    for (let cookie of cookies) {
+        let [key, value] = cookie.split('=');
+        if (key === name) return decodeURIComponent(value);
+    }
+    return null;
+}
+
+// Atualiza o nome do usuário na tela
+let username = getCookie("username"); 
+if (username) {
+    document.getElementById("username").textContent = username;
+}

@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, redirect, make_response
 from src.database.user_database import UserDatabase
 
 router_user = Blueprint('user', __name__)
@@ -8,7 +8,7 @@ def get_users():
     users = UserDatabase.get_all_users()
     return jsonify(users)
 
-@router_user.route('/users/<int:id>', methods=['GET'])
+@router_user.route('/users/id=<int:id>', methods=['GET'])
 def get_user(id):
     user = UserDatabase.get_user_by_id(id)
     if user:
@@ -26,20 +26,39 @@ def create_user():
     )
     return jsonify({"message": "User created successfully"}), 201
 
-@router_user.route('/users/<int:id>', methods=['PUT'])
+@router_user.route('/perfil/id=<int:id>', methods=['POST','PUT'])
 def update_user(id):
-    data = request.get_json()
-    UserDatabase.update_user(
-        user_id=id,
-        nome=data.get('nome'),
-        sobrenome=data.get('sobrenome'),
-        email=data.get('email'),
-        senha=data.get('senha')
-    )
-    return jsonify({"message": "User updated successfully"})
+    data = {key: value for key, value in request.form.items() if value.strip()}  # Remove campos vazios
+    print(data)
+    
+    if not data:
+        return jsonify({"error": "Nenhum dado fornecido para atualização"}), 400
 
-@router_user.route('/users/<int:id>', methods=['DELETE'])
+    UserDatabase.update_user(user_id=id, **data)  # Passa os dados dinamicamente
+    return jsonify({"message": "Usuário atualizado com sucesso!"})
+
+@router_user.route('/users/id=<int:id>', methods=['DELETE'])
 def delete_user(id):
     UserDatabase.delete_user(id)
     return jsonify({"message": "User deleted successfully"})
 
+@router_user.route('/login', methods=['POST'])
+def login():
+    data = request.form.to_dict()
+    
+    connect,user = UserDatabase.connect_user(data['email'], data['senha'])
+    
+    if connect:
+        response = make_response(redirect("http://127.0.0.1:3000/inicio"))
+        response.set_cookie("username", user['nome']) 
+        response.set_cookie("idUser", f"{user['idUser']}")  # Define o cookie com o nome do usuário
+        return response
+
+    return jsonify({"error": "Invalid email or password"}), 401
+
+@router_user.route('/transacao/id=<int:id>', methods=['GET'])
+def get_transacoes(id):
+    transacoes = UserDatabase.get_all_transactions(id)
+    transacoes = [UserDatabase.format_transaction(transacao) for transacao in transacoes]
+    
+    return jsonify(transacoes)

@@ -1,12 +1,13 @@
 -- \c patocash  -- Conecta ao banco de dados 'patocash'
 
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
 -- Criação da tabela 'users'
 CREATE TABLE IF NOT EXISTS users (
   idUser SERIAL PRIMARY KEY,  -- Auto incremento
   nome VARCHAR(255) NOT NULL,
   sobrenome VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
-  senha VARCHAR(255) NOT NULL,
+  senha TEXT NOT NULL,
   criado TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,  -- Data e hora de criação
   atualizado TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP  -- Data e hora da última atualização
 );
