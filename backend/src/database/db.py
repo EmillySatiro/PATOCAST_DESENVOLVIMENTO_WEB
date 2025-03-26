@@ -1,15 +1,17 @@
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from datetime import datetime
+from os import getenv
+
 
 def connection():
     try:
         conn = psycopg2.connect(
-            dbname="patocash",
-            user="root",
-            password="root",
-            host="postgres",
-            port="5432"
+            dbname= getenv("POSTGRES_DB"),
+            user= getenv("POSTGRES_USER"),
+            password=getenv("POSTGRES_PASSWORD"),
+            host=getenv("POSTGRES_HOST"),
+            port=getenv("POSTGRES_PORT"),
         )
         print("Connected to the database")
         return conn

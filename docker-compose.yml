@@ -6,12 +6,26 @@ services:
       context: ./front
     ports:
       - "3000:3000"
+    environment:
+      PORT: 3000
+      HOST_BACKEND: backend
+      PORT_BACKEND: 5000
+    depends_on:
+      - backend
+    
 
   backend:
     build:
       context: ./backend
     ports:
       - "5000:5000"
+    environment:
+      POSTGRES_DB: patocash
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      DOCKER_ENV: docker_on
     depends_on:
       - postgres
 
