@@ -5,7 +5,7 @@ all:
 .PHONY: backend
 
 backend:
-	@C:/Users/jonas/anaconda3/python.exe "c:/Users/jonas/Documents/Codigos Curso/WEB/WEB-I-TELA_HOME-HTML/backend/app.py"
+	@python3 backend/app.py
 
 front: frontend
 
