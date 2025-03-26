@@ -5,7 +5,7 @@ all:
 .PHONY: backend
 
 backend:
-	@python3 backend/app.py
+	@python backend/app.py
 
 front: frontend
 
