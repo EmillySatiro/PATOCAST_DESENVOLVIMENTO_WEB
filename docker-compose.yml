@@ -6,6 +6,10 @@ services:
       context: ./front
     ports:
       - "3000:3000"
+    environment:
+      PORT: 3000
+      HOST_BACKEND: backend
+      PORT_BACKEND: 5000
     depends_on:
       - backend
     

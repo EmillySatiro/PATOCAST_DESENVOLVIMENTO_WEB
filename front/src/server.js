@@ -1,7 +1,13 @@
 const express = require('express')
 const cookieParser = require('cookie-parser');
 const server = express()
-const port = 3000
+const port = process.env.PORT || 3000
+const host_backend = process.env.HOST_BACKEND || 'localhost'
+const port_backend = process.env.PORT_BACKEND || 5000
+
+console.log(`Frontend rodando na porta ${port}`)
+console.log(`Backend rodando na porta ${port_backend}`)
+console.log(`Host do backend: ${host_backend}`)
 
 server.use(express.static("public"))
 server.use(express.urlencoded({extended: true}))
@@ -30,7 +36,9 @@ server.get('/recuperar_conta', async (req,res) => {
 server.get('/inicio', async (req,res) => {
   let idUser = req.cookies.idUser
 
-  const response = await fetch(`http://backend:5000/transacao/id=${idUser}`);
+  const response = await fetch(
+    `http://${host_backend}:${port_backend}/transacao/id=${idUser}`
+  );
   dados = await response.json()
 
 
@@ -51,7 +59,9 @@ server.get('/metas', async (req,res) => {
 server.get('/financas', async (req,res) => {
   let idUser = req.cookies.idUser
 
-  const response = await fetch(`http://backend:5000/transacao/id=${idUser}`);
+  const response = await fetch(
+    `http://${host_backend}:${port_backend}/transacao/id=${idUser}`
+  );
   dados = await response.json()
 
   return res.render('./navigation/financas.htm', {
@@ -83,9 +93,10 @@ server.get('/perfil', async (req,res) => {
 server.get('/historico', async (req,res) => {
   let idUser = req.cookies.idUser
 
-  const response = await fetch(`http://backend:5000/transacao/id=${idUser}`);
+  const response = await fetch(
+    `http://${host_backend}:${port_backend}/transacao/id=${idUser}`
+  );
   dados = await response.json()
-
   return res.render('./navigation/operacoes.htm',{transacoes: dados})
 })
 
