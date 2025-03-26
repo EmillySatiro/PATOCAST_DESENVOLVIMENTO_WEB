@@ -12,11 +12,11 @@ services:
       context: ./backend
     ports:
       - "5000:5000"
+    depends_on:
+      - postgres
 
-  db:
-    image: postgres:latest
-    container_name: patocash_db
-    restart: always
+  postgres:
+    image: postgres:16-alpine
     environment:
       POSTGRES_DB: patocash
       POSTGRES_USER: root
@@ -24,4 +24,4 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./banco_de_dados/:/docker-entrypoint-initdb.d/
