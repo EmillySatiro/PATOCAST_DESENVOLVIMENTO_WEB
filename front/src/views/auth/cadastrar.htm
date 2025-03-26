@@ -29,26 +29,20 @@
                 </h1>
             </div>
             
-            <form class="input-dados" action="" method="post">
+            <form class="input-dados" action="http://127.0.0.1:5000/api/cadastrar" method="post">
 
-                <input type="text" name="" class="input-dados-label" id="" placeholder="Nome" required>
-                <input type="text" name="" class="input-dados-label" id="" placeholder="Sobrenome" required>
-                <input type="email" name="" class="input-dados-label" id="" placeholder="E-mail" required>
-                <input type="password" name="" class="input-dados-label" id="" placeholder="Senha" required>
-                <input type="password" name="" class="input-dados-label" id="" placeholder="Conferir Senha" required>
+                <input type="text" name="nome" class="input-dados-label" id="" placeholder="Nome" required>
+                <input type="text" name="sobrenome" class="input-dados-label" id="" placeholder="Sobrenome" required>
+                <input type="email" name="email" class="input-dados-label" id="" placeholder="E-mail" required>
+                <input type="password" name="senha" class="input-dados-label" id="" placeholder="Senha" required>
+                <input type="password" name="confirma_senha" class="input-dados-label" id="" placeholder="Conferir Senha" required>
 
                 <label class="aceitar-termo">
                     <input type="checkbox" name="checkbox" required/>
                     Aceitar Termos
                 </label>
                 
-                {# <input class="button-submit" type="submit" value="Cadastrar"> #}
-                <a href="/perguntas" class="button-submit">
-                    <p>
-                        Cadastrar
-                    </p>
-                </a>
-                {# <button type="submit" class="button-submit"></button> #}
+                <button type="submit" class="button-submit">Cadastrar</button>
             </form>
             <div class="input-down">
                 <a href="/">
