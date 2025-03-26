@@ -35,7 +35,7 @@
         </p>
       </div>
       
-      <form class="input-dados" action="" method="post">
+      <form class="input-dados" action="http://127.0.0.1:5000/login" method="post">
 
         <input type="email" name="email" class="input-dados-label" id="" placeholder="E-mail">
         <input type="password" name="senha" class="input-dados-label" id="senha" placeholder="Senha">
@@ -45,12 +45,8 @@
           Mostrar Senha
         </label>
         
-        {# <input class="button-submit" type="submit" value="Entrar"> #}
-        <a href="/inicio" class="button-submit">
-            <p>
-                Entrar
-            </p>
-        </a>
+        <button class="button-submit" type="submit">Login</button>
+        
       </form>
       <div class="input-down">
         <a href="/recuperar_conta">

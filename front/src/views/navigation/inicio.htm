@@ -91,48 +91,16 @@
             </p>
             <table class="table-gastos">
                 <tbody class="table-info">
-                    <tr>
-                        <td>Supermercado ABC</td>
-                        <td>Mercado</td>
-                        <td>01/10/2024</td>
-                        <td>R$200,00</td>
-                    </tr>
-                    <tr>
-                        <td>Supermercado ABC</td>
-                        <td>Mercado</td>
-                        <td>01/10/2024</td>
-                        <td>R$200,00</td>
-                    </tr>
-                    <tr>
-                        <td>Supermercado ABC</td>
-                        <td>Mercado</td>
-                        <td>01/10/2024</td>
-                        <td>R$200,00</td>
-                    </tr>
-                    <tr>
-                        <td>Supermercado ABC</td>
-                        <td>Mercado</td>
-                        <td>01/10/2024</td>
-                        <td>R$200,00</td>
-                    </tr>
-                    <tr>
-                        <td>Supermercado ABC</td>
-                        <td>Mercado</td>
-                        <td>01/10/2024</td>
-                        <td>R$200,00</td>
-                    </tr>
-                    <tr>
-                        <td>Supermercado ABC</td>
-                        <td>Mercado</td>
-                        <td>01/10/2024</td>
-                        <td>R$200,00</td>
-                    </tr>
-                    <tr>
-                        <td>Supermercado ABC</td>
-                        <td>Mercado</td>
-                        <td>01/10/2024</td>
-                        <td>R$200,00</td>
-                    </tr>
+                    {% if transacoes.length %}
+                        {% for transacao in transacoes %}
+                            <tr>
+                                <td>{{ transacao.estabelecimento }}</td>
+                                <td>{{ transacao.categoria }}</td>
+                                <td>{{ transacao.data }}</td>
+                                <td>R${{ transacao.valor }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
                 </tbody>
             </table>
         </div>
@@ -143,7 +111,7 @@
                     Gasto Total
                 </p>
                 <p style="text-align: center; font-size: 35px;">
-                    R$6543,98
+                    R${{ gasto_total }}
                 </p>
             </div>
 
@@ -161,8 +129,3 @@
     </div>
 
 {% endblock %}
-
-
-    {% block script %}
-        <script src="./scripts/script-home.js"></script>
-    {% endblock %}

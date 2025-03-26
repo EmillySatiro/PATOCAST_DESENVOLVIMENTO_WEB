@@ -1,5 +1,6 @@
 import psycopg2
 from psycopg2.extras import RealDictCursor
+from datetime import datetime
 
 def connection():
     try:
@@ -7,9 +8,10 @@ def connection():
             dbname="patocash",
             user="root",
             password="root",
-            host="postgres",
+            host="localhost",
             port="5432"
         )
+        print("Connected to the database")
         return conn
     except Exception as e:
         print(f"Error connecting to the database: {e}")

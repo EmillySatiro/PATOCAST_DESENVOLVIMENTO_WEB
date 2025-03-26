@@ -1,9 +1,11 @@
 const express = require('express')
+const cookieParser = require('cookie-parser');
 const server = express()
 const port = 3000
 
 server.use(express.static("public"))
 server.use(express.urlencoded({extended: true}))
+server.use(cookieParser())
 
 const nunjucks = require('nunjucks')
 nunjucks.configure(
@@ -12,11 +14,6 @@ nunjucks.configure(
     noCache: true
   }
 )
-
-// server.get('/images/valor', async (req, res) => {
-//   image_list = await images('./public/images/slideshow')
-//   res.json({ valor: image_list }); // Retorna o valor como JSON
-// });
 
 server.get('/', async (req,res) => {
     return res.render('./auth/login.htm')
@@ -31,7 +28,16 @@ server.get('/recuperar_conta', async (req,res) => {
 })
 
 server.get('/inicio', async (req,res) => {
-  return res.render('./navigation/inicio.htm')
+  let idUser = req.cookies.idUser
+
+  const response = await fetch(`http://127.0.0.1:5000/transacao/id=${idUser}`);
+  dados = await response.json()
+
+
+  return res.render('./navigation/inicio.htm', {
+    transacoes: dados,
+    gasto_total: parseFloat(dados.reduce((acc, curr) => acc + parseFloat(curr.valor), 0)).toFixed(2)
+  })
 })
 
 server.get('/contas', async (req,res) => {
@@ -43,7 +49,12 @@ server.get('/metas', async (req,res) => {
 })
 
 server.get('/financas', async (req,res) => {
-  return res.render('./navigation/financas.htm')
+  let idUser = req.cookies.idUser
+
+  const response = await fetch(`http://127.0.0.1:5000/transacao/id=${idUser}`);
+  dados = await response.json()
+
+  return res.render('./navigation/financas.htm', {transacoes: dados})
 })
 
 server.get('/ajuda', async (req,res) => {
@@ -55,11 +66,24 @@ server.get('/ajuda_selecionado', async (req,res) => {
 })
 
 server.get('/perfil', async (req,res) => {
-  return res.render('./navigation/perfil.htm')
+  let username = req.cookies.username
+  let idUser = req.cookies.idUser
+
+  return res.render('./navigation/perfil.htm', 
+    {
+      nome: username,
+      idUser: idUser
+    }
+  )
 })
 
 server.get('/historico', async (req,res) => {
-  return res.render('./navigation/operacoes.htm')
+  let idUser = req.cookies.idUser
+
+  const response = await fetch(`http://127.0.0.1:5000/transacao/id=${idUser}`);
+  dados = await response.json()
+
+  return res.render('./navigation/operacoes.htm',{transacoes: dados})
 })
 
 server.get('/perguntas', async (req,res) => {
