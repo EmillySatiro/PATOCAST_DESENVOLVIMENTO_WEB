@@ -3,6 +3,7 @@
     {% block styles %}
         <link rel="stylesheet" href="./styles/inicio.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.0/dist/progressbar.min.js"></script>
     {% endblock %}
 
 {% block container %}
@@ -21,7 +22,7 @@
         <div class="box-limite-cartoes">
             <div class="box-limite">
                 <p>
-                    Seus limite chegou a 99%
+                    Seu limite chegou a {{ porcentagem }}%
                 </p>
                 <img src="./assets/notifications.png" alt="Notification">
             </div>
@@ -103,14 +104,7 @@
             </div>
 
             <div class="show-info">
-                <span>
-                    99,98%
-                </span>
-                <div>
-                    <p>
-                        Limite R$ {{ limite }}
-                    </p>
-                </div>
+                <div id="progress-container" data-porcentagem="{{porcentagem}}"></div>
             </div>
         </div>
     </div>
@@ -119,4 +113,5 @@
 
 {% block script %}
     <script src="./scripts/graph.js"></script>
+    <script type="module" src="./scripts/circulo.js"></script>
 {% endblock %}

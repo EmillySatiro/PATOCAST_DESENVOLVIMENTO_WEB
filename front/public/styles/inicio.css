@@ -293,49 +293,16 @@
     gap: 10px;
 }
 
-.show-info span{
-    background-color: var(--azul-escuro);
-
-    width: 120px;
-    height: 70px;
-    
-    border-top-left-radius: 120px;
-    border-top-right-radius: 120px;
-
-    border: 10px solid var(--azul-escuro);
-    border-bottom: 0;
-
-    background-color: var(--branco);
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-
-    font-family: var(--fonte);
-    font-weight: 400;
-    font-style: normal;
-    font-size: 20;
-
-    padding-bottom: 10px;
-
-    transition: border 1s;
-}
-
-.show-info span:hover{
-    border: 100px;
-}
-
 .show-info div{
     display: flex;
     justify-content: center;
 
-    width: 150px;
-
     border-radius: 25px;
+    
+    width: 100%;
+    height: 100%;
 
-    background-color: var(--claro-escuro);
-
+    /* background-color: var(--claro-escuro); */
 }
 
 .show-info div p{

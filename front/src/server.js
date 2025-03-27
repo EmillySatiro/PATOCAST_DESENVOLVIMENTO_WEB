@@ -1,5 +1,6 @@
 const express = require('express')
 const cookieParser = require('cookie-parser');
+
 const server = express()
 const port = process.env.PORT || 3000
 const host_backend = process.env.HOST_BACKEND || 'localhost'
@@ -17,7 +18,8 @@ const nunjucks = require('nunjucks')
 nunjucks.configure(
   "src/views",{
     express: server,
-    noCache: true
+    noCache: true,
+    autoescape: true
   }
 )
 
@@ -47,11 +49,13 @@ server.get('/inicio', async (req,res) => {
   dados = await response.json()
   const user_data = await user.json()
   gasto = parseFloat(dados.reduce((acc, curr) => acc + parseFloat(curr.valor), 0)).toFixed(2)
-
+  porcentagem = (gasto / user_data.limite) * 100;
+  
   return res.render('./navigation/inicio.htm', {
     transacoes: dados,
     gasto_total: gasto,
-    limite: parseFloat(user_data.limite) - gasto
+    limite: parseFloat(user_data.limite) - gasto,
+    porcentagem: porcentagem,
   })
 })
 
@@ -79,7 +83,8 @@ server.get('/metas', async (req,res) => {
     categorias: dados,
     limite: user_data.limite,
     gasto_limite: user_data.limite - gasto,
-    gasto_total: gasto
+    gasto_total: gasto,
+    porcentagem: (gasto / user_data.limite) * 100
   })
 })
 

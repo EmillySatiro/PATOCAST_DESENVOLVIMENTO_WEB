@@ -12,17 +12,12 @@ function getCookie(nome) {
 fetch('http://127.0.0.1:5000/transacao_mes/id=' + getCookie("idUser"))
 .then(response => response.json())
 .then(data => {
-    console.log("Dados recebidos:", data);
-    console.log("Meses:", Object.keys(data));
-    console.log("Vendas:", Object.values(data));
-    print(data);
     var meses = Object.keys(data);
     var vendas = Object.values(data);
 
     var ctx = document.getElementById("meuGrafico");
     console.log(ctx);
     if (!ctx) {
-        console.error("Elemento #meuGrafico não encontrado!");
         return;
     }
 
