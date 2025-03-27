@@ -2,6 +2,7 @@
 
 {% block styles %}
     <link rel="stylesheet" href="./styles/financa.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 {% endblock %}
 
 {% block container %}
@@ -12,15 +13,7 @@
 {% block content %}
     <div class="content-top">
         <div class="grafico-vertical">
-            <div class="y-grafico">
-                <p>R$100</p>
-                <p>R$ 80</p>
-                <p>R$ 60</p>
-                <p>R$ 40</p>
-                <p>R$ 20</p>
-                <p>R$ 0</p>
-            </div>
-            {% include "../partials/grafico.htm" %}
+            <canvas id="meuGrafico" width="400" height="200"></canvas>
         </div>
 
         <div class="info-gastos">
@@ -96,4 +89,8 @@
             <img src="./assets/images/download.png">
         </a>
     </div>
+{% endblock %}
+
+{% block script %}
+    <script src="./scripts/graph.js"></script>
 {% endblock %}
