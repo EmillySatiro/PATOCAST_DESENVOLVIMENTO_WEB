@@ -108,7 +108,7 @@
                 </span>
                 <div>
                     <p>
-                        Limite R$ 6.544,00
+                        Limite R$ {{ limite }}
                     </p>
                 </div>
             </div>
@@ -118,31 +118,5 @@
 {% endblock %}
 
 {% block script %}
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var ctx = document.getElementById("meuGrafico").getContext("2d");
-
-            new Chart(ctx, {
-                type: "bar", // Tipo do gráfico (barras)
-                data: {
-                    labels: ["Jan", "Fev", "Mar", "Abr", "Mai"], // Rótulos do eixo X
-                    datasets: [{
-                        label: "Vendas",
-                        data: [10, 20, 15, 30, 25], // Valores no eixo Y
-                        backgroundColor: "#eb8317", // Cor das barras
-                        borderColor: "#eb8317", // Cor da borda das barras
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true, // Se adapta ao tamanho da tela
-                    scales: {
-                        y: {
-                            beginAtZero: true // Começa do zero
-                        }
-                    }
-                }
-            });
-        });
-    </script>
+    <script src="./scripts/graph.js"></script>
 {% endblock %}

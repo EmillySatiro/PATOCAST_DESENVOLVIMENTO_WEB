@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS users (
   sobrenome VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
   senha TEXT NOT NULL,
+  limite DECIMAL(10, 2) NOT NULL,
   criado TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,  -- Data e hora de criação
   atualizado TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP  -- Data e hora da última atualização
 );
