@@ -15,7 +15,24 @@ def get_transacoes(id):
             mimetype='application/json'
     )
 
+@router_transaction.route('/get_categorias/id=<int:id>', methods=['GET'])
+def get_categoria(id):
+    transactions = TransactionDatabase.get_categorias(id)
+    return Response(
+            json.dumps(transactions), 
+            mimetype='application/json'
+    )
+    
 @router_transaction.route('/transacao_mes/id=<int:id>', methods=['GET'])
+def get_transactions_mes(id):
+    transactions = TransactionDatabase.get_mes_transacoes(id)
+    return Response(
+            json.dumps(transactions), 
+            mimetype='application/json'
+    )
+
+
+@router_transaction.route('/lest_transacao_mes/id=<int:id>', methods=['GET'])
 def get_lest_transactions(id):
     transactions = TransactionDatabase.get_lest_transactions_mes(id)
     return Response(

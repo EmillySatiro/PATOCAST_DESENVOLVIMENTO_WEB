@@ -17,6 +17,7 @@ def create_card(id):
         idUser=id,
         numero=data['numero'],
         nome=data['nome'],
-        meta=data['meta']
+        meta=data['meta'],
+        tipo=data['tipo'],
     )
     return jsonify({"message": "Card created successfully"}), 201

@@ -9,14 +9,14 @@ function getCookie(nome) {
     return null;
 }
 
-fetch('http://127.0.0.1:5000/transacao_mes/id=' + getCookie("idUser"))
+fetch('http://127.0.0.1:5000/lest_transacao_mes/id=' + getCookie("idUser"))
 .then(response => response.json())
 .then(data => {
     var meses = Object.keys(data);
-    var vendas = Object.values(data);
+    var compras = Object.values(data);
 
     var ctx = document.getElementById("meuGrafico");
-    console.log(ctx);
+
     if (!ctx) {
         return;
     }
@@ -26,8 +26,8 @@ fetch('http://127.0.0.1:5000/transacao_mes/id=' + getCookie("idUser"))
         data: {
             labels: meses,
             datasets: [{
-                label: "Vendas",
-                data: vendas,
+                label: "Compras",
+                data: compras,
                 backgroundColor: "#eb8317",
                 borderColor: "#eb8317",
                 borderWidth: 1

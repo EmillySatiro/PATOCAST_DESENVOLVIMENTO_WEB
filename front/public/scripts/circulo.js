@@ -32,4 +32,4 @@ var bar = new ProgressBar.SemiCircle("#progress-container", {
 bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
 bar.text.style.fontSize = '2rem';
 
-bar.animate(porcentagem);  
+bar.animate(porcentagem); 

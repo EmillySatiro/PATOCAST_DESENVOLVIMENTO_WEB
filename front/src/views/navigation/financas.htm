@@ -20,19 +20,18 @@
             
             <div class="content-info">
                 <div class="filtros">
-                    <div class="filtro">
-                        <p>
-                            Esse Mes
-                        </p>
-                        <img src="./assets/filtro.png" alt="Filtro">
-                    </div>
 
-                    <div class="filtro">
-                        <p>
-                            Categoria
-                        </p>
-                        <img src="./assets/filtro.png" alt="Filtro">
-                    </div>
+                    <select id="mes" name="mes" class="filtro">
+                        {% for mes in meses %}
+                            <option value="{{ mes.ano_mes }}">{{ mes.mes }}</option>
+                        {% endfor %}
+                    </select>
+                    
+                    <select id="categoria" name="categoria" class="filtro">
+                        {% for categoria in categorias %}
+                            <option value="{{ categoria }}">{{ categoria }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
                 
                 <div class="gasto">
@@ -86,7 +85,7 @@
     </div>
     <div class="icon-downloads">
         <a href="#" onclick="downloadFile()">
-            <img src="./assets/images/download.png">
+            <img src="./images/download.png">
         </a>
     </div>
 {% endblock %}

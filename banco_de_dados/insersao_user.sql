@@ -20,9 +20,9 @@ VALUES
   (1, 'Posto de gasolina', 'Transporte', 400.00, '2025-03-1');
   
 
-  INSERT INTO cartao (idUser, numero, nome, meta)
+  INSERT INTO cartao (idUser, numero, nome, meta, tipo)
   VALUES
-    (1, 12312312312, 'Cartão de Crédito', 1000.00),
-    (1, 12312312313, 'Cartão de Crédito', 1000.00),
-    (1, 12312312314, 'Cartão de Crédito', 1000.00),
-    (1, 12312312315, 'Cartão de Crédito', 1000.00);
+    (1, 12312312312, 'Jonas G P Sousa', 1000.00,'Crédito'),
+    (1, 12312312312, 'Jonas G P Sousa', 1000.00,'Débito'),
+    (2, 11111111111, 'Kaua H S Almeida', 1000.00,'Crédito'),
+    (2, 11111111111, 'Kaua H S Almeida', 1000.00,'Débito');

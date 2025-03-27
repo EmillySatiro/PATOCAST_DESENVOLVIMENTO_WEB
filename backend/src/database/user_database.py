@@ -90,7 +90,6 @@ class UserDatabase:
                     (email,senha)
                 )
                 user = cursor.fetchone()
-                print('Usuario', user)
             conn.close()
             if user:
                 return (True, UserDatabase.format_user_data(user))

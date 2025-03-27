@@ -32,32 +32,34 @@
                         Seus Cartões
                     </P>
                     <sub style="margin-left: 20;">
-                        voce tem 1 cartao cadastrado
+                        voce tem {{ quantidade_cartao }} cartao cadastrado
                     </sub>
                 </div>
                 <div class="cartoes"> 
-                    <div class="cartao">  {# Pai #}
-                        <div class="info-cartao">
-                            <p>
-                                Crédito
-                            </p>
-
-                            <div class="info-principal">
-                                <div>
-                                    <p>
-                                        **** **** **** ****
-                                    </p>
-                                    <img src="./assets/see_eyes.png" alt="olho">
-                                </div>
+                    {% for cartao in cartoes %}
+                        <div class="cartao">  
+                            <div class="info-cartao">
                                 <p>
-                                    Fulano de tal
+                                    {{ cartao.tipo }}
                                 </p>
+
+                                <div class="info-principal">
+                                    <div>
+                                        <p>
+                                            **** **** **** ****
+                                        </p>
+                                        <img src="./assets/see_eyes.png" alt="olho">
+                                    </div>
+                                    <p>
+                                        {{ cartao.nome }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="logo-cartao">
+                                <img src="./assets/master_card.svg" alt="marter card">
                             </div>
                         </div>
-                        <div class="logo-cartao">
-                            <img src="./assets/master_card.svg" alt="marter card">
-                        </div>
-                    </div>
+                    {% endfor %}
                     <span class="adicionar-cartao">
                         <a href="">
                             <img src="./assets/mais.png" alt="Mais">

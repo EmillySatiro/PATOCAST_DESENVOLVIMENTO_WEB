@@ -56,7 +56,7 @@ profile.addEventListener("click",ativaNavigation)
 
 function ativaNavigation(){
     const navigation = document.getElementById("navigation-bar")
-    console.log(navigation.className)
+
     if(navigation.className.search(" activate") < 0){
         navigation.className += " activate"
     }else{

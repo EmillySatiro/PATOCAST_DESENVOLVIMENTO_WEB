@@ -9,7 +9,8 @@ class CardDatabase:
       "idUser": card_tuple[1],
       "numero": card_tuple[2],
       "nome": card_tuple[3],
-      "meta": float(card_tuple[4])
+      "meta": float(card_tuple[4]),
+      "tipo": card_tuple[5]
     }
   
   @staticmethod
@@ -26,13 +27,13 @@ class CardDatabase:
     return []
 
   @staticmethod
-  def create_card(idUser, numero, nome, meta):
+  def create_card(idUser, numero, nome, meta,tipo):
     conn = connection()
     if conn:
       with conn.cursor() as cursor:
         cursor.execute(
-          "INSERT INTO cartao (idUser, numero, nome, meta) VALUES (%s, %s, %s, %s)",
-          (idUser, numero, nome, meta)
+          "INSERT INTO cartao (idUser, numero, nome, meta, tipo) VALUES (%s, %s, %s, %s, %s)",
+          (idUser, numero, nome, meta, tipo)
         )
         conn.commit()
       conn.close()

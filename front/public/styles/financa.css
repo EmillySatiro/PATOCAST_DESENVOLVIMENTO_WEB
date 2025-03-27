@@ -85,6 +85,11 @@
 
     align-items: center;
     border-radius: 15px;
+
+    text-decoration: none;
+    appearance: none;
+    border: none;
+    list-style: none;
 }
 
 .filtro p{
@@ -186,6 +191,11 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
+}
+
+.icon-downloads img{
+    width: 30px;
+    height: 30px;
 }
 
 @media screen and (max-width: 720px){

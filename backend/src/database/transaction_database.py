@@ -4,7 +4,6 @@ class TransactionDatabase:
 
     @staticmethod
     def format_transaction(transaction_tuple):
-        print(type(transaction_tuple[4]))
         return {
             "idTransaction": transaction_tuple[0],
             "idUser": transaction_tuple[1],
@@ -55,7 +54,7 @@ class TransactionDatabase:
                 resultado_final = {
                     mes_ano: float(total_valor) for mes_ano, total_valor, _ in resultado
                 }
-        return resultado_final
+        return resultado_final 
 
     @staticmethod
     def get_lest_transactions_mes_categoria(idUser) -> list:
@@ -109,7 +108,11 @@ class TransactionDatabase:
             with conn.cursor() as cursor:
                 cursor.execute(query, (IdUser,))
                 resultado = cursor.fetchall()
-                
+                if(not resultado):
+                    return {
+                        'pendente': 0.0
+                    }
+                    
             resultado_final = {
                 'pendente': float(total_valor) for mes_ano, total_valor, _ in resultado
             }
@@ -142,3 +145,100 @@ class TransactionDatabase:
             }
             
         return resultado_final
+    
+    @staticmethod
+    def get_lest_transactions_mes(idUser) -> dict:
+        """
+        Retorna as últimas transações do usuário dos últimos 5 meses, agrupadas por mês.
+        """       
+        query = '''
+            SELECT 
+                TO_CHAR(data, 'Mon/YY') AS mes_ano,
+                SUM(valor) AS total_valor,
+                MAX(data) AS ultima_transacao
+            FROM transactions 
+            WHERE idUser = %s
+            AND data >= NOW() - INTERVAL '5 months'
+            GROUP BY mes_ano;
+        '''
+
+        resultado_final = {}
+        with connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute(query, (idUser,))
+                resultado = cursor.fetchall()
+                resultado = sorted(resultado, key=lambda x: x[2], reverse=False)
+                resultado_final = {
+                    mes_ano: float(total_valor) for mes_ano, total_valor, _ in resultado
+                }
+        return resultado_final 
+    
+    @staticmethod
+    def get_categorias(idUser) -> dict:
+        """
+        Retorna as categorias de acordo com o mes escolhido pelo usuario.
+        """       
+        query = '''
+            SELECT categoria FROM transactions
+            WHERE idUser = %s
+            AND data <= NOW()
+            GROUP BY categoria;
+        '''
+        
+        with connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute(query, (idUser,))
+                resultado = cursor.fetchall()
+        
+        resultado = [categoria[0] for categoria in resultado]
+        
+        return resultado
+    
+    @staticmethod
+    def get_mes_transacoes(idUser) -> dict:
+        """
+            Retorna os meses que têm transações do usuário no formato 'Mon/YY' 
+            e o correspondente 'YYYY-MM' para ser usado na pesquisa.
+        """       
+        query = '''
+            SELECT 
+                TO_CHAR(data, 'Mon/YY') AS mes_ano,
+                TO_CHAR(data, 'YYYY-MM') AS ano_mes
+            FROM transactions 
+            WHERE idUser = %s
+            AND data <= NOW()
+            GROUP BY mes_ano, ano_mes
+            ORDER BY MAX(data) ASC;
+        '''
+        
+        resultado_final = {}
+
+        with connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute(query, (idUser,))
+                resultado = cursor.fetchall()
+                resultado_final = [{'mes': mes_ano, 'ano_mes': ano_mes} for mes_ano, ano_mes in resultado]
+        
+        return resultado_final
+
+    
+    @staticmethod
+    def get_transactions_categoria(idUser,categoria,mes) -> dict:
+        """
+        Retorna as transacoes de acordo com a categoria escolhida pelo usuario e pelo mes.
+        """       
+        
+        query = '''
+            SELECT * FROM transactions 
+            WHERE idUser = %s
+            AND categoria = %s
+            AND data >= NOW() - INTERVAL '1 months'
+            GROUP BY dia;
+        '''
+        
+        with connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute(query, (idUser,categoria))
+                resultado = cursor.fetchall()
+                
+        return resultado

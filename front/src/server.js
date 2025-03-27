@@ -42,12 +42,18 @@ server.get('/inicio', async (req,res) => {
     `http://${host_backend}:${port_backend}/transacao/id=${idUser}`
   );
 
-  const user = await fetch(
+  const response_user = await fetch(
     `http://${host_backend}:${port_backend}/users/id=${idUser}`
   );
 
+  const response_cartao = await fetch(
+    `http://${host_backend}:${port_backend}/cards/id=${idUser}`
+  );
+
   dados = await response.json()
-  const user_data = await user.json()
+  const user_data = await response_user.json()
+  const cartao_data = await response_cartao.json()
+  
   gasto = parseFloat(dados.reduce((acc, curr) => acc + parseFloat(curr.valor), 0)).toFixed(2)
   porcentagem = (gasto / user_data.limite) * 100;
   
@@ -55,13 +61,25 @@ server.get('/inicio', async (req,res) => {
     transacoes: dados,
     gasto_total: gasto,
     limite: parseFloat(user_data.limite) - gasto,
-    porcentagem: porcentagem,
+    porcentagem: porcentagem > 100 ? 100 : porcentagem,
+    quantidade_cartao: cartao_data.length,
+    cartoes: cartao_data,
   })
 })
 
 server.get('/contas', async (req,res) => {
+
+  const response = await fetch(
+    `http://${host_backend}:${port_backend}/cards/id=${req.cookies.idUser}`
+  );
+
+  const cartoes = await response.json()
+  
+  console.log(cartoes)
+
   return res.render('./navigation/contas.htm', {
-    idUser: req.cookies.idUser
+    idUser: req.cookies.idUser,
+    cartoes: cartoes
   })
 })
 
@@ -80,33 +98,47 @@ server.get('/metas', async (req,res) => {
   
   const user_data = await user.json()
   gasto = Object.values(dados).reduce((acc, categoria) => acc + categoria.total_gasto, 0);
-  console.log(gasto)
+
+  porcentagem = (gasto / user_data.limite) * 100;
+
   return res.render('./navigation/metas.htm', {
     categorias: dados,
     limite: user_data.limite,
     gasto_limite: user_data.limite - gasto,
     gasto_total: gasto,
-    porcentagem: (gasto / user_data.limite) * 100
+    porcentagem: porcentagem > 100 ? 100 : porcentagem,
   })
 })
 
 server.get('/financas', async (req,res) => {
   let idUser = req.cookies.idUser
 
-  const response = await fetch(
+  const response_transacao = await fetch(
     `http://${host_backend}:${port_backend}/transacao/id=${idUser}`
   );
-  dados = await response.json()
+  dados = await response_transacao.json()
 
-  const pendente = await fetch(
+  const response_pendente = await fetch(
     `http://${host_backend}:${port_backend}/transacao_next_transactions/id=${idUser}`
   );
-  gasto_pendente = await pendente.json()
+  gasto_pendente = await response_pendente.json()
+
+  const response_categorias = await fetch(
+    `http://${host_backend}:${port_backend}/get_categorias/id=${idUser}`
+  );
+  categorias = await response_categorias.json()
+
+  const response_meses = await fetch(
+    `http://${host_backend}:${port_backend}/transacao_mes/id=${idUser}`
+  );
+  meses = await response_meses.json()
 
   return res.render('./navigation/financas.htm', {
     transacoes: dados,
     gasto_total: parseFloat(dados.reduce((acc, curr) => acc + parseFloat(curr.valor), 0)).toFixed(2),
-    pendente: gasto_pendente.pendente.toFixed(2),
+    pendente: parseFloat(gasto_pendente.pendente).toFixed(2),
+    categorias: categorias,
+    meses: meses,
   })
 })
 
