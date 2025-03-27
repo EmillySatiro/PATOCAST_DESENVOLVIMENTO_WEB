@@ -9,12 +9,13 @@ def get_transacoes(id):
     transacoes = TransactionDatabase.get_all_transactions(id)
     transacoes = [TransactionDatabase.format_transaction(transacao) for transacao in transacoes]
     
+    
     return Response(
             json.dumps(transacoes), 
             mimetype='application/json'
     )
 
-@router_transaction.route('/transacao_ultimas/id=<int:id>', methods=['GET'])
+@router_transaction.route('/transacao_mes/id=<int:id>', methods=['GET'])
 def get_lest_transactions(id):
     transactions = TransactionDatabase.get_lest_transactions_mes(id)
     return Response(
@@ -23,7 +24,7 @@ def get_lest_transactions(id):
     )
 
 
-@router_transaction.route('/transacao_ultimas_categoria/id=<int:id>', methods=['GET'])
+@router_transaction.route('/transacao_categoria/id=<int:id>', methods=['GET'])
 def get_lest_transactions_mes_categorial(id):
     transactions = TransactionDatabase.get_lest_transactions_mes_categoria(id)
     return Response(
