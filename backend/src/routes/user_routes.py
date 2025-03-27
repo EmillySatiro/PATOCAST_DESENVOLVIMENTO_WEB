@@ -54,10 +54,3 @@ def login():
         return response
 
     return jsonify({"error": "Invalid email or password"}), 401
-
-@router_user.route('/transacao/id=<int:id>', methods=['GET'])
-def get_transacoes(id):
-    transacoes = UserDatabase.get_all_transactions(id)
-    transacoes = [UserDatabase.format_transaction(transacao) for transacao in transacoes]
-    
-    return jsonify(transacoes)
