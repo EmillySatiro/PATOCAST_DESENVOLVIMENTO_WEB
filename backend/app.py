@@ -10,6 +10,8 @@ if getenv("DOCKER_ENV") == None:
 
 app = Flask(__name__)
 app.register_blueprint(router_user)
+app.register_blueprint(router_transaction)
+
 CORS(app)
 
 if __name__ == '__main__':
