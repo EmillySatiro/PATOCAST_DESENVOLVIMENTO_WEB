@@ -39,3 +39,11 @@ def get_next_transactions(id):
             json.dumps(transactions), 
             mimetype='application/json'
     )
+
+@router_transaction.route('/transacao_days_in_month/id=<int:id>', methods=['GET'])
+def get_days_in_month(id):
+    transactions = TransactionDatabase.get_transactions_days_in_current_week(id)
+    return Response(
+            json.dumps(transactions), 
+            mimetype='application/json'
+    )
