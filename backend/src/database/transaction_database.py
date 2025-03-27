@@ -1,5 +1,4 @@
 from src.database.db import connection
-import time
 
 class TransactionDatabase:
 

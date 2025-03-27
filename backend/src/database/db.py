@@ -1,8 +1,5 @@
 import psycopg2
-from psycopg2.extras import RealDictCursor
-from datetime import datetime
 from os import getenv
-
 
 def connection():
     try:
