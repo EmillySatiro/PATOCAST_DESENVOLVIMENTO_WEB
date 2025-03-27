@@ -111,7 +111,7 @@ class TransactionDatabase:
                 resultado = cursor.fetchall()
                 
             resultado_final = {
-                mes_ano: float(total_valor) for mes_ano, total_valor, _ in resultado
+                'pendente': float(total_valor) for mes_ano, total_valor, _ in resultado
             }
             
         return resultado_final

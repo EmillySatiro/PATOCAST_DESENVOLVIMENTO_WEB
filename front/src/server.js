@@ -98,9 +98,15 @@ server.get('/financas', async (req,res) => {
   );
   dados = await response.json()
 
+  const pendente = await fetch(
+    `http://${host_backend}:${port_backend}/transacao_next_transactions/id=${idUser}`
+  );
+  gasto_pendente = await pendente.json()
+
   return res.render('./navigation/financas.htm', {
     transacoes: dados,
-    gasto_total: parseFloat(dados.reduce((acc, curr) => acc + parseFloat(curr.valor), 0)).toFixed(2)
+    gasto_total: parseFloat(dados.reduce((acc, curr) => acc + parseFloat(curr.valor), 0)).toFixed(2),
+    pendente: gasto_pendente.pendente.toFixed(2),
   })
 })
 
