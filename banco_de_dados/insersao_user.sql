@@ -14,7 +14,10 @@ VALUES
   (1, 'Restaurante', 'Alimentação', 150.00, '2025-02-04'),
   (1, 'Posto de gasolina', 'Transporte', 200.00, '2025-02-03'),
   (1, 'Posto de gasolina', 'Transporte', 200.00, '2025-02-03'),
-  (1, 'Posto de gasolina', 'Transporte', 400.00, '2025-04-03');
+  (1, 'Posto de gasolina', 'Transporte', 400.00, '2025-04-03'),
+  (1, 'Posto de gasolina', 'Transporte', 400.00, '2025-04-03'),
+  (1, 'Posto de gasolina', 'Transporte', 400.00, '2025-02-28'),
+  (1, 'Posto de gasolina', 'Transporte', 400.00, '2025-03-1');
   
 
   INSERT INTO cartao (idUser, numero, nome, meta)

@@ -116,3 +116,29 @@ class TransactionDatabase:
             
         return resultado_final
     
+    @staticmethod
+    def get_transactions_days_in_current_week(IdUser) -> list:
+        """
+        Retorna as transações dos últimos 7 dias.
+        """       
+        query = '''
+            SELECT 
+                TO_CHAR(data, 'DD/Mon') AS dia,
+                SUM(valor) AS total_valor
+            FROM transactions 
+            WHERE idUser = %s
+            AND data <= NOW()
+            AND data > NOW() - INTERVAL '1 months'
+            GROUP BY dia;
+        '''
+        
+        with connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute(query, (IdUser,))
+                resultado = cursor.fetchall()
+                
+            resultado_final = {
+                dia: float(total_valor) for dia, total_valor in resultado
+            }
+            
+        return resultado_final
