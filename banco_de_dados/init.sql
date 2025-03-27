@@ -1,6 +1,7 @@
 -- \c patocash  -- Conecta ao banco de dados 'patocash'
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
 -- Criação da tabela 'users'
 CREATE TABLE IF NOT EXISTS users (
   idUser SERIAL PRIMARY KEY,  -- Auto incremento

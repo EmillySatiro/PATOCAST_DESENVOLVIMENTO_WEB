@@ -14,5 +14,7 @@ VALUES
   (1, 'Cinema', 'Entretenimento', 30.00, '2025-01-05'),
   (1, 'Cinema', 'Entretenimento', 30.00, '2025-02-05'),
   (1, 'Restaurante', 'Alimentação', 150.00, '2025-02-04'),
-  (1, 'Posto de gasolina', 'Transporte', 200.00, '2025-02-03');
+  (1, 'Posto de gasolina', 'Transporte', 200.00, '2025-02-03'),
+  (1, 'Posto de gasolina', 'Transporte', 200.00, '2025-02-03'),
+  (1, 'Posto de gasolina', 'Transporte', 400.00, '2025-04-03');
   

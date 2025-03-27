@@ -38,7 +38,7 @@ def update_user(id):
     if not data:
         return jsonify({"error": "Nenhum dado fornecido para atualização"}), 400
 
-    UserDatabase.update_user(user_id=id, **data)  # Passa os dados dinamicamente
+    UserDatabase.update_user(user_id=id, **data) 
     return jsonify({"message": "Usuário atualizado com sucesso!"})
 
 @router_user.route('/users/id=<int:id>', methods=['DELETE'])
@@ -54,7 +54,7 @@ def login():
     if connect:
         response = make_response(redirect("http://127.0.0.1:3000/inicio"))
         response.set_cookie("username", user['nome']) 
-        response.set_cookie("idUser", f"{user['idUser']}")  # Define o cookie com o nome do usuário
+        response.set_cookie("idUser", f"{user['idUser']}") 
         return response
 
     return jsonify({"error": "Invalid email or password"}), 401
