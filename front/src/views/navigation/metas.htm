@@ -18,7 +18,7 @@
                     Gasto Total
                 </p>
                 <p style="text-align: center; font-size: 28px;">
-                    R$6543,98
+                    R${{ gasto_total}}
                 </p>
             </div>
 
@@ -28,7 +28,7 @@
                 </span>
                 <div>
                     <p>
-                        Limite R$ 6.544,00
+                        Limite R$ {{ limite }}
                     </p>
                 </div>
             </div>
@@ -54,7 +54,7 @@
             </p>
             <div>
                 <p>
-                    R$0,02
+                    R${{ gasto_limite }}
                 </p>
             </div>
         </div>
@@ -67,7 +67,7 @@
             
             <div>
                 <p>
-                    R$6.544,00
+                    R${{ limite }}
                 </p>
             </div>
 
@@ -79,12 +79,13 @@
             Onde você gastou:
         </p>
         <table class="table-gasto-recente">
-            <!-- <tr>
-                <td>Faramacia</td>
-                <td>29,30%</td>
-                <td>R$1800,00</td>
-            </tr> -->
-            
+            {% for categoria, dados in categorias %}
+                <tr>
+                    <td>{{ categoria }}</td>
+                    <td>{{ dados.porcentagem }}%</td>
+                    <td>R${{ dados.total_gasto }}</td>
+                </tr>
+            {% endfor %}
         </table>
     </div>
 {% endblock %}

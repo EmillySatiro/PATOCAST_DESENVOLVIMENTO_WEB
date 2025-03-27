@@ -39,12 +39,19 @@ server.get('/inicio', async (req,res) => {
   const response = await fetch(
     `http://${host_backend}:${port_backend}/transacao/id=${idUser}`
   );
-  dados = await response.json()
 
+  const user = await fetch(
+    `http://${host_backend}:${port_backend}/users/id=${idUser}`
+  );
+
+  dados = await response.json()
+  const user_data = await user.json()
+  gasto = parseFloat(dados.reduce((acc, curr) => acc + parseFloat(curr.valor), 0)).toFixed(2)
 
   return res.render('./navigation/inicio.htm', {
     transacoes: dados,
-    gasto_total: parseFloat(dados.reduce((acc, curr) => acc + parseFloat(curr.valor), 0)).toFixed(2)
+    gasto_total: gasto,
+    limite: parseFloat(user_data.limite) - gasto
   })
 })
 
@@ -53,7 +60,27 @@ server.get('/contas', async (req,res) => {
 })
 
 server.get('/metas', async (req,res) => {
-  return res.render('./navigation/metas.htm')
+  let idUser = req.cookies.idUser
+  
+  const user = await fetch(
+    `http://${host_backend}:${port_backend}/users/id=${idUser}`
+  );
+
+  const response = await fetch(
+    `http://${host_backend}:${port_backend}/transacao_categoria/id=${idUser}`
+  );
+  
+  dados = await response.json()
+  
+  const user_data = await user.json()
+  gasto = Object.values(dados).reduce((acc, categoria) => acc + categoria.total_gasto, 0);
+  console.log(gasto)
+  return res.render('./navigation/metas.htm', {
+    categorias: dados,
+    limite: user_data.limite,
+    gasto_limite: user_data.limite - gasto,
+    gasto_total: gasto
+  })
 })
 
 server.get('/financas', async (req,res) => {

@@ -2,10 +2,7 @@
 
     {% block styles %}
         <link rel="stylesheet" href="./styles/inicio.css">
-        <!-- <link rel="stylesheet" href="./styles/child-cartao.css"> -->
-        {# {% if condition %}
-            
-        {% endif %} #}
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     {% endblock %}
 
 {% block container %}
@@ -19,17 +16,7 @@
             <p>
                 Relatorio
             </p>
-            <div class="grafico-vertical">
-                <div class="y-grafico">
-                    <p>100%</p>
-                    <p>80%</p>
-                    <p>60%</p>
-                    <p>40%</p>
-                    <p>20%</p>
-                    <p>0%</p>
-                </div>
-                {% include "../partials/grafico.htm" %}
-            </div>
+            <canvas id="meuGrafico" width="400" height="200"></canvas>
         </div>
         <div class="box-limite-cartoes">
             <div class="box-limite">
@@ -121,11 +108,15 @@
                 </span>
                 <div>
                     <p>
-                        Limite R$ 6.544,00
+                        Limite R$ {{ limite }}
                     </p>
                 </div>
             </div>
         </div>
     </div>
 
+{% endblock %}
+
+{% block script %}
+    <script src="./scripts/graph.js"></script>
 {% endblock %}

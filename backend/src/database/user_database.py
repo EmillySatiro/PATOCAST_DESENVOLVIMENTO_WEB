@@ -1,6 +1,7 @@
 from datetime import datetime
 from src.database.db import connection
-
+from decimal import Decimal
+import random
 class UserDatabase:
 
     @staticmethod
@@ -11,8 +12,9 @@ class UserDatabase:
             "sobrenome": user_tuple[2],
             "email": user_tuple[3],
             "senha": user_tuple[4],
-            "criado": user_tuple[5].strftime("%Y-%m-%d %H:%M:%S.%f") if isinstance(user_tuple[5], datetime) else user_tuple[5],
-            "atualizado": user_tuple[6].strftime("%Y-%m-%d %H:%M:%S.%f") if isinstance(user_tuple[6], datetime) else user_tuple[6]
+            "limite": float(user_tuple[5]) if isinstance(user_tuple[5], Decimal) else user_tuple[5],
+            "criado": user_tuple[6].strftime("%Y-%m-%d %H:%M:%S.%f") if isinstance(user_tuple[6], datetime) else user_tuple[6],
+            "atualizado": user_tuple[7].strftime("%Y-%m-%d %H:%M:%S.%f") if isinstance(user_tuple[7], datetime) else user_tuple[7]
         }
         
     @staticmethod
@@ -55,8 +57,8 @@ class UserDatabase:
         if conn:
             with conn.cursor() as cursor:
                 cursor.execute(
-                    "INSERT INTO users (nome, sobrenome, email, senha, criado, atualizado) VALUES (%s, %s, %s, %s, %s, %s)",
-                    (nome, sobrenome, email, senha, datetime.now(), datetime.now())
+                    "INSERT INTO users (nome, sobrenome, email, senha, limite ,criado, atualizado) VALUES (%s, %s, %s, %s, %s, %s, %s)",
+                    (nome, sobrenome, email, senha, random.randrange(1000, 10000), datetime.now(), datetime.now())
                 )
                 conn.commit()
             conn.close()
