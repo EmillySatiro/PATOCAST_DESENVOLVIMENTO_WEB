@@ -36,27 +36,3 @@ class CardDatabase:
         )
         conn.commit()
       conn.close()
-  
-  @staticmethod
-  def update_card(idCartao, **kwargs):
-    if not kwargs:
-      return
-
-    conn = connection()
-    if conn:
-      with conn.cursor() as cursor:
-        query = "UPDATE cartao SET "
-        query += ", ".join([f"{key} = %s" for key in kwargs.keys()])
-        query += " WHERE idCartao = %s"
-        cursor.execute(query, list(kwargs.values()) + [idCartao])
-        conn.commit()
-      conn.close()
-    
-  @staticmethod
-  def delete_card(idCartao):
-    conn = connection()
-    if conn:
-      with conn.cursor() as cursor:
-        cursor.execute("DELETE FROM cartao WHERE idCartao = %s", (idCartao,))
-        conn.commit()
-      conn.close()

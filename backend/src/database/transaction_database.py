@@ -66,7 +66,7 @@ class TransactionDatabase:
                 SUM(valor) AS total_valor
             FROM transactions 
             WHERE idUser = %s
-            AND data >= NOW() - INTERVAL '1 months'
+            AND data <= NOW() - INTERVAL '1 months'
             GROUP BY categoria
             ORDER BY categoria ASC;
         '''

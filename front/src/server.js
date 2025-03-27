@@ -60,7 +60,9 @@ server.get('/inicio', async (req,res) => {
 })
 
 server.get('/contas', async (req,res) => {
-  return res.render('./navigation/contas.htm')
+  return res.render('./navigation/contas.htm', {
+    idUser: req.cookies.idUser
+  })
 })
 
 server.get('/metas', async (req,res) => {

@@ -32,9 +32,7 @@ def create_user():
 
 @router_user.route('/perfil/id=<int:id>', methods=['POST','PUT'])
 def update_user(id):
-    data = {key: value for key, value in request.form.items() if value.strip()}  # Remove campos vazios
-    print(data)
-    
+    data = {key: value for key, value in request.form.items() if value.strip()}
     if not data:
         return jsonify({"error": "Nenhum dado fornecido para atualização"}), 400
 
