@@ -7,12 +7,12 @@ VALUES
 
 INSERT INTO transactions (idUser, estabelecimento, categoria, valor, data)
 VALUES 
-  (1, 'Mercado', 'Alimentação', 100.00, '2024-01-01'),
-  (1, 'Farmácia', 'Saúde', 50.00, '2024-01-02'),
-  (1, 'Posto de gasolina', 'Transporte', 200.00, '2024-01-03'),
-  (1, 'Restaurante', 'Alimentação', 150.00, '2024-01-04'),
-  (1, 'Cinema', 'Entretenimento', 30.00, '2024-01-05'),
-  (1, 'Cinema', 'Entretenimento', 30.00, '2024-02-05'),
-  (1, 'Restaurante', 'Alimentação', 150.00, '2024-02-04'),
-  (1, 'Posto de gasolina', 'Transporte', 200.00, '2024-02-03');
+  (1, 'Mercado', 'Alimentação', 100.00, '2025-01-01'),
+  (1, 'Farmácia', 'Saúde', 50.00, '2025-01-02'),
+  (1, 'Posto de gasolina', 'Transporte', 200.00, '2025-01-03'),
+  (1, 'Restaurante', 'Alimentação', 150.00, '2025-01-04'),
+  (1, 'Cinema', 'Entretenimento', 30.00, '2025-01-05'),
+  (1, 'Cinema', 'Entretenimento', 30.00, '2025-02-05'),
+  (1, 'Restaurante', 'Alimentação', 150.00, '2025-02-04'),
+  (1, 'Posto de gasolina', 'Transporte', 200.00, '2025-02-03');
   

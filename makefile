@@ -5,6 +5,7 @@ all:
 .PHONY: backend
 
 backend:
+	@pip install -r backend/requirements.txt:
 	@python backend/app.py
 
 front: frontend
