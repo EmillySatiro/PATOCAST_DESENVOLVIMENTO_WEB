@@ -177,7 +177,10 @@ server.get('/perguntas', async (req,res) => {
 })
 
 server.get('/relatorio', async (req,res) => {
-  return res.render('./pdf/relatorio.htm')
+  return res.sendFile('./pdf/relatorio.htm', {
+    nome: 'Jonas César'
+  })
+
 })
 
 server.listen(port)
