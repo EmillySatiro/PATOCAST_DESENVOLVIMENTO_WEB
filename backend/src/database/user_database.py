@@ -45,7 +45,7 @@ class UserDatabase:
         if conn:
             with conn.cursor() as cursor:
                 cursor.execute(
-                    "INSERT INTO users (nome, sobrenome, email, senha, limite ,criado, atualizado) VALUES (%s, %s, %s, %s, %s, %s, %s)",
+                    "INSERT INTO users (nome, sobrenome, email, senha, limite ,criado, atualizado) VALUES (%s, %s, %s, crypt(%s,gen_salt('bf')), %s, %s, %s)",
                     (nome, sobrenome, email, senha, random.randrange(1000, 10000), datetime.now(), datetime.now())
                 )
                 conn.commit()
