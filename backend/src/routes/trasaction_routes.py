@@ -1,19 +1,23 @@
-from flask import Blueprint, jsonify, Response
+from flask import Blueprint, jsonify, Response, request
 import json
 from src.database.transaction_database import TransactionDatabase
 
 router_transaction = Blueprint('transacao', __name__)
 
-@router_transaction.route('/transacao/id=<int:id>', methods=['GET'])
-def get_transacoes(id):
-    transacoes = TransactionDatabase.get_all_transactions(id)
-    transacoes = [TransactionDatabase.format_transaction(transacao) for transacao in transacoes]
-    
-    
+@router_transaction.route('/transacao/', methods=['GET'])
+def get_transacoes():
+    idUser = request.args.get('id')  # Recebe o ID do usuário
+    mes = request.args.get('mes')  # Recebe o mês filtrado (opcional)
+    categoria = request.args.get('categoria')  # Recebe a categoria filtrada (opcional)
+
+    # Chama a função para pegar as transações com base nos filtros
+    transacoes = TransactionDatabase.get_all_transactions(idUser, mes, categoria)
+
     return Response(
-            json.dumps(transacoes), 
-            mimetype='application/json'
+        json.dumps(transacoes), 
+        mimetype='application/json'
     )
+
 
 @router_transaction.route('/get_categorias/id=<int:id>', methods=['GET'])
 def get_categoria(id):

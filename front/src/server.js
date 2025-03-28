@@ -39,7 +39,7 @@ server.get('/inicio', async (req,res) => {
   let idUser = req.cookies.idUser
 
   const response = await fetch(
-    `http://${host_backend}:${port_backend}/transacao/id=${idUser}`
+    `http://${host_backend}:${port_backend}/transacao?id=${idUser}`
   );
 
   const response_user = await fetch(
@@ -114,7 +114,7 @@ server.get('/financas', async (req,res) => {
   let idUser = req.cookies.idUser
 
   const response_transacao = await fetch(
-    `http://${host_backend}:${port_backend}/transacao/id=${idUser}`
+    `http://${host_backend}:${port_backend}/transacao?id=${idUser}`
   );
   dados = await response_transacao.json()
 
@@ -166,7 +166,7 @@ server.get('/historico', async (req,res) => {
   let idUser = req.cookies.idUser
 
   const response = await fetch(
-    `http://${host_backend}:${port_backend}/transacao/id=${idUser}`
+    `http://${host_backend}:${port_backend}/transacao?id=${idUser}`
   );
   dados = await response.json()
   return res.render('./navigation/operacoes.htm',{transacoes: dados})

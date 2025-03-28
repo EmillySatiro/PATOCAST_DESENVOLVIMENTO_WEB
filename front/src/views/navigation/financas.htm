@@ -22,12 +22,14 @@
                 <div class="filtros">
 
                     <select id="mes" name="mes" class="filtro">
+                        <option value="todos">Todos</option>
                         {% for mes in meses %}
                             <option value="{{ mes.ano_mes }}">{{ mes.mes }}</option>
                         {% endfor %}
                     </select>
                     
                     <select id="categoria" name="categoria" class="filtro">
+                        <option value="todas">Todas</option>
                         {% for categoria in categorias %}
                             <option value="{{ categoria }}">{{ categoria }}</option>
                         {% endfor %}
@@ -39,7 +41,7 @@
                         Gasto Total
                     </p>
                     <div>
-                        <p>
+                        <p id="gasto_total">
                             R${{ gasto_total }}
                         </p>
                     </div>
@@ -69,7 +71,7 @@
                     <th>Valor</th>
                 </tr>
             </thead>
-            <tbody class="table-info">
+            <tbody class="table-info" id="table-info">
                 {% if transacoes.length %}
                     {% for transacao in transacoes %}
                         <tr>
@@ -92,4 +94,5 @@
 
 {% block script %}
     <script src="./scripts/graph_month.js"></script>
+    <script src="./scripts/filtro_financa.js"></script>
 {% endblock %}

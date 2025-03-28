@@ -14,18 +14,32 @@ class TransactionDatabase:
         }
     
     @staticmethod
-    def get_all_transactions(idUser) -> tuple:
+    def get_all_transactions(idUser, mes=None, categoria=None) -> tuple:
         conn = connection()
         if conn:
+            query = '''
+                SELECT * FROM transactions 
+                WHERE idUser = %s
+            '''
+            params = [idUser]
+
+            if mes and mes != 'todas':
+                query += " AND TO_CHAR(data, 'YYYY-MM') = %s"
+                params.append(mes)
+
+            # Aplicar filtro de categoria, se fornecido
+            if categoria and categoria != 'todos':
+                query += " AND categoria = %s"
+                params.append(categoria)
+
+            # Ordenar por data, do mais recente para o mais antigo
+            query += " ORDER BY data DESC"
+
             with conn.cursor() as cursor:
-                cursor.execute('''
-                        SELECT * FROM transactions 
-                        WHERE idUser = (SELECT idUser FROM users WHERE idUser = %s)
-                        ORDER BY data DESC;
-                    ''', 
-                    (idUser,)
-                )
+                cursor.execute(query, tuple(params))
                 transactions = cursor.fetchall()
+                transactions = [TransactionDatabase.format_transaction(row) for row in transactions]
+
             conn.close()
             return transactions
         
@@ -217,10 +231,10 @@ class TransactionDatabase:
             with conn.cursor() as cursor:
                 cursor.execute(query, (idUser,))
                 resultado = cursor.fetchall()
+                # Formatar o resultado conforme desejado
                 resultado_final = [{'mes': mes_ano, 'ano_mes': ano_mes} for mes_ano, ano_mes in resultado]
-        
-        return resultado_final
 
+        return resultado_final
     
     @staticmethod
     def get_transactions_categoria(idUser,categoria,mes) -> dict:
@@ -242,3 +256,24 @@ class TransactionDatabase:
                 resultado = cursor.fetchall()
                 
         return resultado
+    
+    # @staticmethod
+    # def get_all_transactions_mes(idUser,mes) -> dict:
+    #     """
+    #     Retorna todas as transacoes de acordo com o mes escolhido pelo usuario.
+    #     """       
+        
+    #     query = '''
+    #         SELECT *
+    #         FROM transactions 
+    #         WHERE idUser = %s
+    #         AND TO_CHAR(data, 'YYYY-MM') = %s;
+
+    #     '''
+        
+    #     with connection() as conn:
+    #         with conn.cursor() as cursor:
+    #             cursor.execute(query, (idUser,mes))
+    #             resultado = cursor.fetchall()
+    #             resultado = [TransactionDatabase.format_transaction(row) for row in resultado]
+    #     return resultado
