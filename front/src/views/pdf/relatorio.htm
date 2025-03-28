@@ -16,16 +16,16 @@
     <div>
         <div class="cabecalho">
             <h2>
-                Fulano de tal da silva
+                {{ dados.nome }} {{ dados.sobrenome }}
             </h2>
         </div>
 
         <div class="subcabecalho">
             <p>
-                Data de Inicio: 01/01/2023
+                Data de Inicio: {{ dados.data_inicio }}
             </p>
             <p>
-                Data Final: 01/01/2023
+                Data Final: {{ dados.data_fim }}
             </p>
         </div>
         
@@ -44,24 +44,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Supermercado</td>
-                        <td>Alimentação</td>
-                        <td>01/01/2023</td>
-                        <td>R$ 100,00</td>
-                    </tr>
-                    <tr>
-                        <td>Farmácia</td>
-                        <td>Saúde</td>
-                        <td>02/01/2023</td>
-                        <td>R$ 50,00</td>
-                    </tr>
-                    <tr>
-                        <td>Posto de Gasolina</td>
-                        <td>Transporte</td>
-                        <td>03/01/2023</td>
-                        <td>R$ 200,00</td>
-                    </tr>
+                    
+                    {% for gasto in dados.gastos_maiores %}
+                        <tr>
+                            <td>{{ gasto.estabelecimento }}</td>
+                            <td>{{ gasto.categoria }}</td>
+                            <td>{{ gasto.data }}</td>
+                            <td>R$ {{ gasto.valor }}</td>
+                        </tr>
+                    {% endfor %}
+
                 </tbody>
             </table>
         </div>
@@ -72,7 +64,7 @@
 
         <div class="gasto-total">
             <p>Gasto total da filtragem</p>
-            <p>R$ 350,00</p>
+            <p>R$ {{ dados.gasto_total }}</p>
         </div>
 
         <div class="cabecalho">
@@ -90,28 +82,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Supermercado</td>
-                        <td>Alimentação</td>
-                        <td>01/01/2023</td>
-                        <td>R$ 100,00</td>
-                    </tr>
-                    <tr>
-                        <td>Farmácia</td>
-                        <td>Saúde</td>
-                        <td>02/01/2023</td>
-                        <td>R$ 50,00</td>
-                    </tr>
-                    <tr>
-                        <td>Posto de Gasolina</td>
-                        <td>Transporte</td>
-                        <td>03/01/2023</td>
-                        <td>R$ 200,00</td>
-                    </tr>
+                    {% for gasto in dados.gastos %}
+                        <tr>
+                            <td>{{ gasto.estabelecimento }}</td>
+                            <td>{{ gasto.categoria }}</td>
+                            <td>{{ gasto.data }}</td>
+                            <td>R$ {{ gasto.valor }}</td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
-
     </div>
 
 {% endblock %}

@@ -19,7 +19,6 @@ VALUES
   (1, 'Posto de gasolina', 'Transporte', 400.00, '2025-02-28'),
   (1, 'Posto de gasolina', 'Transporte', 400.00, '2025-03-1');
   
-
   INSERT INTO cartao (idUser, numero, nome, meta, tipo)
   VALUES
     (1, 12312312312, 'Jonas G P Sousa', 1000.00,'Crédito'),

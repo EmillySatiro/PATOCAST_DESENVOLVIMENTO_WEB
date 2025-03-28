@@ -1,5 +1,6 @@
 const express = require('express')
 const cookieParser = require('cookie-parser');
+const { chromium } = require('playwright'); // Ou 'firefox'/'webkit'
 
 const server = express()
 const port = process.env.PORT || 3000
@@ -134,6 +135,7 @@ server.get('/financas', async (req,res) => {
   meses = await response_meses.json()
 
   return res.render('./navigation/financas.htm', {
+    idUser: idUser,
     transacoes: dados,
     gasto_total: parseFloat(dados.reduce((acc, curr) => acc + parseFloat(curr.valor), 0)).toFixed(2),
     pendente: parseFloat(gasto_pendente.pendente).toFixed(2),
@@ -176,11 +178,101 @@ server.get('/perguntas', async (req,res) => {
   return res.render('./auth/perguntas.htm')
 })
 
-server.get('/relatorio', async (req,res) => {
-  return res.sendFile('./pdf/relatorio.htm', {
-    nome: 'Jonas César'
-  })
+const somenteExportarPdf = (req, res, next) => {
+  const token = req.query.token;
+  if (token !== 'SECRETO_123') { // Substitua por um token complexo
+    return res.status(403).send('Acesso negado: token inválido');
+  }
+  next();
+};
 
-})
+server.get('/relatorio',somenteExportarPdf,async (req, res) => {
+  const { id, mes, categoria } = req.query;
+  
+  const response_user = await fetch(
+    `http://${host_backend}:${port_backend}/users/id=${id}`
+  );
+  const user = await response_user.json()
+
+  const response_transacao = await fetch(
+    `http://${host_backend}:${port_backend}/transacao?id=${id}&mes=${mes}&categoria=${categoria}`
+  );
+  const transacoes = await response_transacao.json()
+  
+  // 1. Converter as strings de data para objetos Date
+  const transacoesComDatas = transacoes.map(transacao => {
+    const [dia, mes, ano] = transacao.data.split('/').map(Number);
+    return {
+      ...transacao,
+      dataObj: new Date(ano, mes - 1, dia) // Meses são 0-indexed no JS (janeiro = 0)
+    };
+  });
+
+  const datas = transacoesComDatas.map(t => t.dataObj);
+
+  const data_min = new Date(Math.min(...datas));
+  const data_max = new Date(Math.max(...datas));
+
+  const data_inicio = data_min.toLocaleDateString('pt-BR');
+  const data_fim = data_max.toLocaleDateString('pt-BR');
+
+  const gastos_maiores = transacoes.sort((a, b) => b.valor - a.valor).slice(0, 3);
+  const gasto = parseFloat(transacoes.reduce((acc, curr) => acc + parseFloat(curr.valor), 0)).toFixed(2)
+
+  const dados = {
+    nome: user.nome,
+    sobrenome: user.sobrenome,
+    data_inicio: data_inicio,
+    data_fim: data_fim,
+    gasto_total: gasto,
+    gastos_maiores: gastos_maiores,
+    gastos: transacoes,
+  }
+
+  return res.render('./pdf/relatorio.htm',{ dados:dados})
+});
+
+server.get('/exportar-pdf', express.urlencoded({ extended: true }), async (req, res) => {
+  const { id, mes, categoria } = req.query;
+  
+  let browser;
+  try {
+    browser = await chromium.launch({
+      headless: true,
+      args: ['--disable-web-security', '--no-sandbox']
+    });
+
+    const page = await browser.newPage();
+    
+    await page.setViewportSize({ width: 1200, height: 5000 });
+    
+    await page.goto(`http://localhost:3000/relatorio?token=SECRETO_123&id=${id}&mes=${mes}&categoria=${categoria}`, {
+      waitUntil: 'networkidle0',
+      timeout: 60000
+    });
+
+    await page.waitForFunction(() => {
+      const bodyHeight = document.body.scrollHeight;
+      return bodyHeight > 1000;
+    });
+
+    const pdfBuffer = await page.pdf({
+      format: 'A4',
+      printBackground: true,
+      displayHeaderFooter: false,
+      preferCSSPageSize: false
+    });
+
+    // 7. Envio do PDF
+    res.setHeader('Content-Type', 'application/pdf');
+    res.send(pdfBuffer);
+
+  } catch (error) {
+    console.error('Erro ao gerar PDF:', error);
+    res.status(500).send('Erro na geração do PDF: ' + error.message);
+  } finally {
+    if (browser) await browser.close();
+  }
+});
 
 server.listen(port)

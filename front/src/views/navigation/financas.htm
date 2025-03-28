@@ -87,14 +87,31 @@
         </table>
     </div>
     <div class="icon-downloads">
-            <button class="btn-download" id="btnDownload" onclick="">
-                <img src="./images/download.png" alt="Baixar">
-            </button>
+            <a id="downloadLink" href="/exportar-pdf/?id={{ idUser }}" download="relatorio.pdf">
+                <img src="./images/download.png" alt="Download" srcset="">
+            </a>
     </div>
 {% endblock %}
 
 {% block script %}
     <script src="./scripts/graph_month.js"></script>
     <script src="./scripts/filtro_financa.js"></script>
-    <script src="/scripts/gerar_pdf.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mesSelect = document.getElementById('mes');
+            const categoriaSelect = document.getElementById('categoria');
+            const downloadLink = document.getElementById('downloadLink');
+            const idUser = '{{ idUser }}';
+            
+            function updateDownloadLink() {
+                const mes = mesSelect.value;
+                const categoria = categoriaSelect.value;
+                downloadLink.href = `/exportar-pdf/?id=${idUser}&mes=${mes}&categoria=${categoria}`;
+            }
+            
+            mesSelect.addEventListener('change', updateDownloadLink);
+            categoriaSelect.addEventListener('change', updateDownloadLink);
+            updateDownloadLink();
+        });
+    </script>
 {% endblock %}

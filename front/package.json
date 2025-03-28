@@ -4,14 +4,13 @@
     "start": "nodemon src/server.js"
   },
   "dependencies": {
+    "axios": "^1.8.4",
     "chart.js": "^4.4.8",
     "cookie-parser": "^1.4.7",
     "express": "^4.21.1",
     "fs": "^0.0.1-security",
-    "html2canvas": "^1.4.1",
-    "html2pdf.js": "^0.10.3",
-    "jspdf": "^3.0.1",
     "nunjucks": "^3.2.4",
+    "playwright": "^1.51.1",
     "progressbar.js": "^1.1.1",
     "sass": "^1.81.0",
     "shifty": "^3.0.4"
