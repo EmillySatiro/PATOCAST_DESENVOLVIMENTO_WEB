@@ -79,7 +79,8 @@ class TransactionDatabase:
                 SUM(valor) AS total_valor
             FROM transactions 
             WHERE idUser = %s
-            AND data <= NOW() - INTERVAL '1 months'
+            AND data <= NOW()
+            AND data >= NOW() - INTERVAL '1 months'
             GROUP BY categoria
             ORDER BY categoria ASC;
         '''
@@ -136,7 +137,7 @@ class TransactionDatabase:
     @staticmethod
     def get_transactions_days_in_current_week(IdUser) -> list:
         """
-        Retorna as transações dos últimos 7 dias.
+        Retorna as transações do usuário dos últimos 30 dias, agrupadas por dia.
         """       
         query = '''
             SELECT 
@@ -144,8 +145,8 @@ class TransactionDatabase:
                 SUM(valor) AS total_valor
             FROM transactions 
             WHERE idUser = %s
-            AND data <= NOW()
             AND data > NOW() - INTERVAL '1 months'
+            AND data <= NOW()
             GROUP BY dia;
         '''
         

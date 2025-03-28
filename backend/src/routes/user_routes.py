@@ -21,15 +21,22 @@ def get_user(id):
 def create_user():
     data = request.form.to_dict()
     
-    UserDatabase.create_user(
+    idUser = UserDatabase.create_user(
         nome=data['nome'],
         sobrenome=data['sobrenome'],
         email=data['email'],
         senha=data['senha']
     )
     
-    return jsonify({"message": "User created successfully"}), 201
-
+    if not idUser:
+        return jsonify({"error": "Failed to create user"}), 500
+    else:
+        response = make_response(redirect("http://127.0.0.1:3000/inicio"))
+        response.set_cookie("username", data['nome']) 
+        response.set_cookie("idUser", f"{idUser}") 
+    
+        return response
+    
 @router_user.route('/perfil/id=<int:id>', methods=['POST','PUT'])
 def update_user(id):
     data = {key: value for key, value in request.form.items() if value.strip()}

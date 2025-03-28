@@ -45,11 +45,19 @@ class UserDatabase:
         if conn:
             with conn.cursor() as cursor:
                 cursor.execute(
-                    "INSERT INTO users (nome, sobrenome, email, senha, limite ,criado, atualizado) VALUES (%s, %s, %s, crypt(%s,gen_salt('bf')), %s, %s, %s)",
+                    '''
+                        INSERT INTO 
+                        users (nome, sobrenome, email, senha, limite ,criado, atualizado) 
+                        VALUES (%s, %s, %s, crypt(%s,gen_salt('bf')), %s, %s, %s) returning idUser;
+                    ''',
                     (nome, sobrenome, email, senha, random.randrange(1000, 10000), datetime.now(), datetime.now())
                 )
                 conn.commit()
+                user_id = cursor.fetchone()[0]
             conn.close()
+            return user_id
+        
+        return False
 
     @staticmethod
     def update_user(user_id, **kwargs):
