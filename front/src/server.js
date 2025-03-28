@@ -176,4 +176,8 @@ server.get('/perguntas', async (req,res) => {
   return res.render('./auth/perguntas.htm')
 })
 
+server.get('/relatorio', async (req,res) => {
+  return res.render('./pdf/relatorio.htm')
+})
+
 server.listen(port)

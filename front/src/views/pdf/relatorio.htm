@@ -1,0 +1,114 @@
+{% extends "../page-base.htm" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="./styles/relatorio.css">
+{% endblock %}
+
+{% block container %}
+    {% include "../partials/logo_escura.htm" %}
+{% endblock %}
+
+{% block content %}
+    <div class="cabecalho">
+        <h1>Relatório de Atividades</h1>
+    </div>
+    <div>
+        <div class="cabecalho">
+            Fulano de tal
+        </div>
+
+        <div class="subcabecalho">
+            <p>
+                Data de Inicio: 01/01/2023
+            </p>
+            <p>
+                Data Final: 01/01/2023
+            </p>
+        </div>
+        
+        <div class="cabecalho">
+            <h2>Seus maiores picos</h2>
+        </div>
+
+        <div class="maiores-gasto">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Local</th>
+                        <th>Categoria</th>
+                        <th>Data</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Supermercado</td>
+                        <td>Alimentação</td>
+                        <td>01/01/2023</td>
+                        <td>R$ 100,00</td>
+                    </tr>
+                    <tr>
+                        <td>Farmácia</td>
+                        <td>Saúde</td>
+                        <td>02/01/2023</td>
+                        <td>R$ 50,00</td>
+                    </tr>
+                    <tr>
+                        <td>Posto de Gasolina</td>
+                        <td>Transporte</td>
+                        <td>03/01/2023</td>
+                        <td>R$ 200,00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="cabecalho">
+            <h2>Gasto total</h2>
+        </div>
+
+        <div class="gasto-total">
+            <p>Gasto total da filtragem</p>
+            <p>R$ 350,00</p>
+        </div>
+
+        <div class="cabecalho">
+            <h2>Histórico (filtrado)</h2>
+        </div>
+
+        <div class="historico">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Local</th>
+                        <th>Categoria</th>
+                        <th>Data</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Supermercado</td>
+                        <td>Alimentação</td>
+                        <td>01/01/2023</td>
+                        <td>R$ 100,00</td>
+                    </tr>
+                    <tr>
+                        <td>Farmácia</td>
+                        <td>Saúde</td>
+                        <td>02/01/2023</td>
+                        <td>R$ 50,00</td>
+                    </tr>
+                    <tr>
+                        <td>Posto de Gasolina</td>
+                        <td>Transporte</td>
+                        <td>03/01/2023</td>
+                        <td>R$ 200,00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -3,6 +3,7 @@
 {% block styles %}
     <link rel="stylesheet" href="./styles/financa.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 {% endblock %}
 
 {% block container %}
@@ -86,13 +87,14 @@
         </table>
     </div>
     <div class="icon-downloads">
-        <a href="#" onclick="downloadFile()">
-            <img src="./images/download.png">
-        </a>
+            <button class="btn-download" id="btnDownload" onclick="">
+                <img src="./images/download.png" alt="Baixar">
+            </button>
     </div>
 {% endblock %}
 
 {% block script %}
     <script src="./scripts/graph_month.js"></script>
     <script src="./scripts/filtro_financa.js"></script>
+    <script src="/scripts/gerar_pdf.js"></script>
 {% endblock %}
