@@ -23,12 +23,12 @@ class TransactionDatabase:
             '''
             params = [idUser]
 
-            if mes and mes != 'todas':
+            if mes and mes != 'todos':
                 query += " AND TO_CHAR(data, 'YYYY-MM') = %s"
                 params.append(mes)
 
             # Aplicar filtro de categoria, se fornecido
-            if categoria and categoria != 'todos':
+            if categoria and categoria != 'todas':
                 query += " AND categoria = %s"
                 params.append(categoria)
 

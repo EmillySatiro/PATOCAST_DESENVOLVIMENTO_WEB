@@ -7,8 +7,8 @@
 
     // Monta a URL com os filtros
     let url = `http://localhost:5000/transacao/?id=${idUser}`;
-    if (mes && mes !== "todos") url += `&mes=${mes}`;
-    if (categoria && categoria !== "todas") url += `&categoria=${categoria}`;
+    if (mes ) url += `&mes=${mes}`;
+    if (categoria) url += `&categoria=${categoria}`;
 
     // Envia a requisição para a API
     const response = await fetch(url);
