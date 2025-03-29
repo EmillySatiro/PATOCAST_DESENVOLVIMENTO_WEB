@@ -1,5 +1,5 @@
 
-def criar_corpo_email_recupercao_de_conta_html(usuario, senha):
+def criar_corpo_email_recupercao_de_conta_html(token, email):
     corpo_email = f"""
     <html>
     <head>
@@ -34,11 +34,11 @@ def criar_corpo_email_recupercao_de_conta_html(usuario, senha):
     <body>
       <div class="container">
       <div class="header">
-        <h2>Recuperação de Conta</h2>
+        <h2>Link de Recuperação de Senha</h2>
       </div>
       <div class="content">
-        <p>Ola, <strong>{usuario}</strong></p>
-        <p>Sua nova senha é: <strong>{senha}</strong></p>
+        <p>Link para recuperação de senha:</p>
+        <p><a href="http://localhost:3000/recuperar_senha/token={token}&email={email}">Clique aqui para redefinir sua senha</a></p>
       </div>
       <div class="footer">
         <p>Atenciosamente,</p>
@@ -49,6 +49,7 @@ def criar_corpo_email_recupercao_de_conta_html(usuario, senha):
     </html>
     """
     return corpo_email
+
 
 def criar_corpo_envio_arquivo_html():
     corpo_email = f"""
