@@ -33,7 +33,10 @@ server.get('/cadastrar', async (req,res) => {
 })
 
 server.get('/recuperar_conta', async (req,res) => {
-  return res.render('./auth/esqueci-senha.htm')
+  token = Math.random().toString(36).substr(2, 8);
+  console.log(token)
+  
+  return res.render('./auth/esqueci-senha.htm', { token: token });
 })
 
 server.get('/alterar-senha', async (req,res) => {
