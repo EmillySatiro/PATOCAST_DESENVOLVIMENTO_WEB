@@ -1,5 +1,5 @@
 
-def criar_corpo_email_recupercao_de_conta_html(token, email):
+def criar_corpo_email_recupercao_de_conta_html( email):
     corpo_email = f"""
     <html>
     <head>
@@ -38,7 +38,7 @@ def criar_corpo_email_recupercao_de_conta_html(token, email):
       </div>
       <div class="content">
         <p>Link para recuperação de senha:</p>
-        <p><a href="http://localhost:3000/recuperar_senha/token={token}&email={email}">Clique aqui para redefinir sua senha</a></p>
+        <p><a href="http://localhost:3000/alterar-senha?email={email}">Clique aqui para redefinir sua senha</a></p>
       </div>
       <div class="footer">
         <p>Atenciosamente,</p>

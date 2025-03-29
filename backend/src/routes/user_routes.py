@@ -54,6 +54,7 @@ def delete_user(id):
 @router_user.route('/login', methods=['POST'])
 def login():
     data = request.form.to_dict()
+    print(f"Login attempt for email: {data['email']}")
     connect,user = UserDatabase.connect_user(data['email'], data['senha'])
     
     if connect:

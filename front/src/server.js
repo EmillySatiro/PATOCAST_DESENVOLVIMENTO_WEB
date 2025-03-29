@@ -33,14 +33,12 @@ server.get('/cadastrar', async (req,res) => {
 })
 
 server.get('/recuperar_conta', async (req,res) => {
-  token = Math.random().toString(36).substr(2, 8);
-  console.log(token)
-  
-  return res.render('./auth/esqueci-senha.htm', { token: token });
+  return res.render('./auth/esqueci-senha.htm');
 })
 
-server.get('/alterar-senha', async (req,res) => {
-  return res.render('./auth/recuperacao-senha.htm')
+server.get('/alterar-senha', express.urlencoded({ extended: true }),async (req,res) => {
+  const email = req.query.email
+  return res.render('./auth/recuperacao-senha.htm', { email: email });
 })
 
 server.get('/inicio', async (req,res) => {

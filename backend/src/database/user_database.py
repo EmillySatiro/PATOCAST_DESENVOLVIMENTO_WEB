@@ -61,6 +61,22 @@ class UserDatabase:
         return []
 
     @staticmethod
+    def update_user_password(email, password):
+        conn = connection()
+        if conn:
+            with conn.cursor() as cursor:
+                cursor.execute(
+                    '''
+                        UPDATE users 
+                        SET senha = crypt(%s, gen_salt('bf')), atualizado = %s 
+                        WHERE email = %s
+                    ''',
+                    (password, datetime.now(), email)
+                )
+                conn.commit()
+            conn.close()
+    
+    @staticmethod
     def get_user_by_id(user_id):
         conn = connection()
         if conn:

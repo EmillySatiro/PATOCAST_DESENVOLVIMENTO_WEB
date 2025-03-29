@@ -15,11 +15,13 @@ def teste():
     return "Hello World"
 
 app = Flask(__name__)
-# app.register_blueprint(rout_teste)
-# app.register_blueprint(router_user)
-# app.register_blueprint(router_transaction)
-# app.register_blueprint(card_routes)
+
+app.register_blueprint(rout_teste)
+app.register_blueprint(router_user)
+app.register_blueprint(router_transaction)
+app.register_blueprint(card_routes)
 app.register_blueprint(email_routes)
+
 CORS(app)
 
 if __name__ == '__main__':

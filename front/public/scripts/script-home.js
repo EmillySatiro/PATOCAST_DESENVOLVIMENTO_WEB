@@ -65,16 +65,14 @@ function ativaNavigation(){
 }
 
 function getCookie(name) {
-    let cookies = document.cookie.split('; ');
-    for (let cookie of cookies) {
-        let [key, value] = cookie.split('=');
-        if (key === name) return decodeURIComponent(value);
-    }
-    return null;
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
 // Atualiza o nome do usuário na tela
 let username = getCookie("username"); 
 if (username) {
+    username = username.replace(/"/g, "");
     document.getElementById("username").textContent = username;
 }
