@@ -13,19 +13,13 @@ services:
     depends_on:
       - backend
     
-
   backend:
     build:
       context: ./backend
     ports:
       - "5000:5000"
-    environment:
-      POSTGRES_DB: patocash
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
-      POSTGRES_HOST: postgres
-      POSTGRES_PORT: 5432
-      DOCKER_ENV: docker_on
+    env_file:
+      - .env-docker
     depends_on:
       - postgres
 
