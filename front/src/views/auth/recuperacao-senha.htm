@@ -9,30 +9,22 @@
     {% endblock %}
 
     {% block content %}
-
         <div class="content-box">
             {% include "../partials/logo_clara.htm" %}
-            
             <div class="box-info">
-                <form action="http://127.0.0.1:5000/perfil/id={{idUser}}" method="post" class="form-email">
+
+                <form action="" method="post" class="form-email">
                     <div class="label-form">
                         <h3>
                             Esqueci Minha Senha
                         </h3>
                         <p>
-                            Por favor, informe seu e-mail e você receberá sua nova senha.
+                            Digite sua senha e clique em confirmar para redefinir sua senha.
                         </p>
                     </div>
-
-                    <input type="email" name="email" id="" placeholder="E-Mail">
-
-                    <button type="submit">Enviar Ticket</button>
-
-                    <a href="/">
-                        <p>
-                            Cancelar
-                        </p>
-                    </a>
+                    <input type="text" name="senha" id="" placeholder="Senha" required>
+                    <input type="text" name="senha-correta" id="" placeholder="Senha Novamente" required>
+                    <button type="submit">Confirmar</button>
                 </form>
             </div>
         </div>

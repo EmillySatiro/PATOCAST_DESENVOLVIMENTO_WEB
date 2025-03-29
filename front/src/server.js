@@ -36,6 +36,10 @@ server.get('/recuperar_conta', async (req,res) => {
   return res.render('./auth/esqueci-senha.htm')
 })
 
+server.get('/alterar-senha', async (req,res) => {
+  return res.render('./auth/recuperacao-senha.htm')
+})
+
 server.get('/inicio', async (req,res) => {
   let idUser = req.cookies.idUser
 
