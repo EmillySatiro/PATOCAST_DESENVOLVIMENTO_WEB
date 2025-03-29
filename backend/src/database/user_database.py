@@ -16,6 +16,38 @@ class UserDatabase:
             "criado": user_tuple[6].strftime("%Y-%m-%d %H:%M:%S.%f") if isinstance(user_tuple[6], datetime) else user_tuple[6],
             "atualizado": user_tuple[7].strftime("%Y-%m-%d %H:%M:%S.%f") if isinstance(user_tuple[7], datetime) else user_tuple[7]
         }
+        
+    @staticmethod
+    def get_new_password(user_id) -> str:
+        conn = connection()
+        if conn:
+            with conn.cursor() as cursor:
+                new_password = random.randrange(0, 100000)
+                new_password = str(new_password)
+                new_password = new_password.zfill(6)
+                cursor.execute(
+                    '''
+                        UPDATE users 
+                        SET senha = crypt(%s, gen_salt('bf')), atualizado = %s 
+                        WHERE idUser = %s
+                    ''',
+                    (new_password, datetime.now(), user_id)
+                )
+                conn.commit()
+            conn.close()
+            return new_password
+        return None
+    
+    @staticmethod
+    def get_user_by_email(email):
+        conn = connection()
+        if conn:
+            with conn.cursor() as cursor:
+                cursor.execute("SELECT * FROM users WHERE email = %s", (email,))
+                user = cursor.fetchone()
+            conn.close()
+            return UserDatabase.format_user_data(user) if user else None
+        return None
     
     @staticmethod
     def get_all_users():

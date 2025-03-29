@@ -7,16 +7,15 @@ from os import getenv
 email_sender = EmailSender(getenv("EMAIL"), getenv("EMAIL_PASSWORD"))
 email_routes = Blueprint('email_routes', __name__)
 
-@email_routes.route('/email/recuperar_senha/id=<int:id>', methods=['POST'])
-def send_email(id):
+@email_routes.route('/email/recuperar_senha/email=<string:email>', methods=['GET'])
+def recuperar_senha(email):
+    user = UserDatabase.get_user_by_email(email)
+    if not user:
+        return jsonify({"error": "User not found"}), 404
     
-    user = UserDatabase.get_user_by_id(id)
-
-    email = user['email']
-    if not email:
-        return jsonify({"error": "User does not have an email"}), 400
-    
-    new_password = UserDatabase.generate_new_password(id)
+    new_password = UserDatabase.get_new_password(user['idUser'])
+    if not new_password:
+        return jsonify({"error": "Failed to generate new password"}), 500
     
     try:
         email_sender.send_email(
