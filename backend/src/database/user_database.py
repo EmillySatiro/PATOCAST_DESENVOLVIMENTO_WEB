@@ -61,22 +61,24 @@ class UserDatabase:
 
     @staticmethod
     def update_user(user_id, **kwargs):
-        if not kwargs:
+        if not kwargs or not (conn := connection()):
             return
 
-        conn = connection()
-        if conn:
-            with conn.cursor() as cursor:
-                campos = ", ".join([f"{campo} = %s" for campo in kwargs.keys()])
-                valores = list(kwargs.values()) + [user_id]
-
-                query = f"UPDATE users SET {campos}, atualizado = %s WHERE idUser = %s"
-                valores.insert(-1, datetime.now())  # Insere a data antes do ID
-
-                cursor.execute(query, valores)
-                conn.commit()
-            conn.close()
-
+        with conn.cursor() as cursor:
+            campos = ", ".join(
+                "senha = crypt(%s, gen_salt('bf'))" if k == "senha" else f"{k} = %s"
+                for k in kwargs
+            )
+            valores = [v for v in kwargs.values()]
+            valores.extend([datetime.now(), user_id])
+            
+            cursor.execute(
+                f"UPDATE users SET {campos}, atualizado = %s WHERE idUser = %s",
+                valores
+            )
+            conn.commit()
+        conn.close()
+    
     @staticmethod
     def delete_user(user_id):
         conn = connection()

@@ -115,7 +115,6 @@ class TransactionDatabase:
             FROM transactions 
             WHERE idUser = %s
             AND data >= NOW()
-            AND data < NOW() + INTERVAL '1 months'
             GROUP BY mes_ano;
         '''
         
@@ -127,9 +126,9 @@ class TransactionDatabase:
                     return {
                         'pendente': 0.0
                     }
-                    
+
             resultado_final = {
-                'pendente': float(total_valor) for mes_ano, total_valor, _ in resultado
+                'pendente': sum(float(total_valor) for _, total_valor, _ in resultado)
             }
             
         return resultado_final
@@ -221,7 +220,8 @@ class TransactionDatabase:
                 TO_CHAR(data, 'YYYY-MM') AS ano_mes
             FROM transactions 
             WHERE idUser = %s
-            AND data <= NOW()
+            AND (data <= NOW()
+            OR data >= NOW())
             GROUP BY mes_ano, ano_mes
             ORDER BY MAX(data) ASC;
         '''
@@ -257,24 +257,3 @@ class TransactionDatabase:
                 resultado = cursor.fetchall()
                 
         return resultado
-    
-    # @staticmethod
-    # def get_all_transactions_mes(idUser,mes) -> dict:
-    #     """
-    #     Retorna todas as transacoes de acordo com o mes escolhido pelo usuario.
-    #     """       
-        
-    #     query = '''
-    #         SELECT *
-    #         FROM transactions 
-    #         WHERE idUser = %s
-    #         AND TO_CHAR(data, 'YYYY-MM') = %s;
-
-    #     '''
-        
-    #     with connection() as conn:
-    #         with conn.cursor() as cursor:
-    #             cursor.execute(query, (idUser,mes))
-    #             resultado = cursor.fetchall()
-    #             resultado = [TransactionDatabase.format_transaction(row) for row in resultado]
-    #     return resultado

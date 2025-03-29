@@ -76,8 +76,6 @@ server.get('/contas', async (req,res) => {
 
   const cartoes = await response.json()
   
-  console.log(cartoes)
-
   return res.render('./navigation/contas.htm', {
     idUser: req.cookies.idUser,
     cartoes: cartoes
@@ -199,12 +197,11 @@ server.get('/relatorio',somenteExportarPdf,async (req, res) => {
   );
   const transacoes = await response_transacao.json()
   
-  // 1. Converter as strings de data para objetos Date
   const transacoesComDatas = transacoes.map(transacao => {
     const [dia, mes, ano] = transacao.data.split('/').map(Number);
     return {
       ...transacao,
-      dataObj: new Date(ano, mes - 1, dia) // Meses são 0-indexed no JS (janeiro = 0)
+      dataObj: new Date(ano, mes - 1, dia)
     };
   });
 
@@ -246,7 +243,7 @@ server.get('/exportar-pdf', express.urlencoded({ extended: true }), async (req, 
     
     await page.setViewportSize({ width: 1200, height: 5000 });
     
-    await page.goto(`http://localhost:3000/relatorio?token=SECRETO_123&id=${id}&mes=${mes}&categoria=${categoria}`, {
+    await page.goto(`http://${host_backend}:${port}/relatorio?token=SECRETO_123&id=${id}&mes=${mes}&categoria=${categoria}`, {
       waitUntil: 'networkidle0',
       timeout: 60000
     });
@@ -263,7 +260,6 @@ server.get('/exportar-pdf', express.urlencoded({ extended: true }), async (req, 
       preferCSSPageSize: false
     });
 
-    // 7. Envio do PDF
     res.setHeader('Content-Type', 'application/pdf');
     res.send(pdfBuffer);
 

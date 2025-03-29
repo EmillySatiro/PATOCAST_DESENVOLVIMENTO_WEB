@@ -1,3 +1,7 @@
+.logo-design p{
+  color: #252C4F;
+}
+
 .container {
   display: flex;
   flex-direction: column;

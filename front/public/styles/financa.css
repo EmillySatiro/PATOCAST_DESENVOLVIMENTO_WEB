@@ -193,9 +193,11 @@
     border-radius: 50%;
 }
 
-.icon-downloads img{
+.icon-downloads a img{
     width: 30px;
     height: 30px;
+
+    fill: var(--azul-escuro);
 }
 
 @media screen and (max-width: 720px){
