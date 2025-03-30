@@ -23,4 +23,3 @@ def create_respostas(id):
         return jsonify({"error": "Failed to create response"}), 500
     else:
         return jsonify({"message": "Response created successfully"}), 200
-        

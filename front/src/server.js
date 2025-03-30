@@ -1,6 +1,6 @@
 const express = require('express')
 const cookieParser = require('cookie-parser');
-const { chromium } = require('playwright'); // Ou 'firefox'/'webkit'
+const { chromium } = require('playwright');
 
 const server = express()
 const port = process.env.PORT || 3000
@@ -29,7 +29,45 @@ server.get('/', async (req,res) => {
 })
 
 server.get('/cadastrar', async (req,res) => {
-  return res.render('./auth/cadastrar.htm')
+  const saved = req.query.cadastro == 'true' ? true : false
+  return res.render('./auth/cadastrar.htm', {
+    saved: saved
+  })
+})
+
+server.post('/save_conta', express.urlencoded({ extended: true }), async (req,res) => {
+  const data = req.body
+  console.log(data)
+
+  const response = await fetch(
+    `http://${host_backend}:${port_backend}/cadastro`,{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        nome: data.nome,
+        sobrenome: data.sobrenome,
+        email: data.email,
+        senha: data.senha,
+        confirmar_senha: data.confirmar_senha,
+        checkbox: data.checkbox,
+      })
+  })
+  console.log(response)
+
+  if(response.status !== 201) {
+    return res.status(500).send(response.statusText);
+  }else{
+    res.cookie('username', data.nome);
+    const responseData = await response.json();
+    res.cookie('idUser', responseData.idUser);
+    return res.redirect('/cadastrar?cadastro=true')
+  }
+})
+
+server.get('/perguntas', async (req,res) => {
+  return res.render('./auth/perguntas.htm')
 })
 
 server.get('/recuperar_conta', async (req,res) => {
@@ -43,8 +81,6 @@ server.get('/alterar-senha', express.urlencoded({ extended: true }),async (req,r
 
 server.get('/inicio', async (req,res) => {
   let idUser = req.cookies.idUser
-  console.log("ID do usuario:",idUser)
-  
   const response = await fetch(
     `http://${host_backend}:${port_backend}/transacao?id=${idUser}`
   );
@@ -55,9 +91,19 @@ server.get('/inicio', async (req,res) => {
 
   dados = await response.json()
   const cartao_data = await response_cartao.json()
+
+  const response_perguntas = await fetch(
+    `http://${host_backend}:${port_backend}/respostas/id=${idUser}`
+  );
+  const perguntas = await response_perguntas.json()
+  const resposta = perguntas[0].resposta.length - 1;
   
-  const ultimo_cartao = cartao_data.length - 1;
-  const meta = cartao_data[ultimo_cartao].meta;
+  var meta = perguntas[0].resposta[resposta].resposta;
+
+  if(cartao_data.length > 0){
+    const ultimo_cartao = cartao_data.length - 1;
+    var meta = cartao_data[ultimo_cartao].meta;
+  }
 
   gasto = parseFloat(dados.reduce((acc, curr) => acc + parseFloat(curr.valor), 0)).toFixed(2)
   porcentagem = (gasto / meta) * 100;
@@ -72,18 +118,51 @@ server.get('/inicio', async (req,res) => {
   })
 })
 
-server.get('/contas', async (req,res) => {
-
+server.get('/contas', express.urlencoded({ extended: true }), async (req,res) => {
+  
   const response = await fetch(
     `http://${host_backend}:${port_backend}/cards/id=${req.cookies.idUser}`
   );
 
   const cartoes = await response.json()
-  
+
+  const saved = req.query.cadastro == 'true' ? true : false
+  if(saved){
+    res.clearCookie('cadastro')
+  }
+
   return res.render('./navigation/contas.htm', {
     idUser: req.cookies.idUser,
-    cartoes: cartoes
+    cartoes: cartoes,
+    saved:  saved,
+    cadastro: "Cartao"
   })
+})
+
+server.post('/save_cartao', express.urlencoded({ extended: true }), async (req,res) => {
+  let idUser = req.cookies.idUser;
+  const data = req.body
+
+  const response = await fetch(
+    `http://${host_backend}:${port_backend}/cards/id=${idUser}`,{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ 
+        tipo: data.tipo, 
+        numero: data.numero, 
+        nome: data.nome, 
+        meta: data.meta, 
+      })
+    }
+  );
+
+  if(response.status !== 201) {
+    return res.status(500).send('Erro ao salvar o cartão');
+  }else{
+    return res.redirect('/contas?cadastro=true')
+  }
 })
 
 server.get('/metas', async (req,res) => {
@@ -160,12 +239,43 @@ server.get('/perfil', async (req,res) => {
   let username = req.cookies.username
   let idUser = req.cookies.idUser
 
+  const saved = req.query.atualizado == 'true' ? true : false
+  
   return res.render('./navigation/perfil.htm', 
     {
       nome: username,
-      idUser: idUser
+      idUser: idUser,
+      saved: saved
     }
   )
+})
+
+server.post('/update_perfil', express.urlencoded({ extended: true }), async (req,res) => {
+  let idUser = req.cookies.idUser
+  const data = req.body
+
+  console.log(data)
+
+  const response = await fetch(
+    `http://${host_backend}:${port_backend}/perfil/id=${idUser}`,{
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        nome: data.nome,
+        sobrenome: data.sobrenome,
+        email: data.email,
+        senha: data.senha,
+      })
+    });
+
+  if(response.status !== 200) {
+    return res.status(500).send('Erro ao salvar o perfil');
+  }else{
+    res.cookie('username', data.nome);
+    return res.redirect('/perfil?atualizado=true')
+  }
 })
 
 server.get('/historico', async (req,res) => {
@@ -176,10 +286,6 @@ server.get('/historico', async (req,res) => {
   );
   dados = await response.json()
   return res.render('./navigation/operacoes.htm',{transacoes: dados})
-})
-
-server.get('/perguntas', async (req,res) => {
-  return res.render('./auth/perguntas.htm')
 })
 
 const somenteExportarPdf = (req, res, next) => {
@@ -238,6 +344,8 @@ server.get('/relatorio',somenteExportarPdf,async (req, res) => {
 server.get('/exportar-pdf', express.urlencoded({ extended: true }), async (req, res) => {
   const { id, mes, categoria } = req.query;
   
+  console.log(req.query)
+
   let browser;
   try {
     browser = await chromium.launch({

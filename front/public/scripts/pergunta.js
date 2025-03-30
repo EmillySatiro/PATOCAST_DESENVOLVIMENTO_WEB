@@ -96,7 +96,7 @@ function finalizandoForm(elemento){
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                console.log("Respostas enviadas com sucesso!");
+                window.location.href = "/inicio";
             } else if (xhr.readyState === 4) {
                 console.error("Erro ao enviar respostas:", xhr.statusText);
             }

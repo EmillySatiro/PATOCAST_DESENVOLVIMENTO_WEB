@@ -76,3 +76,18 @@ if (username) {
     username = username.replace(/"/g, "");
     document.getElementById("username").textContent = username;
 }
+
+function fecharModal(){
+    const modal = document.querySelector(".modal");
+    if (modal) {
+        modal.style.display = "none";
+
+        const currentUrl = window.location.href.split("?")[0];
+        window.location.href = currentUrl;
+
+        if (currentUrl.endsWith("/cadastrar")) {
+            console.log("Redirecting to /perguntas");
+            window.location.href = "/perguntas";
+        }
+    }
+}

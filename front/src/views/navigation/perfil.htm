@@ -6,6 +6,7 @@
 
 {% block styles %}
     <link rel="stylesheet" href="./styles/editar-perfil.css">
+    <link rel="stylesheet" href="./styles/modal.css">
 {% endblock %}
 
 {% block container %}
@@ -24,20 +25,24 @@
         <p class="profile-info">{{ nome }}</p>
     </div>
     <div class="transparent-box">
-        <form class="itens" action="http://127.0.0.1:5000/perfil/id={{idUser}}" method="post">
+        <form class="itens" action="/update_perfil" method="post">
             <div class="formulario">
                 <div>
                     <div>
-                        <input type="text" name="nome" class="itens-label" id="nome" placeholder="Nome" value="{{ nome }}">
+                        <input type="text" name="nome" class="itens-label" id="nome" placeholder="Nome">
                         <img src="./assets/Vector.png" alt="Editar Nome" onclick="document.getElementById('nome').focus();">
                     </div>
                     <div>
-                        <input type="email" name="email" class="itens-label" id="email" placeholder="E-mail">
-                        <img src="./assets/Vector.png" alt="Editar E-mail" onclick="document.getElementById('email').focus();">
+                        <input type="text" name="sobrenome" class="itens-label" id="sobrenome" placeholder="Sobrenome">
+                        <img src="./assets/Vector.png" alt="Editar Sobrenome" onclick="document.getElementById('nome').focus();">
                     </div>
                 </div>
 
                 <div>
+                    <div>
+                        <input type="email" name="email" class="itens-label" id="email" placeholder="E-mail">
+                        <img src="./assets/Vector.png" alt="Editar E-mail" onclick="document.getElementById('email').focus();">
+                    </div>
                     <div>
                         <input type="password" name="senha" class="itens-label" id="senha" placeholder="Senha">
                         <img src="./assets/Vector.png" alt="Editar Senha" onclick="document.getElementById('senha').focus();">
@@ -48,4 +53,10 @@
             </div>
         </form>
     </div> 
+{% endblock %}
+
+{% block modal %}
+    {% if saved %}
+        {% include "../partials/modal.htm" %}
+    {% endif %}
 {% endblock %}

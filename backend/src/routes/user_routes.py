@@ -18,7 +18,7 @@ def get_user(id):
 
 @router_user.route('/cadastro', methods=['POST'])
 def create_user():
-    data = request.form.to_dict()
+    data = request.get_json()
     
     idUser = UserDatabase.create_user(
         nome=data['nome'],
@@ -30,15 +30,12 @@ def create_user():
     if not idUser:
         return jsonify({"error": "Failed to create user"}), 500
     else:
-        response = make_response(redirect("http://127.0.0.1:3000/perguntas"))
-        response.set_cookie("username", data['nome']) 
-        response.set_cookie("idUser", f"{idUser}")
-    
-        return response
+        return jsonify({"message": "User created successfully", "idUser": idUser}), 201
     
 @router_user.route('/perfil/id=<int:id>', methods=['POST','PUT'])
 def update_user(id):
-    data = {key: value for key, value in request.form.items() if value.strip()}
+    data = {key: value.strip() for key, value in request.get_json().items() if isinstance(value, str) and value.strip()}
+    
     if not data:
         return jsonify({"error": "Nenhum dado fornecido para atualização"}), 400
 

@@ -12,7 +12,8 @@ def get_cards(id):
 
 @card_routes.route('/cards/id=<int:id>', methods=['POST'])
 def create_card(id):
-    data = request.form.to_dict()
+    data = request.get_json()
+    print(data)
     CardDatabase.create_card(
         idUser=id,
         numero=data['numero'],

@@ -5,6 +5,7 @@
 
   {% block styles %}
     <link rel="stylesheet" href="./styles/cadastrar.css">
+    <link rel="stylesheet" href="./styles/modal.css">
   {% endblock %}
 
   {% block container %}
@@ -29,7 +30,7 @@
                 </h1>
             </div>
             
-            <form class="input-dados" action="http://127.0.0.1:5000/cadastro" method="post">
+            <form class="input-dados" action="/save_conta" method="post">
 
                 <input type="text" name="nome" class="input-dados-label" id="" placeholder="Nome" required>
                 <input type="text" name="sobrenome" class="input-dados-label" id="" placeholder="Sobrenome" required>
@@ -52,6 +53,12 @@
                 </a>
             </div>
         </div>
+    {% endblock %}
+    
+    {% block modal %}
+        {% if saved %}
+            {% include "../partials/modal.htm" %}
+        {% endif %}
     {% endblock %}
 
     {% block script %}

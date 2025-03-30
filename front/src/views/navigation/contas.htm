@@ -6,6 +6,7 @@
 
 {% block styles %}
     <link rel="stylesheet" href="./styles/contas.css">
+    <link rel="stylesheet" href="./styles/modal.css">
 {% endblock %}
 
 {% block container %}
@@ -15,29 +16,6 @@
 
 {% block content %}
     <div class="cartoes">
-        
-        <!-- <div class="cartao">  
-            <div class="info-cartao">
-                <p>
-                    Crédito
-                </p>
-
-                <div class="info-principal">
-                    <div>
-                        <p>
-                            **** **** **** ****
-                        </p>
-                        <img src="./assets/see_eyes.png" alt="olho">
-                    </div>
-                    <p>
-                        Fulano de tal
-                    </p>
-                </div>
-            </div>
-            <div class="logo-cartao">
-                <img src="./assets/master_card.svg" alt="marter card">
-            </div>
-        </div> -->
         {% for cartao in cartoes %}
             <div class="cartao">  
                 <div class="info-cartao">
@@ -67,13 +45,19 @@
         <p>
             Adiciona Cartão
         </p>
-        <form action="http://127.0.0.1:5000/cards/id={{idUser}}" method="post" class="form-add-cartao">
-            <input class="input-dados-label" type="text" name="tipo" id="tipo" placeholder="Tipo do Cartao">
-            <input class="input-dados-label" type="text" name="numero" id="numero" placeholder="Número do cartão">
-            <input class="input-dados-label" type="text" name="nome" id="nome" placeholder="Nome do titular">
-            <input class="input-dados-label" type="text" name="meta" id="meta" placeholder="Meta de gastos mensal">
+        <form action="/save_cartao" method="post" class="form-add-cartao">
+            <input class="input-dados-label" type="text" name="tipo" id="tipo" placeholder="Tipo do Cartao" required>
+            <input class="input-dados-label" type="text" name="numero" id="numero" placeholder="Número do cartão" required>
+            <input class="input-dados-label" type="text" name="nome" id="nome" placeholder="Nome do titular" required>
+            <input class="input-dados-label" type="text" name="meta" id="meta" placeholder="Meta de gastos mensal" required>
             
             <button class="button-submit" type="submit" class="rodape">Cadastrar</button>
         </form>
     </div>
+{% endblock %}
+
+{% block modal %}
+    {% if saved %}
+        {% include "../partials/modal.htm" %}
+    {% endif %}
 {% endblock %}

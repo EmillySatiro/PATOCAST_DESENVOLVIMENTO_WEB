@@ -1,0 +1,58 @@
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 100%;
+    
+    background-color: rgba(0,0,0,0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: var(--branco);
+    border-radius: 15px;
+
+    width: 40%;
+}
+
+.modal-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.modal-header p{
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    text-align: center;
+}
+
+.button-close{
+    border: none;
+    cursor: pointer;
+
+    background-color: var(--laranja-principal);
+    color: var(--branco);
+
+    height: 50px;
+    width: 100%;
+
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+    text-align: center;
+}

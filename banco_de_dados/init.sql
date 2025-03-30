@@ -38,6 +38,6 @@ CREATE TABLE IF NOT EXISTS cartao (
 -- Criação da tabela 'perguntas'
 CREATE TABLE IF NOT EXISTS perguntas (
   resposta JSONB NOT NULL,
-  idUser INT NOT NULL,
+  idUser INT NOT NULL PRIMARY KEY,
   CONSTRAINT fk_pergunta_user FOREIGN KEY (idUser) REFERENCES users (idUser) ON DELETE CASCADE ON UPDATE CASCADE
 );
