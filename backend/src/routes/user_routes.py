@@ -2,7 +2,6 @@ from flask import Blueprint, jsonify, request, redirect, make_response
 from src.database.transaction_database import TransactionDatabase
 from src.database.user_database import UserDatabase
 
-
 router_user = Blueprint('user', __name__)
 
 @router_user.route('/users', methods=['GET'])
@@ -31,9 +30,9 @@ def create_user():
     if not idUser:
         return jsonify({"error": "Failed to create user"}), 500
     else:
-        response = make_response(redirect("http://127.0.0.1:3000/inicio"))
+        response = make_response(redirect("http://127.0.0.1:3000/perguntas"))
         response.set_cookie("username", data['nome']) 
-        response.set_cookie("idUser", f"{idUser}") 
+        response.set_cookie("idUser", f"{idUser}")
     
         return response
     
@@ -64,4 +63,3 @@ def login():
         return response
 
     return jsonify({"error": "Invalid email or password"}), 401
-

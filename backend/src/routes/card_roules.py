@@ -21,3 +21,9 @@ def create_card(id):
         tipo=data['tipo'],
     )
     return jsonify({"message": "Card created successfully"}), 201
+
+@card_routes.route('/cards/id=<int:idCartao>', methods=['PUT'])
+def update_card(idCartao):
+    data = request.form.to_dict()
+    CardDatabase.update_card(idCartao, **data)
+    return jsonify({"message": "Card updated successfully"}), 200

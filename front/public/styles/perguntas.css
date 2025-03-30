@@ -42,8 +42,9 @@
 .pergunta-form {
     display: flex;
 
-    flex-direction: column;
     padding-left: 20px;
+
+    align-items: center;
 }
 
 .pergunta-form h1 {
@@ -54,15 +55,26 @@
 
 .respota-progresso {
     display: flex;
+    flex-direction: column;
+    
+    gap: 20px;
+
     align-items: center;
+    width:70%;
 }	
 
-.respostas {
+.respostas.active {
+    display: block;
+
     display: flex;
     flex-direction: column;
     gap: 20px;
     
     width: 70%;
+}
+
+.respostas {
+    display: none;
 }
 
 .respostas .resposta{
@@ -82,19 +94,50 @@
     cursor: pointer;
 }
 
+.respostas .resposta:hover{
+    background-color: var(--laranja-principal);
+    color: var(--azul-escuro);
+}
+
+.respostas .resposta.selecionado{
+    background-color: var(--laranja-principal);
+    color: var(--azul-escuro);
+}
+
+.progresso-indicador {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.bolinha {
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background-color: gray;
+    transition: background-color 0.3s;
+}
+
+.bolinha.ativa {
+    background-color: var(--laranja-principal);
+}
+
 input[type="radio"] {
+    appearance: none;
+}
+
+input[type="radio"]:checked {
   appearance: none;
 
-  background-color: var(--branco);
-  color: var(--claro-escuro);
+  background-color: var(--azul-escuro);
 
   margin: 0;
   font: inherit;
-  color: currentColor;
   
   width: 1.15em;
   height: 1.15em;
-  border: 0.15em solid currentColor;
+  border: 0.15em solid var(--branco);
   
   border-radius: 50%;
   transform: translateY(-0.075em);
@@ -104,9 +147,72 @@ input[type="radio"]:checked {
     transform: scale(1);
 }
 
-.respostas .resposta:hover{
+.resposta.renda{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: var(--claro-escuro);
+
+    gap: 10px;
+    
+    width: 100%;
+}
+
+.resposta.renda:hover{
+    background-color: var(--azul-escuro);
+}
+
+.resposta.renda:hover h1{
+    color: var(--claro);
+}
+
+.renda-form{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 10px;
+
+    width: 100%;
+}
+
+.renda-form input{
+    border: none;
+    appearance: textfield;
+    
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+
+    width: 90%;
+}
+
+.renda-form button{
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+
+    border-radius: 5px;
+
+    width: 70%;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     background-color: var(--laranja-principal);
-    color: var(--azul-escuro);
+    color: var(--branco);
+    margin: 5px;
+}
+
+button:disabled {
+    background-color: gray;
+    cursor: not-allowed;
 }
 
 .progresso{
@@ -116,44 +222,18 @@ input[type="radio"]:checked {
     gap: 10px;
 
     width: 30%;
+    height: 100px;
+
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-.progresso-barra{
+.progresso div{
     display: flex;
     flex-direction: column;
-    
     align-items: center;
-    justify-content: center;
 
-    gap: 10px;
-
-    width: 200px;
-    height: 200px;
-
-    background: conic-gradient(
-        var(--laranja-principal) 0% 65%, 
-        transparent 0% 0% 
-    );
-     
-    border-radius: 50%;
-    box-shadow: 4px 4px 0px 0px var(--sombra);
-}
-
-.progresso-barra p {
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    color: var(--azul-escuro);
-    font-size: 34px;
-
-    background-color: var(--claro);
-    width: 80%;
-    height: 80%;
-
-    border-radius: 50%;
+    width: 100%;
 }
 
 .login-direita {

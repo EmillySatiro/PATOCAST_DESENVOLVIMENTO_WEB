@@ -9,7 +9,6 @@ CREATE TABLE IF NOT EXISTS users (
   sobrenome VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
   senha TEXT NOT NULL,
-  limite DECIMAL(10, 2) NOT NULL,
   criado TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,  -- Data e hora de criação
   atualizado TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP  -- Data e hora da última atualização
 );
@@ -36,3 +35,9 @@ CREATE TABLE IF NOT EXISTS cartao (
   CONSTRAINT fk_cartao_user FOREIGN KEY (idUser) REFERENCES users (idUser) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+-- Criação da tabela 'perguntas'
+CREATE TABLE IF NOT EXISTS perguntas (
+  resposta JSONB NOT NULL,
+  idUser INT NOT NULL,
+  CONSTRAINT fk_pergunta_user FOREIGN KEY (idUser) REFERENCES users (idUser) ON DELETE CASCADE ON UPDATE CASCADE
+);

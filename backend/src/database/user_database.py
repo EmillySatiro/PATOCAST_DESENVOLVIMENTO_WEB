@@ -12,9 +12,8 @@ class UserDatabase:
             "sobrenome": user_tuple[2],
             "email": user_tuple[3],
             "senha": user_tuple[4],
-            "limite": float(user_tuple[5]) if isinstance(user_tuple[5], Decimal) else user_tuple[5],
-            "criado": user_tuple[6].strftime("%Y-%m-%d %H:%M:%S.%f") if isinstance(user_tuple[6], datetime) else user_tuple[6],
-            "atualizado": user_tuple[7].strftime("%Y-%m-%d %H:%M:%S.%f") if isinstance(user_tuple[7], datetime) else user_tuple[7]
+            "criado": user_tuple[5].strftime("%Y-%m-%d %H:%M:%S.%f") if isinstance(user_tuple[5], datetime) else user_tuple[5],
+            "atualizado": user_tuple[6].strftime("%Y-%m-%d %H:%M:%S.%f") if isinstance(user_tuple[6], datetime) else user_tuple[6]
         }
         
     @staticmethod
@@ -95,10 +94,10 @@ class UserDatabase:
                 cursor.execute(
                     '''
                         INSERT INTO 
-                        users (nome, sobrenome, email, senha, limite ,criado, atualizado) 
-                        VALUES (%s, %s, %s, crypt(%s,gen_salt('bf')), %s, %s, %s) returning idUser;
+                        users (nome, sobrenome, email, senha ,criado, atualizado) 
+                        VALUES (%s, %s, %s, crypt(%s,gen_salt('bf')), %s, %s) returning idUser;
                     ''',
-                    (nome, sobrenome, email, senha, random.randrange(1000, 10000), datetime.now(), datetime.now())
+                    (nome, sobrenome, email, senha, datetime.now(), datetime.now())
                 )
                 conn.commit()
                 user_id = cursor.fetchone()[0]

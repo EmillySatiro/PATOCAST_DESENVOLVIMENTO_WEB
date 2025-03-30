@@ -43,13 +43,10 @@ server.get('/alterar-senha', express.urlencoded({ extended: true }),async (req,r
 
 server.get('/inicio', async (req,res) => {
   let idUser = req.cookies.idUser
-
+  console.log("ID do usuario:",idUser)
+  
   const response = await fetch(
     `http://${host_backend}:${port_backend}/transacao?id=${idUser}`
-  );
-
-  const response_user = await fetch(
-    `http://${host_backend}:${port_backend}/users/id=${idUser}`
   );
 
   const response_cartao = await fetch(
@@ -57,16 +54,18 @@ server.get('/inicio', async (req,res) => {
   );
 
   dados = await response.json()
-  const user_data = await response_user.json()
   const cartao_data = await response_cartao.json()
   
+  const ultimo_cartao = cartao_data.length - 1;
+  const meta = cartao_data[ultimo_cartao].meta;
+
   gasto = parseFloat(dados.reduce((acc, curr) => acc + parseFloat(curr.valor), 0)).toFixed(2)
-  porcentagem = (gasto / user_data.limite) * 100;
+  porcentagem = (gasto / meta) * 100;
   
   return res.render('./navigation/inicio.htm', {
     transacoes: dados,
     gasto_total: gasto,
-    limite: parseFloat(user_data.limite) - gasto,
+    limite: parseFloat(meta) - gasto,
     porcentagem: porcentagem > 100 ? 100 : porcentagem,
     quantidade_cartao: cartao_data.length,
     cartoes: cartao_data,
@@ -90,25 +89,27 @@ server.get('/contas', async (req,res) => {
 server.get('/metas', async (req,res) => {
   let idUser = req.cookies.idUser
   
-  const user = await fetch(
-    `http://${host_backend}:${port_backend}/users/id=${idUser}`
+  const response_card = await fetch(
+    `http://${host_backend}:${port_backend}/cards/id=${idUser}`
   );
+  const cartao_data = await response_card.json()
 
-  const response = await fetch(
+  const ultimo_cartao = cartao_data.length - 1;
+  const meta = cartao_data[ultimo_cartao].meta;
+
+  const response_transacao = await fetch(
     `http://${host_backend}:${port_backend}/transacao_categoria/id=${idUser}`
   );
-  
-  dados = await response.json()
-  
-  const user_data = await user.json()
+  dados = await response_transacao.json()
+
   gasto = Object.values(dados).reduce((acc, categoria) => acc + categoria.total_gasto, 0);
 
-  porcentagem = (gasto / user_data.limite) * 100;
+  porcentagem = (gasto / meta) * 100;
 
   return res.render('./navigation/metas.htm', {
     categorias: dados,
-    limite: user_data.limite,
-    gasto_limite: user_data.limite - gasto,
+    limite: meta,
+    gasto_limite: meta - gasto,
     gasto_total: gasto,
     porcentagem: porcentagem > 100 ? 100 : porcentagem,
   })

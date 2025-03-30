@@ -1,7 +1,7 @@
-INSERT INTO users (nome, sobrenome, email, senha, limite) 
+INSERT INTO users (nome, sobrenome, email, senha) 
 VALUES 
-  ('Jonas', 'Cesar', 'jonasbo66@gmail.com', crypt('jonas123', gen_salt('bf')), 1000.00),
-  ('Kaua', 'Henrique', 'kaua.sbc@gmail.com', crypt('kaua123', gen_salt('bf')), 1000.00);
+  ('Jonas', 'Cesar', 'jonasbo66@gmail.com', crypt('jonas123', gen_salt('bf'))),
+  ('Kaua', 'Henrique', 'kaua.sbc@gmail.com', crypt('kaua123', gen_salt('bf')));
 
 INSERT INTO transactions (idUser, estabelecimento, categoria, valor, data)
 VALUES 
@@ -25,3 +25,7 @@ VALUES
     (1, 12312312312, 'Jonas G P Sousa', 1000.00,'Débito'),
     (2, 11111111111, 'Kaua H S Almeida', 1000.00,'Crédito'),
     (2, 11111111111, 'Kaua H S Almeida', 1000.00,'Débito');
+
+INSERT INTO perguntas (idUser, resposta) VALUES 
+  (1, '{"pergunta1": "resposta1", "pergunta2": "resposta2"}'),
+  (2, '{"pergunta1": "resposta1", "pergunta2": "resposta2"}');

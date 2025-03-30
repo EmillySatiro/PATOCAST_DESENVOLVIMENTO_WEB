@@ -1,10 +1,11 @@
 {% extends "../page-base.htm" %}
   {% block title %}
-      <title> Cadastro </title>
+      <title> Perguntas </title>
   {% endblock title %}
 
   {% block styles %}
     <link rel="stylesheet" href="./styles/perguntas.css">
+    <script src="https://cdn.jsdelivr.net/npm/progressbar.js@1.1.0/dist/progressbar.min.js"></script>
   {% endblock %}
 
   {% block container %}
@@ -17,54 +18,84 @@
             <div class="pergunta-form">
                 
                 <div class="respota-progresso">
-                    <div class="respostas">
-                        <h1>Pergunta??</h1>
+                    <div class="respostas active">
+                        <h1>Qual seu objetivo?</h1>
                         
-                        <a href="/inicio">
-                            <div class="resposta">
-                                <input type="radio" name="resposta" id="resposta1">
-                                <label for="resposta1">Resposta 1</label>
-                            </div>
-                        </a>
-                        <a href="/inicio">
-                            <div class="resposta">
-                                <input type="radio" name="resposta" id="resposta2">
-                                <label for="resposta2">Resposta 2</label>
-                            </div>
-                        </a>
-                        <a href="/inicio">
-                            <div class="resposta">
-                                <input type="radio" name="resposta" id="resposta3">
-                                <label for="resposta3">Resposta 3</label>
-                            </div>
-                        </a>
-                        <a href="/inicio">
-                            <div class="resposta">
-                                <input type="radio" name="resposta" id="resposta4">
-                                <label for="resposta4">Resposta 4</label>
-                            </div>
-                        </a>
-                        <a href="/inicio">
-
-                            <div class="resposta">
-                                <input type="radio" name="resposta" id="resposta4">
-                                <label for="resposta5">Resposta 5</label>
-                            </div>
-                        </a>
-                        <a href="/inicio">
-                            <div class="resposta">
-                                <input type="radio" name="resposta" id="resposta4">
-                                <label for="resposta6">Resposta 6</label>
-                            </div>
-                        </a>
+                        <div class="resposta" onclick="selecionar(this)">
+                            <input type="radio" name="objetivo" value="1">
+                            <label for="resposta1">Se organizar</label>
                         </div>
-
-                    <div class="progresso">
-                        <div class="progresso-barra">
-                            <p>65%</p>
+                    
+                        <div class="resposta" onclick="selecionar(this)">
+                            <input type="radio" name="objetivo" value="2">
+                            <label for="resposta2">Economizar</label>
                         </div>
-                        <p>Seu Progresso</p>
+                    
+                        <div class="resposta" onclick="selecionar(this)">
+                            <input type="radio" name="objetivo" value="3">
+                            <label for="resposta3">Receber dicas financeiras</label>
+                        </div>
                     </div>
+                
+                    <div class="respostas">
+                        <h1>Você é?</h1>
+                        
+                        <div class="resposta" onclick="selecionar(this)">
+                            <input type="radio" name="perfil" value="1">
+                            <label for="resposta4">Aposentado</label>
+                        </div>
+                    
+                        <div class="resposta" onclick="selecionar(this)">
+                            <input type="radio" name="perfil" value="2">
+                            <label for="resposta5">Estudante</label>
+                        </div>
+                    
+                        <div class="resposta" onclick="selecionar(this)">
+                            <input type="radio" name="perfil" value="3">
+                            <label for="resposta6">CLT</label>
+                        </div>
+                
+                        <div class="resposta" onclick="selecionar(this)">
+                            <input type="radio" name="perfil" value="4">
+                            <label for="resposta7">Pessoa Jurídica</label>
+                        </div>
+                        
+                        <div class="resposta" onclick="selecionar(this)">
+                            <input type="radio" name="perfil" value="5">
+                            <label for="resposta8">CLT (Negativado)</label>
+                        </div>
+                
+                        <div class="resposta" onclick="selecionar(this)">
+                            <input type="radio" name="perfil" value="6">
+                            <label for="resposta9">Apenas Negativado</label>
+                        </div>
+                    </div>
+
+                    <div class="respostas">
+                        
+                        <div class="resposta renda">
+                            <h1>Qual sua renda mensal?</h1>
+
+                            <div class="renda-form">
+                                <input type="number" name="renda" id="renda" placeholder="R$ 0,00" required>
+                                <button type="submit" onclick="finalizandoForm(this)">Certo!</button>    
+                            </div>
+                        
+                        </div>
+
+                    </div>
+                    
+                    <div class="progresso-indicador">
+                    </div>
+                    
+                    <div class="buttons">
+                        <button onclick="voltar()" id="btn-voltar" disabled>Voltar</button>
+                        <button onclick="avancar()" id="btn-avancar">Avançar</button>
+                    </div>
+                </div>
+
+                <div class="progresso">
+                    <div id="progress-container" data-porcentagem="{{porcentagem}}"></div>
                 </div>
             </div>
         </div>
@@ -73,5 +104,7 @@
     {% endblock %}
 
     {% block script %}
+        <script src="./scripts/circulo.js"></script>
+        <script src="./scripts/pergunta.js"></script>
         <script src="./scripts/script.js"></script>
     {% endblock %}
