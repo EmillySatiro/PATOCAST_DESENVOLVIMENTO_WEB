@@ -27,5 +27,5 @@ VALUES
     (2, 11111111111, 'Kaua H S Almeida', 1000.00,'Débito');
 
 INSERT INTO perguntas (idUser, resposta) VALUES 
-  (1, '{"pergunta1": "resposta1", "pergunta2": "resposta2"}'),
-  (2, '{"pergunta1": "resposta1", "pergunta2": "resposta2"}');
+(1, '[{"pergunta": 1, "resposta": "1"}, {"pergunta": 2, "resposta": "3"}, {"pergunta": 3, "resposta": 1000}]'),
+(2, '[{"pergunta": 1, "resposta": "1"}, {"pergunta": 2, "resposta": "3"}, {"pergunta": 3, "resposta": 1000}]');
