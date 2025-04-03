@@ -1,83 +1,81 @@
-const lista = document.getElementById("nav-options")
-
-lista.addEventListener("click",
-    (e) => {
-        // if(e.detail)
-        if(!(e.detail)){
-            if(e.target.className != "active"){
-                for (let i = 0; i < lista.children.length; i++) {
-                    lista.children[i].className = lista.children[i].className.replace("active");
-                }
-                e.target.className = "active";
+/**
+ * Adiciona um evento de clique à lista de navegação para alterar a classe ativa.
+ */
+const lista = document.getElementById("nav-options");
+lista.addEventListener("click", (e) => {
+    if (!(e.detail)) {
+        if (e.target.className !== "active") {
+            for (let i = 0; i < lista.children.length; i++) {
+                lista.children[i].classList.remove("active");
             }
+            e.target.classList.add("active");
         }
     }
-)
+});
 
-function verificaPage(){
+/**
+ * Verifica a URL atual e adiciona a classe "active" à opção de navegação correspondente.
+ */
+function verificaPage() {
     const url = window.location.pathname;
+    const pages = ["/inicio", "/contas", "/metas", "/financas", "/historico", "/ajuda", "/perfil"];
+    pages.forEach((page, index) => {
+        if (url === page) {
+            lista.children[index].classList.add("active");
+        }
+    });
+}
+verificaPage();
 
-    if(url == "/inicio"){
-        lista.children[0].className = "active"
-    }else if(url == "/contas"){
-        lista.children[1].className = "active"
-    }else if(url == "/metas"){
-        lista.children[2].className = "active"
-    }else if(url == "/financas"){
-        lista.children[3].className = "active"
-    }else if(url == "/historico"){
-        lista.children[4].className = "active"
-    }else if(url == "/ajuda"){
-        lista.children[5].className = "active"
-    }else if(url == "/perfil"){
-        lista.children[6].className = "active"
+/**
+ * Alterna a visibilidade da barra de navegação.
+ */
+function verificaNav() {
+    const nav = document.getElementById("list-nav");
+    const navigation = document.getElementById("navigation-bar");
+    
+    if (navigation.classList.contains("occult")) {
+        nav.src = './assets/list_branco.svg';
+        navigation.classList.remove("occult");
+    } else {
+        nav.src = './assets/list_preto.svg';
+        navigation.classList.add("occult");
     }
 }
 
-verificaPage()
+/**
+ * Ativa ou desativa a navegação lateral ao clicar no perfil.
+ */
+const profile = document.getElementById("profile-bar");
+profile.addEventListener("click", ativaNavigation);
 
-function verificaNav(){
-    const nav = document.getElementById("list-nav")
-    const navigation = document.getElementById("navigation-bar")
-
-    if(navigation.className.search(" occult") < 0){
-        nav.src = './assets/list_preto.svg'
-        navigation.className += " occult"
-    }else{
-        nav.src = './assets/list_branco.svg'
-        navigation.className = navigation.className.split(" occult")[0]
-    }
-    // nav.className = "occullt"
+function ativaNavigation() {
+    const navigation = document.getElementById("navigation-bar");
+    navigation.classList.toggle("activate");
 }
 
-const profile = document.getElementById("profile-bar")
-
-profile.addEventListener("click",ativaNavigation)
-
-function ativaNavigation(){
-    const navigation = document.getElementById("navigation-bar")
-
-    if(navigation.className.search(" activate") < 0){
-        navigation.className += " activate"
-    }else{
-        navigation.className = navigation.className.split(" activate")[0]
-    }
-}
-
+/**
+ * Obtém o valor de um cookie pelo nome.
+ * @param {string} name - Nome do cookie.
+ * @returns {string|null} Valor do cookie ou null se não encontrado.
+ */
 function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
+    return parts.length === 2 ? parts.pop().split(';').shift() : null;
 }
 
 // Atualiza o nome do usuário na tela
-let username = getCookie("username"); 
+let username = getCookie("username");
 if (username) {
     username = username.replace(/"/g, "");
     document.getElementById("username").textContent = username;
 }
 
-function fecharModal(){
+/**
+ * Fecha o modal e redireciona para a URL apropriada.
+ */
+function fecharModal() {
     const modal = document.querySelector(".modal");
     if (modal) {
         modal.style.display = "none";
