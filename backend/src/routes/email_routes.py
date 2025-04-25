@@ -7,7 +7,6 @@ from os import getenv
 email_sender = EmailSender(getenv("EMAIL"), getenv("EMAIL_PASSWORD"))
 email_routes = Blueprint('email_routes', __name__)
 
-
 @email_routes.route(
     '/email/recuperar_senha/', methods=['POST']
 )

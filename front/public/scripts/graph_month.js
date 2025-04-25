@@ -1,33 +1,33 @@
-function getCookie(nome) {
-    let cookies = document.cookie.split("; ");
-    for (let i = 0; i < cookies.length; i++) {
-        let cookie = cookies[i].split("=");
-        if (cookie[0] === nome) {
-            return cookie[1];
-        }
-    }
-    return null;
-}
+let meuGrafico; // Variável global para armazenar a instância do gráfico
 
-fetch('http://127.0.0.1:5000/lest_transacao_mes/id=' + getCookie("idUser"))
-.then(response => response.json())
-.then(data => {
-    var meses = Object.keys(data);
-    var compras = Object.values(data);
+// Função para atualizar o gráfico
+function atualizarGrafico(data) {
+    const categorias = [...new Set(data.map(transacao => transacao.categoria))]; // Obtém categorias únicas
+    const valores = categorias.map(categoria => {
+        return data
+            .filter(transacao => transacao.categoria === categoria)
+            .reduce((acc, transacao) => acc + parseFloat(transacao.valor), 0);
+    });
 
-    var ctx = document.getElementById("meuGrafico");
+    const ctx = document.getElementById("meuGrafico");
 
     if (!ctx) {
         return;
     }
 
-    new Chart(ctx.getContext("2d"), {
+    // Destroi o gráfico anterior, se existir
+    if (meuGrafico) {
+        meuGrafico.destroy();
+    }
+
+    // Cria um novo gráfico
+    meuGrafico = new Chart(ctx.getContext("2d"), {
         type: "bar",
         data: {
-            labels: meses,
+            labels: categorias,
             datasets: [{
-                label: "Compras",
-                data: compras,
+                label: "Gastos por Categoria",
+                data: valores,
                 backgroundColor: "#eb8317",
                 borderColor: "#eb8317",
                 borderWidth: 1
@@ -42,5 +42,4 @@ fetch('http://127.0.0.1:5000/lest_transacao_mes/id=' + getCookie("idUser"))
             }
         }
     });
-})
-.catch(error => console.error('Erro ao carregar dados:', error));
+}

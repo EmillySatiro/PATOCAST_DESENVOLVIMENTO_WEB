@@ -12,8 +12,7 @@ class FormDatabase:
     @staticmethod
     def format_form_data(form_tuple):
         return {
-            'resposta': form_tuple[0],
-            'idUser': form_tuple[1]
+            'resposta': form_tuple[0]
         }
         
     @staticmethod

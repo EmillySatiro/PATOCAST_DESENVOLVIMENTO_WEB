@@ -74,7 +74,10 @@ function getCookie(name) {
 let username = getCookie("username"); 
 if (username) {
     username = username.replace(/"/g, "");
-    document.getElementById("username").textContent = username;
+    const usernameElements = document.querySelectorAll("#username");
+    usernameElements.forEach(element => {
+        element.textContent = username;
+    });
 }
 
 function fecharModal(){

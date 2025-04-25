@@ -114,7 +114,7 @@ server.get('/inicio', async (req,res) => {
     limite: parseFloat(meta) - gasto,
     porcentagem: porcentagem > 100 ? 100 : porcentagem,
     quantidade_cartao: cartao_data.length,
-    cartoes: cartao_data,
+    cartoes: cartao_data.slice(0, 2),
   })
 })
 
@@ -174,7 +174,17 @@ server.get('/metas', async (req,res) => {
   const cartao_data = await response_card.json()
 
   const ultimo_cartao = cartao_data.length - 1;
-  const meta = cartao_data[ultimo_cartao].meta;
+  var meta = 0;
+  if(ultimo_cartao < 0){
+    const response_form = await fetch(
+      `http://${host_backend}:${port_backend}/respostas/id=${idUser}`
+    );
+    const form_data = await response_form.json()
+    const resposta = form_data[0].resposta.length - 1;
+    meta = form_data[0].resposta[resposta].resposta;
+  }else{
+    meta = cartao_data[ultimo_cartao].meta;
+  }
 
   const response_transacao = await fetch(
     `http://${host_backend}:${port_backend}/transacao_categoria/id=${idUser}`
