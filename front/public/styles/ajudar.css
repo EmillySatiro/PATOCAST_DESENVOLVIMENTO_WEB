@@ -98,6 +98,8 @@
 
     width: 331px;
     height: 498px;
+
+    cursor: pointer;
 }
 
 .modal-card-image{
