@@ -9,6 +9,7 @@ from src.routes.trasaction_routes import router_transaction
 from src.routes.card_roules import card_routes  
 from src.routes.email_routes import email_routes
 from src.routes.form_routes import form_routes
+from src.routes.posso_ajudar import posso_ajudar_routes
 
 rout_teste = Blueprint('route', __name__)
 @rout_teste.route('/', methods=['GET'])
@@ -23,6 +24,7 @@ app.register_blueprint(router_transaction)
 app.register_blueprint(card_routes)
 app.register_blueprint(email_routes)
 app.register_blueprint(form_routes)
+app.register_blueprint(posso_ajudar_routes)
 
 CORS(app)
 

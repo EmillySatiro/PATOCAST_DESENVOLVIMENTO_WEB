@@ -49,14 +49,12 @@ def delete_user(id):
 
 @router_user.route('/login', methods=['POST'])
 def login():
-    data = request.form.to_dict()
+    data = request.get_json()
+    
     print(f"Login attempt for email: {data['email']}")
     connect,user = UserDatabase.connect_user(data['email'], data['senha'])
     
     if connect:
-        response = make_response(redirect("http://127.0.0.1:3000/inicio"))
-        response.set_cookie("username", user['nome']) 
-        response.set_cookie("idUser", f"{user['idUser']}") 
-        return response
+        return jsonify({"message": "Login successful", "username": user['nome'], "idUser": user['idUser']}), 200
 
     return jsonify({"error": "Invalid email or password"}), 401

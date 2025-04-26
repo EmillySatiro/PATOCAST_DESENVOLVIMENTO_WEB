@@ -39,48 +39,21 @@
             
 
             <div class="modal-cards">
-                <div class="modal-card" onclick="window.location.href='ajuda_selecionado'">
-                    <div class="modal-card-image">
+                {% for dado in dados %}
+                    <div class="modal-card" onclick="window.location.href='ajuda_selecionado?id={{ dado.idPossoTeAjudar }}'">
+                        <div class="modal-card-image">
         
+                        </div>
+                        <div class="modal-card-content">
+                            <p>
+                                {{ dado.titulo }}
+                            </p>
+                            <p>
+                                {{ dado.descricao }}
+                            </p>
+                        </div>
                     </div>
-                    <div class="modal-card-content">
-                        <p>
-                            Economia:
-                        </p>
-                        <p>
-                            Economize hoje, conquiste amanhã!
-                        </p>
-                    </div>
-                </div>
-
-                <div class="modal-card">
-                    <div class="modal-card-image">
-        
-                    </div>
-                    <div class="modal-card-content">
-                        <p>
-                            Economia:
-                        </p>
-                        <p>
-                            Economize hoje, conquiste amanhã!
-                        </p>
-                    </div>
-                </div>
-
-                <div class="modal-card">
-                    <div class="modal-card-image">
-        
-                    </div>
-                    <div class="modal-card-content">
-                        <p>
-                            Economia:
-                        </p>
-                        <p>
-                            Economize hoje, conquiste amanhã!
-                        </p>
-                    </div>
-                </div>
-
+                {% endfor %}
             </div>
         </div>
     </div>

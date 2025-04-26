@@ -24,8 +24,44 @@ nunjucks.configure(
   }
 )
 
+server.post('/login', express.urlencoded({ extended: true }), async (req,res) => {
+  const data = req.body
+  console.log(data)
+
+  const response = await fetch(
+    `http://${host_backend}:${port_backend}/login`,{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: data.email,
+        senha: data.senha,
+      })
+  })
+  console.log(response)
+
+  if(response.status !== 200) {
+    return res.redirect('/?login=false')
+  }
+  else{
+    const responseData = await response.json();
+    res.cookie('username', responseData.username);
+    res.cookie('idUser', responseData.idUser);
+    return res.redirect('/inicio')
+  }
+})
+
 server.get('/', async (req,res) => {
-    return res.render('./auth/login.htm')
+
+  const login = req.query.login ? req.query.login == 'true' : true;
+
+  return res.render('./auth/login.htm',
+    { 
+      saved: login,
+      mensagem: "Email ou senha incorretos!"
+    }
+  )
 })
 
 server.get('/cadastrar', async (req,res) => {
@@ -269,11 +305,34 @@ server.get('/financas', async (req,res) => {
 })
 
 server.get('/ajuda', async (req,res) => {
-  return res.render('./navigation/ajuda.htm')
+  const response_posso_ajudar = await fetch(
+    `http://${host_backend}:${port_backend}/posso_ajudar`
+  );
+  dados = await response_posso_ajudar.json()
+  console.log(dados)
+  return res.render('./navigation/ajuda.htm',{
+      dados:dados
+    }
+  )
 })
 
 server.get('/ajuda_selecionado', async (req,res) => {
-  return res.render('./navigation/ajuda_selecionado.htm')
+  const id = req.query.id
+  console.log(id)
+  const response_posso_ajudar = await fetch(
+    `http://${host_backend}:${port_backend}/posso_ajudar/id=${id}`
+  );
+  dados = await response_posso_ajudar.json()
+  console.log(dados)
+
+  headers_text = dados[0]['header_text']
+  modal_cards = dados[0]['modal_cards']
+
+  return res.render('./navigation/ajuda_selecionado.htm',{
+      headers_text: headers_text,
+      modal_cards:modal_cards
+    }
+  )
 })
 
 server.get('/perfil', async (req,res) => {

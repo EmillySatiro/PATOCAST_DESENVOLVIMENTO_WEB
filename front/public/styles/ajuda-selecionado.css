@@ -29,7 +29,7 @@
 
 .ajuda-header{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 
     gap: 20px;
     padding: 20px;

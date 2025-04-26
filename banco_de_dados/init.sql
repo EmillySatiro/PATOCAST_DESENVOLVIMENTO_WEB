@@ -41,3 +41,19 @@ CREATE TABLE IF NOT EXISTS perguntas (
   idUser INT NOT NULL PRIMARY KEY,
   CONSTRAINT fk_pergunta_user FOREIGN KEY (idUser) REFERENCES users (idUser) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+-- Criação da tabela 'posso_te_ajudar'
+CREATE TABLE IF NOT EXISTS posso_te_ajudar (
+  idPossoTeAjudar SERIAL PRIMARY KEY,  -- Auto incremento
+  titulo VARCHAR(255) NOT NULL,
+  descricao TEXT NOT NULL
+);
+
+-- Criação da tabela 'ajuda_content'
+CREATE TABLE IF NOT EXISTS ajuda_content (
+  idAjudaContent SERIAL PRIMARY KEY,  -- Auto incremento
+  idPossoTeAjudar INT NOT NULL,
+  header_text JSONB NOT NULL,
+  modal_cards JSONB NOT NULL,
+  CONSTRAINT fk_ajuda_content_posso_te_ajudar FOREIGN KEY (idPossoTeAjudar) REFERENCES posso_te_ajudar (idPossoTeAjudar) ON DELETE CASCADE ON UPDATE CASCADE
+);

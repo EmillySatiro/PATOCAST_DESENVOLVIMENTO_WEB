@@ -6,6 +6,7 @@
 
 {% block styles %}
   <link rel="stylesheet" href="./styles/login.css">
+  <link rel="stylesheet" href="./styles/modal.css">
 {% endblock %}
 
 {% block container %}
@@ -35,7 +36,7 @@
         </p>
       </div>
       
-      <form class="input-dados" action="http://127.0.0.1:5000/login" method="post">
+      <form class="input-dados" action="/login" method="post">
 
         <input type="email" name="email" class="input-dados-label" id="" placeholder="E-mail">
         <input type="password" name="senha" class="input-dados-label" id="senha" placeholder="Senha">
@@ -64,6 +65,12 @@
     </div>
   </div>
 
+{% endblock %}
+
+{% block modal %}
+  {% if not saved %}
+    {% include "../partials/modal.htm" %}
+  {% endif %}
 {% endblock %}
 
 {% block script %}

@@ -14,65 +14,34 @@
 {% block content %}
     <div class="ajuda-container">
         <div class="ajuda-content">
-            <div class="ajuda-header">
-                <img src="./images/investimentos.png" alt="">
-                <div class="ajuda-header-text">
-                    <h3>
-                        POR QUÊ DEVO SABER DISSO?
-                    </h3>
-                    <div class="traco-horizontal"></div>
-                    <p>
-                        Em abril deste ano, no último dado disponível, o Brasil tinha 85,9 milhões de ocupados, 3,3 milhões a menos do que no mesmo mês de 2020. No pior momento da crise, quase 1,4 mil brasileiros eram demitidos por hora, diz levantamento do IDados. Como posso me preparar? 
-                    </p>
+            {% for header_text in headers_text %}
+                <div class="ajuda-header">
+                    <!-- <img src="./images/investimentos.png" alt=""> -->
+                    <div class="ajuda-header-text">
+                        <h3>
+                            {{ header_text.title }}
+                        </h3>
+                        <div class="traco-horizontal"></div>
+                        <p>
+                            {{ header_text.description }}
+                        </p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="ajuda-header">
-                <div class="ajuda-header-text">
-                    <h3>
-                        SEGURANÇA FINANCEIRA
-                    </h3>
-                    <div class="traco-horizontal"></div>
-                    <p>
-                        Segurança financeira é a capacidade de manter estabilidade econômica mesmo diante de imprevistos, como emergências médicas, perda de emprego ou outros eventos inesperados que possam afetar sua renda. Esse conceito é essencial para garantir uma vida mais tranquila, permitindo lidar com desafios sem comprometer o planejamento financeiro ou a qualidade de vida. Para alcançar a segurança financeira, é fundamental adotar práticas que protejam tanto o presente quanto o futuro. 
-                    </p>
-                </div>
-            </div>
+            {% endfor %}
             
             <div class="modal-cards">
-                <div class="modal-card">
-                    <div class="modal-card-content">
-                        <h3>
-                            Crie um fundo de emergência:
-                        </h3>
-                        <p>
-                            Reserve de 3 a 6 meses de despesas essenciais em uma conta separada e de fácil acesso. Esse fundo é crucial para cobrir imprevistos, como perda de emprego, problemas de saúde ou despesas urgentes. 
-                        </p>
+                {% for modal_card in modal_cards %}
+                    <div class="modal-card">
+                        <div class="modal-card-content">
+                            <h3>
+                                {{ modal_card.title }}
+                            </h3>
+                            <p>
+                                {{ modal_card.description }}
+                            </p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="modal-card">
-                    <div class="modal-card-content">
-                        <h3>
-                            Crie um fundo de emergência:
-                        </h3>
-                        <p>
-                            Reserve de 3 a 6 meses de despesas essenciais em uma conta separada e de fácil acesso. Esse fundo é crucial para cobrir imprevistos, como perda de emprego, problemas de saúde ou despesas urgentes. 
-                        </p>
-                    </div>
-                </div>
-
-                <div class="modal-card">
-                    <div class="modal-card-content">
-                        <h3>
-                            Crie um fundo de emergência:
-                        </h3>
-                        <p>
-                            Reserve de 3 a 6 meses de despesas essenciais em uma conta separada e de fácil acesso. Esse fundo é crucial para cobrir imprevistos, como perda de emprego, problemas de saúde ou despesas urgentes. 
-                        </p>
-                    </div>
-                </div>
-
+                {% endfor %}
             </div>
         </div>
     </div>
