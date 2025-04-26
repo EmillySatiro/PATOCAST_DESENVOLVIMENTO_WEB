@@ -11,9 +11,9 @@ email_routes = Blueprint('email_routes', __name__)
     '/email/recuperar_senha/', methods=['POST']
 )
 def recuperar_senha():
-    data = request.form.to_dict()
+    data = request.get_json()
     email = data['email']
-    
+
     print(f"Recuperar senha para o email: {email}")
     try:
         email_sender.send_email(

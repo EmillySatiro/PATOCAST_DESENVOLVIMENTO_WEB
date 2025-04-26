@@ -31,7 +31,8 @@ server.get('/', async (req,res) => {
 server.get('/cadastrar', async (req,res) => {
   const saved = req.query.cadastro == 'true' ? true : false
   return res.render('./auth/cadastrar.htm', {
-    saved: saved
+    saved: saved,
+    mensagem: "Cadastro realizado com sucesso!",
   })
 })
 
@@ -70,8 +71,37 @@ server.get('/perguntas', async (req,res) => {
   return res.render('./auth/perguntas.htm')
 })
 
+server.post('/send_email', express.urlencoded({ extended: true }), async (req,res) => {
+  const data = req.body
+
+  const response = await fetch(
+    `http://${host_backend}:${port_backend}/email/recuperar_senha/`,{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: data.email,
+      }
+  )
+  });
+
+  if(response.status !== 200) {
+    return res.status(500).send(response.statusText);
+  }else{
+    return res.redirect('/recuperar_conta?send_email=true')
+  }
+})
+
 server.get('/recuperar_conta', async (req,res) => {
-  return res.render('./auth/esqueci-senha.htm');
+  const saved = req.query.send_email == 'true' ? true : false
+  
+  return res.render('./auth/esqueci-senha.htm',
+    {
+      saved: saved,
+      mensagem: "Um email foi enviado para você com as instruções para recuperação de senha."
+    }
+  );
 })
 
 server.get('/alterar-senha', express.urlencoded({ extended: true }),async (req,res) => {
@@ -135,6 +165,7 @@ server.get('/contas', express.urlencoded({ extended: true }), async (req,res) =>
     idUser: req.cookies.idUser,
     cartoes: cartoes,
     saved:  saved,
+    mensagem: "Cartão cadastrado com sucesso!",
     cadastro: "Cartao"
   })
 })
@@ -255,7 +286,8 @@ server.get('/perfil', async (req,res) => {
     {
       nome: username,
       idUser: idUser,
-      saved: saved
+      saved: saved,
+      mensagem: "Perfil atualizado com sucesso!",
     }
   )
 })
