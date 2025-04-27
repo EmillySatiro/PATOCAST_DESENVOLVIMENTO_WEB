@@ -68,50 +68,6 @@ function getCookie(nome) {
     return null;
 }
 
-
-function finalizandoForm(elemento){
-    const idUser = getCookie("idUser");
-    console.log("ID do usuário:",idUser);
-    
-    const respostas = document.querySelectorAll(".resposta input:checked");
-    const valor = parseFloat(elemento.parentNode.querySelector("input").value);
-
-    console.log("Valor:",valor);
-    if (respostas.length < 2) {
-        alert("Por favor, selecione todas as respostas antes de continuar.");
-    }else{
-        const respostasArray = Array.from(respostas).map((input, index) => ({
-            pergunta: index + 1,
-            resposta: input.value
-        }));
-    
-        respostasArray.push({ pergunta: 3, resposta: valor });
-    
-        const respostasJson = JSON.stringify(respostasArray);
-        const xhr = new XMLHttpRequest();
-        
-        console.log("Repostas:",respostasJson);
-    
-        xhr.open("POST", `http://127.0.0.1:5000/respostas/id=${idUser}`, true);
-        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                window.location.href = "/inicio";
-            } else if (xhr.readyState === 4) {
-                console.error("Erro ao enviar respostas:", xhr.statusText);
-            }
-        };
-        setTimeout(() => {
-            console.log("Enviando respostas...");
-        }, 1000);
-        xhr.send(respostasJson);
-    
-    
-        progress = (indiceAtual + 1) / perguntas.length;
-        bar.animate(progress); 
-    }
-}
-
 document.querySelectorAll(".resposta").forEach(div => {
     div.classList.remove("selecionado");
     div.querySelector("input").checked = false;

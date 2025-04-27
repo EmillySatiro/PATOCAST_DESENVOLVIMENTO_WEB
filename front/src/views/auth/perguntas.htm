@@ -17,7 +17,7 @@
             {% include "../partials/logo_escura.htm" %}
             <div class="pergunta-form">
                 
-                <div class="respota-progresso">
+                <form action="/enviar_respostas" method="POST" class="respota-progresso">
                     <div class="respostas active">
                         <h1>Qual seu objetivo?</h1>
                         
@@ -78,21 +78,20 @@
 
                             <div class="renda-form">
                                 <input type="number" name="renda" id="renda" placeholder="R$ 0,00" required>
-                                <button type="submit" onclick="finalizandoForm(this)">Certo!</button>    
+                                <button type="submit">Certo!</button>    
                             </div>
                         
                         </div>
-
                     </div>
                     
                     <div class="progresso-indicador">
                     </div>
                     
                     <div class="buttons">
-                        <button onclick="voltar()" id="btn-voltar" disabled>Voltar</button>
-                        <button onclick="avancar()" id="btn-avancar">Avançar</button>
+                        <button type="button" onclick="voltar()" id="btn-voltar" disabled>Voltar</button>
+                        <button type="button" onclick="avancar()" id="btn-avancar">Avançar</button>
                     </div>
-                </div>
+                </form>
 
                 <div class="progresso">
                     <div id="progress-container" data-porcentagem="{{porcentagem}}"></div>

@@ -37,8 +37,16 @@ CREATE TABLE IF NOT EXISTS cartao (
 
 -- Criação da tabela 'perguntas'
 CREATE TABLE IF NOT EXISTS perguntas (
-  resposta JSONB NOT NULL,
+  idPergunta SERIAL PRIMARY KEY,  -- Auto incremento
+  idUser INT NOT NULL,  -- Relaciona a pergunta a um usuário
+  pergunta TEXT NOT NULL,  -- Texto da pergunta
+  respostas JSONB NOT NULL,  -- Armazena as respostas em formato JSON
+  CONSTRAINT fk_pergunta_user FOREIGN KEY (idUser) REFERENCES users (idUser) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS respostas (
   idUser INT NOT NULL PRIMARY KEY,
+  resposta JSONB NOT NULL,
   CONSTRAINT fk_pergunta_user FOREIGN KEY (idUser) REFERENCES users (idUser) ON DELETE CASCADE ON UPDATE CASCADE
 );
 

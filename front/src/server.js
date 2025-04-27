@@ -107,6 +107,31 @@ server.get('/perguntas', async (req,res) => {
   return res.render('./auth/perguntas.htm')
 })
 
+server.post('/enviar_respostas', express.urlencoded({ extended: true }), async (req,res) => {
+  const idUser = req.cookies.idUser
+  const data = req.body
+  console.log(data)
+  const respostas = Object.keys(data).map((key, index) => ({
+    pergunta: index + 1,
+    resposta: data[key]
+  }))
+
+  const response = await fetch(
+    `http://${host_backend}:${port_backend}/respostas/id=${idUser}`,{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(respostas)
+  })
+  // console.log(response)
+  if(response.status !== 200) {
+    return res.status(500).send('Erro ao salvar as respostas');
+  }else{
+    return res.redirect('/inicio')
+  }
+})
+
 server.post('/send_email', express.urlencoded({ extended: true }), async (req,res) => {
   const data = req.body
 
@@ -162,6 +187,7 @@ server.get('/inicio', async (req,res) => {
     `http://${host_backend}:${port_backend}/respostas/id=${idUser}`
   );
   const perguntas = await response_perguntas.json()
+  console.log(perguntas)
   const resposta = perguntas[0].resposta.length - 1;
   
   var meta = perguntas[0].resposta[resposta].resposta;
@@ -305,11 +331,12 @@ server.get('/financas', async (req,res) => {
 })
 
 server.get('/ajuda', async (req,res) => {
+  const idUser = req.cookies.idUser
+  
   const response_posso_ajudar = await fetch(
-    `http://${host_backend}:${port_backend}/posso_ajudar`
+    `http://${host_backend}:${port_backend}/posso_ajudar_recomendado/id=${idUser}`
   );
   dados = await response_posso_ajudar.json()
-  console.log(dados)
   return res.render('./navigation/ajuda.htm',{
       dados:dados
     }
@@ -320,7 +347,7 @@ server.get('/ajuda_selecionado', async (req,res) => {
   const id = req.query.id
   console.log(id)
   const response_posso_ajudar = await fetch(
-    `http://${host_backend}:${port_backend}/posso_ajudar/id=${id}`
+    `http://${host_backend}:${port_backend}/posso_ajudar_content/id=${id}`
   );
   dados = await response_posso_ajudar.json()
   console.log(dados)

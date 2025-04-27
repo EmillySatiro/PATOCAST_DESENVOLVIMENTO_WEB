@@ -12,7 +12,7 @@ class FormDatabase:
     @staticmethod
     def format_form_data(form_tuple):
         return {
-            'resposta': form_tuple[0]
+            'resposta': form_tuple[1]
         }
         
     @staticmethod
@@ -20,9 +20,10 @@ class FormDatabase:
         conn = connection()
         if conn:
             with conn.cursor() as cursor:
-                cursor.execute("SELECT * FROM perguntas WHERE idUser = %s", (idUser,))
+                cursor.execute("SELECT * FROM respostas WHERE idUser = %s", (idUser,))
                 forms = cursor.fetchall()
             conn.close()
+            print(forms)
             forms = [FormDatabase.format_form_data(form) for form in forms]
             return forms
         return []
@@ -32,7 +33,7 @@ class FormDatabase:
         conn = connection()
         if conn:
             with conn.cursor() as cursor:
-                cursor.execute("INSERT INTO perguntas (idUser, resposta) VALUES (%s, %s)", (idUser, resposta))
+                cursor.execute("INSERT INTO respostas (idUser, resposta) VALUES (%s, %s)", (idUser, resposta))
                 conn.commit()
             conn.close()
             return True

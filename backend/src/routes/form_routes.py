@@ -16,7 +16,6 @@ def get_respostas(id):
 def create_respostas(id):
     data = request.get_json()
     data = json.dumps(data)
-    
     respostas = FormDatabase.create_form(id, data)
     
     if not respostas:
