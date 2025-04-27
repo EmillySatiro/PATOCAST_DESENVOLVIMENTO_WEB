@@ -29,7 +29,7 @@ fetch('http://127.0.0.1:5000/lest_transacao_mes/id=' + getCookie("idUser"))
         data: {
             labels: meses,
             datasets: [{
-                label: "Vendas",
+                label: "Gastos por Mês",
                 data: vendas,
                 backgroundColor: "#eb8317",
                 borderColor: "#eb8317",
