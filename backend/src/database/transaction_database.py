@@ -42,7 +42,26 @@ class TransactionDatabase:
 
             conn.close()
             return transactions
-        
+    
+    @staticmethod
+    def insert_transaction(idUser, estabelecimento, categoria, valor, data):
+        """
+        Insere uma nova transação na tabela transactions e retorna o id da transação inserida.
+        """
+        conn = connection()
+        if conn:
+            with conn.cursor() as cursor:
+                cursor.execute(
+                    '''
+                        INSERT INTO 
+                        transactions (idUser, estabelecimento, categoria, valor, data) 
+                        VALUES (%s, %s, %s, %s, %s);
+                    ''',
+                    (idUser, estabelecimento, categoria, valor, data)
+                )
+                conn.commit()
+            conn.close()
+    
     @staticmethod
     def get_lest_transactions_mes(idUser) -> dict:
         """

@@ -18,6 +18,18 @@ def get_transacoes():
         mimetype='application/json'
     )
 
+@router_transaction.route('/transacao/id=<int:id>', methods=['POST'])
+def add_transacao(id):
+    data = request.get_json()
+    print(data)
+    TransactionDatabase.insert_transaction(
+        idUser=id,
+        estabelecimento=data['estabelecimento'],
+        categoria=data['categoria'],
+        valor=data['valor'],
+        data=data['data'],
+    )
+    return jsonify({"message": "Card created successfully"}), 201
 
 @router_transaction.route('/get_categorias/id=<int:id>', methods=['GET'])
 def get_categoria(id):

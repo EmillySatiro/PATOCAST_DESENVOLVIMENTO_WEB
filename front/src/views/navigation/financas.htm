@@ -90,15 +90,53 @@
             </tbody>
         </table>
     </div>
-    <div class="icon-downloads">
+    <div class="icons">
+        <div class="icon-downloads">
             <a id="downloadLink" href="/exportar-pdf/?id={{ idUser }}" download="relatorio.pdf">
                 <img src="./assets/download.svg" alt="Download" srcset="">
             </a>
+        </div>
+        <div class="icon-add">
+            <a id="add">
+                <img src="./assets/mais.png" alt="Adicionar" srcset="">
+            </a>
+        </div>
     </div>
+    <div id="myModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Adicionar Transação</h2>
+            <form class="form" action="/transactions/save_transacao" method="POST">
+                <div>
+                    <label for="estabelecimento">Estabelecimento:</label>
+                    <input type="text" name="estabelecimento" required>
+                </div>
+
+                <div>
+                    <label for="categoria">Categoria:</label>
+                    <input type="text" name="categoria" required>
+                </div>
+                
+                <div>
+                    <label for="valor">Valor:</label>
+                    <input type="number" name="valor" step="0.01" required>
+                </div>
+    
+                <div>
+                    <label for="data">Data:</label>
+                    <input type="date" name="data" required>
+                </div>
+    
+                <button type="submit">Salvar</button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block script %}
     <script src="./scripts/filtro_financa.js"></script>
     <script src="./scripts/graph_month_financa.js"></script>
     <script src="./scripts/download_pdf.js"></script>
+    <script src="./scripts/adicionar_transacao.js"></script>
 {% endblock %}

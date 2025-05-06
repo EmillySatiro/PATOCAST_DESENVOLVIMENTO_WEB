@@ -330,6 +330,32 @@ server.get('/financas', async (req,res) => {
   })
 })
 
+server.post('/transactions/save_transacao', express.urlencoded({ extended: true }), async (req,res) => {
+  let idUser = req.cookies.idUser
+  const data = req.body
+
+  const response = await fetch(
+    `http://${host_backend}:${port_backend}/transacao/id=${idUser}`,{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        estabelecimento: data.estabelecimento,
+        categoria: data.categoria,
+        valor: data.valor,
+        data: data.data,
+      })
+    }
+  );
+
+  if(response.status !== 201) {
+    return res.status(500).send('Erro ao salvar a transação');
+  }else{
+    return res.redirect('/financas')
+  }
+})
+
 server.get('/ajuda', async (req,res) => {
   const idUser = req.cookies.idUser
   
