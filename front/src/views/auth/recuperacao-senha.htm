@@ -5,6 +5,7 @@
 
     {% block styles %}
         <link rel="stylesheet" href="./styles/esqueci-senha.css">
+        <link rel="stylesheet" href="./styles/modal.css">
     {% endblock %}
 
     {% block container %}
@@ -16,7 +17,7 @@
             {% include "../partials/logo_clara.htm" %}
             <div class="box-info">
 
-                <form action="http://127.0.0.1:5000/email/alteracao-senha/email={{email}}" method="post" class="form-email">
+                <form action="/alterar_senha?email={{ email }}" method="post" class="form-email">
                     <div class="label-form">
                         <h3>
                             Esqueci Minha Senha
@@ -31,6 +32,12 @@
                 </form>
             </div>
         </div>
+    {% endblock %}
+
+    {% block modal %}
+        {% if saved %}
+            {% include "../partials/modal.htm" %}
+        {% endif %}
     {% endblock %}
 
     {% block script %}

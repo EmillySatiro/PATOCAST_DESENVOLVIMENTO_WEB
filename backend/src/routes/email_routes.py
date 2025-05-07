@@ -29,8 +29,10 @@ def recuperar_senha():
 
 @email_routes.route('/email/alteracao-senha/email=<string:email>', methods=['POST'])
 def alterar_senha(email):
-    data = request.form.to_dict()
+    data = request.get_json()
     senha = data['senha']
+    
+    print(f"Alterar senha para o email: {email}")
     
     print(f"Alterar senha para o email: {email}")
     try:

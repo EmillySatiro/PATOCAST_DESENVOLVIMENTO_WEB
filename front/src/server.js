@@ -165,9 +165,41 @@ server.get('/recuperar_conta', async (req,res) => {
   );
 })
 
-server.get('/alterar-senha', express.urlencoded({ extended: true }),async (req,res) => {
+
+server.post('/alterar_senha', express.urlencoded({ extended: true }), async (req,res) => {
+  const data = req.body
   const email = req.query.email
-  return res.render('./auth/recuperacao-senha.htm', { email: email });
+
+  const response = await fetch(
+    `http://${host_backend}:${port_backend}/email/alteracao-senha/email=${email}`,{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        senha: data.senha,
+        confirmar_senha: data.confirmar_senha,
+      })
+  })
+
+  if(response.status !== 200) {
+    return res.status(500).send('Erro ao alterar a senha');
+  }else{
+    return res.redirect('/alterar-senha?alterar=true')
+  }
+})
+
+server.get('/alterar-senha', express.urlencoded({ extended: true }),async (req,res) => {
+  const saved = req.query.alterar == 'true' ? true : false
+  console.log(saved)
+  const email = req.query.email
+  return res.render('./auth/recuperacao-senha.htm', 
+    {
+      saved: saved,
+      mensagem: "Senha alterada com sucesso!", 
+      email: email 
+    }
+  );
 })
 
 server.get('/inicio', async (req,res) => {
