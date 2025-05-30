@@ -24,7 +24,7 @@
                     Gasto Total
                 </p>
                 <p style="text-align: center; font-size: 28px;">
-                    R${{ gasto_total}}
+                    R${{ gasto_total | replace('.', ',') }}
                 </p>
             </div>
 
@@ -41,11 +41,11 @@
         
         <div class="limite">
             <p  style="font-weight: bold; font-size: 20px;">
-                Limite de gasto:
+                Seu limite disponivel
             </p>
             <div>
-                <p>
-                    R${{ gasto_limite }}
+                <p id="text-limite">
+                    R${{ gasto_limite | replace('.', ',') }}
                 </p>
             </div>
         </div>
@@ -74,7 +74,7 @@
                 <tr>
                     <td>{{ categoria }}</td>
                     <td>{{ dados.porcentagem }}%</td>
-                    <td>R${{ dados.total_gasto }}</td>
+                    <td>R${{ dados.total_gasto | replace('.', ',') }}</td>
                 </tr>
             {% endfor %}
         </table>
@@ -85,4 +85,5 @@
     <script type="module" src="./scripts/semi_circulo.js"></script>
     <script src="./scripts/graph_day.js"></script>
     <script src="./scripts/alterar_cor_box_meta.js"></script>
+    <script src="./scripts/alterar_cor_text_limite.js"></script>
 {% endblock %}

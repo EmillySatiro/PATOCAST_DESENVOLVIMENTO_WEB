@@ -17,11 +17,11 @@ async function buscarTransacoes() {
 
   const gasto_total = document.getElementById("gasto_total");
   const total = data.reduce((acc, transacao) => acc + parseFloat(transacao.valor), 0); // Calcula o total de gastos
-  gasto_total.innerHTML = `R$${total.toFixed(2)}`; // Atualiza o total de gastos
+  gasto_total.innerHTML = `R$${total.toFixed(2)}`.replace('.', ','); // Atualiza o total de gastos
 
   // Atualiza a tabela com as transações filtradas
   const tabela = document.querySelector('.table-info');
-  tabela.innerHTML = ""; // Limpa a tabela antes de preencher com os novos dados
+  tabela.innerHTML = "";
 
   if (data.length) {
       data.forEach(transacao => {
@@ -29,7 +29,7 @@ async function buscarTransacoes() {
           row.insertCell(0).textContent = transacao.estabelecimento;
           row.insertCell(1).textContent = transacao.categoria;
           row.insertCell(2).textContent = transacao.data;
-          row.insertCell(3).textContent = `R$${transacao.valor}`;
+          row.insertCell(3).textContent = `R$${transacao.valor}`.replace('.', ',');
       });
   }
 

@@ -101,7 +101,8 @@
                     Gasto Total
                 </p>
                 <p style="text-align: center; font-size: 35px;">
-                    R${{ gasto_total }}
+                    R${{ gasto_total | replace('.', ',') }}
+
                 </p>
             </div>
             <div class="show-info">

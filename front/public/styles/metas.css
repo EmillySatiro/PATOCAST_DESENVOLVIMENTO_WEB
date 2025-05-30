@@ -157,6 +157,10 @@
     width: 75%;
 }
 
+.limite div p.estourado{
+    color: var(--vermelho);
+}
+
 .box-gasto-recente {
     display: flex;
     flex-direction: column;

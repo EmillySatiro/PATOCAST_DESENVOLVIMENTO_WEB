@@ -283,41 +283,46 @@ server.post('/save_cartao', express.urlencoded({ extended: true }), async (req,r
 
 server.get('/metas', async (req,res) => {
   let idUser = req.cookies.idUser
-  
-  const response_card = await fetch(
-    `http://${host_backend}:${port_backend}/cards/id=${idUser}`
-  );
-  const cartao_data = await response_card.json()
-
-  const ultimo_cartao = cartao_data.length - 1;
-  var meta = 0;
-  if(ultimo_cartao < 0){
-    const response_form = await fetch(
-      `http://${host_backend}:${port_backend}/respostas/id=${idUser}`
+  try {
+    const response_card = await fetch(
+      `http://${host_backend}:${port_backend}/cards/id=${idUser}`
     );
-    const form_data = await response_form.json()
-    const resposta = form_data[0].resposta.length - 1;
-    meta = form_data[0].resposta[resposta].resposta;
-  }else{
-    meta = cartao_data[ultimo_cartao].meta;
+    if (!response_card.ok) throw new Error('Erro ao buscar cartões');
+    const cartao_data = await response_card.json();
+
+    const ultimo_cartao = cartao_data.length - 1;
+    var meta = 0;
+    if(ultimo_cartao < 0){
+      const response_form = await fetch(
+        `http://${host_backend}:${port_backend}/respostas/id=${idUser}`
+      );
+      if (!response_form.ok) throw new Error('Erro ao buscar respostas');
+      const form_data = await response_form.json();
+      const resposta = form_data[0].resposta.length - 1;
+      meta = form_data[0].resposta[resposta].resposta;
+    }else{
+      meta = cartao_data[ultimo_cartao].meta;
+    }
+
+    const response_transacao = await fetch(
+      `http://${host_backend}:${port_backend}/transacao_categoria/id=${idUser}`
+    );
+    if (!response_transacao.ok) throw new Error('Erro ao buscar transações');
+    const dados = await response_transacao.json();
+
+    const gasto = Object.values(dados).reduce((acc, categoria) => acc + categoria.total_gasto, 0);
+    const porcentagem = (gasto / meta) * 100;
+
+    return res.render('./navigation/metas.htm', {
+      categorias: dados,
+      limite: meta,
+      gasto_limite: (meta - gasto).toFixed(2),
+      gasto_total: gasto.toFixed(2),
+      porcentagem: porcentagem > 100 ? 100 : porcentagem,
+    });
+  } catch (err) {
+    return res.status(500).send('Erro ao carregar metas: ' + err.message);
   }
-
-  const response_transacao = await fetch(
-    `http://${host_backend}:${port_backend}/transacao_categoria/id=${idUser}`
-  );
-  dados = await response_transacao.json()
-
-  gasto = Object.values(dados).reduce((acc, categoria) => acc + categoria.total_gasto, 0);
-
-  porcentagem = (gasto / meta) * 100;
-
-  return res.render('./navigation/metas.htm', {
-    categorias: dados,
-    limite: meta,
-    gasto_limite: meta - gasto,
-    gasto_total: gasto,
-    porcentagem: porcentagem > 100 ? 100 : porcentagem,
-  })
 })
 
 server.get('/financas', async (req,res) => {

@@ -47,7 +47,7 @@
                     </p>
                     <div>
                         <p id="gasto_total">
-                            R${{ gasto_total }}
+                            R${{ gasto_total | replace('.', ',') }}
                         </p>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                 </p>
                 <div>
                     <p>
-                        R$ {{ pendente }}
+                        R${{ pendente | replace('.', ',') }}
                     </p>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                             <td>{{ transacao.estabelecimento }}</td>
                             <td>{{ transacao.categoria }}</td>
                             <td>{{ transacao.data }}</td>
-                            <td>R${{ transacao.valor }}</td>
+                            <td>R${{ transacao.valor | replace('.', ',') }}</td>
                         </tr>
                     {% endfor %}
                 {% endif %}

@@ -31,7 +31,7 @@
                             <td>{{ transacao.estabelecimento }}</td>
                             <td>{{ transacao.categoria }}</td>
                             <td>{{ transacao.data }}</td>
-                            <td>R${{ transacao.valor }}</td>
+                            <td>R${{ transacao.valor | replace('.', ',') }}</td>
                         </tr>
                     {% endfor %}
                 {% endif %}
