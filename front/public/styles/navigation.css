@@ -23,12 +23,21 @@
 }
 
 .navigation-bar a{
+    display: flex;
+    align-items: center;
+
     font-family: var(--fonte);
     font-weight: 400;
     font-style: normal;
     font-size: 20;
     transition: all 0.2s ease; /* Suaviza a transição */
     color: var(--claro);
+}
+
+.navigation-bar a img{
+    padding-right: 10px;
+    width: 30px;
+    height: 25px;
 }
 
 .navigation-bar .active{

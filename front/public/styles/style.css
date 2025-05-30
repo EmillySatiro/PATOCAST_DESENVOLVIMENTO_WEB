@@ -8,8 +8,10 @@
     --sombra-azul: rgba(39, 50, 90, 0.3);
     --preto: #000000;
     --branco: #ffffff;
-    --vermelho: rgba(210, 13, 13, 1);
     --azul: rgba(30, 111, 169, 1);
+    --vermelho: rgba(210, 13, 13, 1);
+    --verde: rgba(66, 246, 1, 1);
+    --amarelo: rgba(246, 205, 1, 1);
 }
 
 * {

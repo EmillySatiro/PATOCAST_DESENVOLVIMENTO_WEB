@@ -207,7 +207,7 @@
     }
 
     .box-gasto-total{
-        box-shadow: 5px 5px 2px var(--vermelho);
+        box-shadow: 5px 5px 2px var(--vermelho); /* box-shadow volta no responsivo */
         width: 95%;
         align-items: center;
     }

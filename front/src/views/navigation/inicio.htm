@@ -104,11 +104,10 @@
                     R${{ gasto_total }}
                 </p>
             </div>
-
             <div class="show-info">
                 <div id="progress-container" data-porcentagem="{{porcentagem}}"></div>
             </div>
-        </div>
+        </div> 
     </div>
 
 {% endblock %}
@@ -116,4 +115,5 @@
 {% block script %}
     <script src="./scripts/graph_month_inicio.js"></script>
     <script type="module" src="./scripts/semi_circulo.js"></script>
+    <script src="./scripts/alterar_cor_box_shadow.js"></script>
 {% endblock %}

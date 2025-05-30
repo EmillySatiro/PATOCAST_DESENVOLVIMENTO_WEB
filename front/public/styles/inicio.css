@@ -270,10 +270,10 @@
     background-color: var(--branco);
     border-radius: 15px;
 
-    box-shadow: 10px 10px 2px var(--vermelho);
+    /* box-shadow será definido via JS conforme a porcentagem */
+    box-shadow: 10px 10px 2px var(--vermelho); /* valor padrão, será sobrescrito */
 
     width: 20%;
-   
 }
 
 .box-gasto-total p{

@@ -26,7 +26,6 @@ nunjucks.configure(
 
 server.post('/login', express.urlencoded({ extended: true }), async (req,res) => {
   const data = req.body
-  console.log(data)
 
   const response = await fetch(
     `http://${host_backend}:${port_backend}/login`,{
@@ -39,7 +38,6 @@ server.post('/login', express.urlencoded({ extended: true }), async (req,res) =>
         senha: data.senha,
       })
   })
-  console.log(response)
 
   if(response.status !== 200) {
     return res.redirect('/?login=false')
@@ -74,7 +72,6 @@ server.get('/cadastrar', async (req,res) => {
 
 server.post('/save_conta', express.urlencoded({ extended: true }), async (req,res) => {
   const data = req.body
-  console.log(data)
 
   const response = await fetch(
     `http://${host_backend}:${port_backend}/cadastro`,{
@@ -91,7 +88,6 @@ server.post('/save_conta', express.urlencoded({ extended: true }), async (req,re
         checkbox: data.checkbox,
       })
   })
-  console.log(response)
 
   if(response.status !== 201) {
     return res.status(500).send(response.statusText);
@@ -110,7 +106,6 @@ server.get('/perguntas', async (req,res) => {
 server.post('/enviar_respostas', express.urlencoded({ extended: true }), async (req,res) => {
   const idUser = req.cookies.idUser
   const data = req.body
-  console.log(data)
   const respostas = Object.keys(data).map((key, index) => ({
     pergunta: index + 1,
     resposta: data[key]
@@ -124,7 +119,6 @@ server.post('/enviar_respostas', express.urlencoded({ extended: true }), async (
       },
       body: JSON.stringify(respostas)
   })
-  // console.log(response)
   if(response.status !== 200) {
     return res.status(500).send('Erro ao salvar as respostas');
   }else{
@@ -165,7 +159,6 @@ server.get('/recuperar_conta', async (req,res) => {
   );
 })
 
-
 server.post('/alterar_senha', express.urlencoded({ extended: true }), async (req,res) => {
   const data = req.body
   const email = req.query.email
@@ -191,7 +184,6 @@ server.post('/alterar_senha', express.urlencoded({ extended: true }), async (req
 
 server.get('/alterar-senha', express.urlencoded({ extended: true }),async (req,res) => {
   const saved = req.query.alterar == 'true' ? true : false
-  console.log(saved)
   const email = req.query.email
   return res.render('./auth/recuperacao-senha.htm', 
     {
@@ -219,7 +211,6 @@ server.get('/inicio', async (req,res) => {
     `http://${host_backend}:${port_backend}/respostas/id=${idUser}`
   );
   const perguntas = await response_perguntas.json()
-  console.log(perguntas)
   const resposta = perguntas[0].resposta.length - 1;
   
   var meta = perguntas[0].resposta[resposta].resposta;
@@ -403,12 +394,11 @@ server.get('/ajuda', async (req,res) => {
 
 server.get('/ajuda_selecionado', async (req,res) => {
   const id = req.query.id
-  console.log(id)
+
   const response_posso_ajudar = await fetch(
     `http://${host_backend}:${port_backend}/posso_ajudar_content/id=${id}`
   );
   dados = await response_posso_ajudar.json()
-  console.log(dados)
 
   headers_text = dados[0]['header_text']
   modal_cards = dados[0]['modal_cards']
@@ -439,8 +429,6 @@ server.get('/perfil', async (req,res) => {
 server.post('/update_perfil', express.urlencoded({ extended: true }), async (req,res) => {
   let idUser = req.cookies.idUser
   const data = req.body
-
-  console.log(data)
 
   const response = await fetch(
     `http://${host_backend}:${port_backend}/perfil/id=${idUser}`,{
@@ -530,8 +518,6 @@ server.get('/relatorio',somenteExportarPdf,async (req, res) => {
 server.get('/exportar-pdf', express.urlencoded({ extended: true }), async (req, res) => {
   const { id, mes, categoria } = req.query;
   
-  console.log(req.query)
-
   let browser;
   try {
     browser = await chromium.launch({
