@@ -83,7 +83,7 @@ body {
 .option-list a img{
     padding: 20px;
     height: 25px;
-    fill: aqua;
+    fill: rgb(24, 175, 175);
 }
 
 .box-content {
