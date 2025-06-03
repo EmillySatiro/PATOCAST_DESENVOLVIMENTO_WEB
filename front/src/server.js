@@ -137,24 +137,28 @@ server.post('/send_email', express.urlencoded({ extended: true }), async (req,re
       },
       body: JSON.stringify({
         email: data.email,
-      }
-  )
-  });
+      })
+    }
+  );
 
-  if(response.status !== 200) {
-    return res.status(500).send(response.statusText);
-  }else{
-    return res.redirect('/recuperar_conta?send_email=true')
+  if(response.status === 404) {
+    // Email não cadastrado
+    return res.redirect('/recuperar_conta?send_email=true&mensagem=Email%20não%20cadastrado!');
+  } else if(response.status !== 200) {
+    return res.redirect('/recuperar_conta?send_email=true&mensagem=Erro%20ao%20enviar%20email.%20Tente%20novamente.');
+  } else {
+    return res.redirect('/recuperar_conta?send_email=true&mensagem=Um%20email%20foi%20enviado%20para%20você%20com%20as%20instruções%20para%20recuperação%20de%20senha.');
   }
 })
 
-server.get('/recuperar_conta', async (req,res) => {
+server.get('/recuperar_conta', express.urlencoded({ extended: true }), async (req,res) => {
   const saved = req.query.send_email == 'true' ? true : false
-  
+  const mensagem = req.query.mensagem || "Por favor, insira seu email para recuperação de senha."
+
   return res.render('./auth/esqueci-senha.htm',
     {
       saved: saved,
-      mensagem: "Um email foi enviado para você com as instruções para recuperação de senha."
+      mensagem: mensagem
     }
   );
 })

@@ -86,11 +86,12 @@ function fecharModal(){
         modal.style.display = "none";
 
         const currentUrl = window.location.href.split("?")[0];
-        window.location.href = currentUrl;
-
+        console.log("Current URL:", currentUrl);
         if (currentUrl.endsWith("/cadastrar")) {
             console.log("Redirecting to /perguntas");
             window.location.href = "/perguntas";
+        } else if (currentUrl.endsWith("/alterar-senha")) {
+            window.location.href = "/";
         }
     }
 }

@@ -16,6 +16,10 @@ def recuperar_senha():
 
     print(f"Recuperar senha para o email: {email}")
     try:
+        # Verifica se o email existe na base de dados
+        user = UserDatabase.get_user_by_email(email)
+        if not user:
+            return jsonify({"error": "Email não cadastrado."}), 404
         email_sender.send_email(
             subject='Recuperação de Senha',
             to=email,
