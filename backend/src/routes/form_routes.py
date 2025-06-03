@@ -22,3 +22,14 @@ def create_respostas(id):
         return jsonify({"error": "Failed to create response"}), 500
     else:
         return jsonify({"message": "Response created successfully"}), 200
+    
+@form_routes.route('/respostas/update_meta/id=<int:id>', methods=['PUT'])
+def update_respostas(id):
+    data = request.get_json()
+    print(data)
+    updated = FormDatabase.update_last_answer(id, data['meta'])
+    
+    if not updated:
+        return jsonify({"error": "Failed to update response"}), 500
+    else:
+        return jsonify({"message": "Response updated successfully"}), 200

@@ -1,4 +1,5 @@
 from src.database.db import connection
+import json
 
 
 # CREATE TABLE IF NOT EXISTS perguntas (
@@ -37,4 +38,25 @@ class FormDatabase:
                 conn.commit()
             conn.close()
             return True
+        return False
+    
+    @staticmethod
+    def update_last_answer(idUser, new_resposta):
+        conn = connection()
+        if conn:
+            with conn.cursor() as cursor:
+                # Busca as respostas atuais
+                cursor.execute("SELECT resposta FROM respostas WHERE idUser = %s", (idUser,))
+                result = cursor.fetchone()
+                if result:
+                    respostas = result[0] if isinstance(result[0], list) else json.loads(result[0])
+                    if respostas:
+                        # Altera a resposta da última pergunta
+                        respostas[-1]['resposta'] = new_resposta
+                        respostas_json = json.dumps(respostas)
+                        cursor.execute("UPDATE respostas SET resposta = %s WHERE idUser = %s", (respostas_json, idUser))
+                        conn.commit()
+                        conn.close()
+                        return True
+            conn.close()
         return False

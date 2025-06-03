@@ -293,24 +293,35 @@ server.post('/update_cartao', express.urlencoded({ extended: true }), async (req
       const cartao_data = await response_card.json();
 
       const ultimo_cartao = cartao_data.length - 1;
+      let response;
       if(ultimo_cartao < 0){
-        return res.status(404).send('Nenhum cartão encontrado para atualizar');
+        response = await fetch(
+          `http://${host_backend}:${port_backend}/respostas/update_meta/id=${idUser}`,{
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 
+              meta: data.meta, 
+            })
+          }
+        );
+      }else{
+        let idCartao = cartao_data[ultimo_cartao].idCartao;
+        
+        response = await fetch(
+          `http://${host_backend}:${port_backend}/cards/update_meta`,{
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 
+              idCartao: idCartao, 
+              meta: data.meta, 
+            })
+          }
+        );
       }
-      idCartao = cartao_data[ultimo_cartao].idCartao;
-      console.log(idCartao)
-      
-    const response = await fetch(
-      `http://${host_backend}:${port_backend}/cards/update_meta`,{
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ 
-          idCartao: idCartao, 
-          meta: data.meta, 
-        })
-      }
-    );
 
     if(response.status !== 200) {
       return res.status(500).send('Erro ao atualizar o cartão');
