@@ -4,8 +4,8 @@ all:
 
 back:
 	@docker-compose up -d postgres
-	@pip install -r backend/requirements.txt
-	@python backend/app.py
+	@cd backend && pip install -r requirements.txt
+	@cd backend && python app.py
 
 frontend:
 	@cd front && npm install && npm start

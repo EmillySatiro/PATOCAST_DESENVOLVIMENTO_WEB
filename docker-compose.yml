@@ -18,6 +18,8 @@ services:
       - "5000:5000"
     env_file:
       - .env
+    environment:
+      POSTGRES_HOST: postgres
     depends_on:
       - postgres
 

@@ -13,7 +13,6 @@ def get_cards(id):
 @card_routes.route('/cards/id=<int:id>', methods=['POST'])
 def create_card(id):
     data = request.get_json()
-    print(data)
     CardDatabase.create_card(
         idUser=id,
         numero=data['numero'],
@@ -23,8 +22,14 @@ def create_card(id):
     )
     return jsonify({"message": "Card created successfully"}), 201
 
-@card_routes.route('/cards/id=<int:idCartao>', methods=['PUT'])
-def update_card(idCartao):
-    data = request.form.to_dict()
-    CardDatabase.update_card(idCartao, **data)
+@card_routes.route('/cards/update_meta', methods=['PUT'])
+def update_card():
+    data = request.get_json()
+    print(f'Formulario {data}')
+    
+    CardDatabase.update_card_meta(
+        idCartao=data['idCartao'],
+        meta=data['meta']
+    )
+    
     return jsonify({"message": "Card updated successfully"}), 200

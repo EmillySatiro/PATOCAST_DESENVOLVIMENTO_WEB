@@ -47,3 +47,12 @@ class CardDatabase:
           cursor.execute(f"UPDATE cartao SET {key} = %s WHERE idCartao = %s", (value, idCartao))
         conn.commit()
       conn.close()
+      
+  @staticmethod
+  def update_card_meta(idCartao, meta):
+    conn = connection()
+    if conn:
+      with conn.cursor() as cursor:
+        cursor.execute("UPDATE cartao SET meta = %s WHERE idCartao = %s", (meta, idCartao))
+        conn.commit()
+      conn.close()

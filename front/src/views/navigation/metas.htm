@@ -56,7 +56,7 @@
                 Quero gastar:
             </p>
             
-            <div>
+            <div class="alterar-limite" id="text-limite-alterar">
                 <p>
                     R${{ limite }}
                 </p>
@@ -79,6 +79,21 @@
             {% endfor %}
         </table>
     </div>
+
+    <div id="myModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Altere sua meta</h2>
+            <form class="form" action="/update_cartao" method="POST">
+                <div>
+                    <input type="number" name="meta" step="0.01" required>
+                </div>
+    
+                <button type="submit">Salvar</button>
+            </form>
+        </div>
+        
+    </div>
 {% endblock %}
 
 {% block script %}
@@ -86,4 +101,5 @@
     <script src="./scripts/graph_day.js"></script>
     <script src="./scripts/alterar_cor_box_meta.js"></script>
     <script src="./scripts/alterar_cor_text_limite.js"></script>
+    <script src="./scripts/alterar_limite.js"></script>
 {% endblock %}

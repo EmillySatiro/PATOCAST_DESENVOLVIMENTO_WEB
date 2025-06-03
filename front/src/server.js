@@ -281,6 +281,47 @@ server.post('/save_cartao', express.urlencoded({ extended: true }), async (req,r
   }
 })
 
+server.post('/update_cartao', express.urlencoded({ extended: true }), async (req,res) => {
+  const data = req.body
+  let idUser = req.cookies.idUser
+
+  try {
+      const response_card = await fetch(
+        `http://${host_backend}:${port_backend}/cards/id=${idUser}`
+      );
+      if (!response_card.ok) throw new Error('Erro ao buscar cartões');
+      const cartao_data = await response_card.json();
+
+      const ultimo_cartao = cartao_data.length - 1;
+      if(ultimo_cartao < 0){
+        return res.status(404).send('Nenhum cartão encontrado para atualizar');
+      }
+      idCartao = cartao_data[ultimo_cartao].idCartao;
+      console.log(idCartao)
+      
+    const response = await fetch(
+      `http://${host_backend}:${port_backend}/cards/update_meta`,{
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+          idCartao: idCartao, 
+          meta: data.meta, 
+        })
+      }
+    );
+
+    if(response.status !== 200) {
+      return res.status(500).send('Erro ao atualizar o cartão');
+    }else{
+      return res.redirect('/metas')
+    }
+  } catch (err) {
+    return res.status(500).send('Erro ao atualizar o cartão: ' + err.message);
+  }
+})
+
 server.get('/metas', async (req,res) => {
   let idUser = req.cookies.idUser
   try {
@@ -291,6 +332,7 @@ server.get('/metas', async (req,res) => {
     const cartao_data = await response_card.json();
 
     const ultimo_cartao = cartao_data.length - 1;
+    
     var meta = 0;
     if(ultimo_cartao < 0){
       const response_form = await fetch(
