@@ -591,7 +591,7 @@ server.get('/exportar-pdf', express.urlencoded({ extended: true }), async (req, 
     
     await page.setViewportSize({ width: 1200, height: 5000 });
     
-    await page.goto(`http://${host_backend}:${port}/relatorio?token=SECRETO_123&id=${id}&mes=${mes}&categoria=${categoria}`, {
+    await page.goto(`http://localhost:3000/relatorio?token=SECRETO_123&id=${id}&mes=${mes}&categoria=${categoria}`, {
       waitUntil: 'networkidle0',
       timeout: 60000
     });
