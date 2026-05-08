@@ -1,6 +1,6 @@
 # Patocast - Sistema de Gerenciamento Financeiro Web
 
-Bem-vindo ao Patocast, uma aplicação web completa projetada para auxiliar no gerenciamento financeiro pessoal. Este sistema permite aos usuários controlar suas transações, definir metas financeiras, visualizar relatórios e muito mais, tudo através de uma interface web interativa.
+Bem-vindo ao Patocast! uma aplicação web completa projetada para auxiliar no gerenciamento financeiro pessoal. Este sistema permite aos usuários controlar suas transações, definir metas financeiras, visualizar relatórios e muito mais, tudo através de uma interface web interativa.
 
 ## Visão Geral da Arquitetura
 
